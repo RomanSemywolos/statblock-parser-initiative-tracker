@@ -1,0 +1,3406 @@
+TAP version 13
+# Subtest: vertical score/mod/save ability table resolves all six printed saves including the final CHA cell
+ok 1 - vertical score/mod/save ability table resolves all six printed saves including the final CHA cell
+  ---
+  duration_ms: 3.892973
+  type: 'test'
+  ...
+# Subtest: localized ability labels ground as one ordered region even when DEX/WIS repeat in a later save row
+ok 2 - localized ability labels ground as one ordered region even when DEX/WIS repeat in a later save row
+  ---
+  duration_ms: 0.942424
+  type: 'test'
+  ...
+# Subtest: localized ability recovery never expands backward through unrelated unresolved header rows
+ok 3 - localized ability recovery never expands backward through unrelated unresolved header rows
+  ---
+  duration_ms: 0.372353
+  type: 'test'
+  ...
+# Subtest: localized ability promotion preserves unresolved metadata before the first ability row
+ok 4 - localized ability promotion preserves unresolved metadata before the first ability row
+  ---
+  duration_ms: 10.149958
+  type: 'test'
+  ...
+# Subtest: source probe prefers a complete final save cell over a smaller six-score solution
+ok 5 - source probe prefers a complete final save cell over a smaller six-score solution
+  ---
+  duration_ms: 0.86054
+  type: 'test'
+  ...
+# Subtest: source-only ability probing does not assign English ability semantics
+ok 6 - source-only ability probing does not assign English ability semantics
+  ---
+  duration_ms: 0.215986
+  type: 'test'
+  ...
+# Subtest: verified ability evidence can deterministically extend a truncated right edge to the complete table
+ok 7 - verified ability evidence can deterministically extend a truncated right edge to the complete table
+  ---
+  duration_ms: 1.186463
+  type: 'test'
+  ...
+# Subtest: collapsed Demogorgon-style verified evidence recovers a truncated final CHA cell
+ok 8 - collapsed Demogorgon-style verified evidence recovers a truncated final CHA cell
+  ---
+  duration_ms: 0.472984
+  type: 'test'
+  ...
+# Subtest: ownership-first verified ability repair stops at the smallest complete localized table
+ok 9 - ownership-first verified ability repair stops at the smallest complete localized table
+  ---
+  duration_ms: 0.590072
+  type: 'test'
+  ...
+# Subtest: localized verified ability evidence uses the same constraint extension with model-grounded labels
+ok 10 - localized verified ability evidence uses the same constraint extension with model-grounded labels
+  ---
+  duration_ms: 1.851958
+  type: 'test'
+  ...
+# Subtest: verified standalone save evidence can populate structured saves even when the source row remains outside header ownership
+ok 11 - verified standalone save evidence can populate structured saves even when the source row remains outside header ownership
+  ---
+  duration_ms: 5.193067
+  type: 'test'
+  ...
+# Subtest: model-guided source recovery proves localized abilities without an ab region claim
+ok 12 - model-guided source recovery proves localized abilities without an ab region claim
+  ---
+  duration_ms: 0.353054
+  type: 'test'
+  ...
+# Subtest: assembles a collapsed one-line statblock from exact source spans
+ok 13 - assembles a collapsed one-line statblock from exact source spans
+  ---
+  duration_ms: 5.647644
+  type: 'test'
+  ...
+# Subtest: preserves a multiline ability table inside one exact annotation
+ok 14 - preserves a multiline ability table inside one exact annotation
+  ---
+  duration_ms: 0.409018
+  type: 'test'
+  ...
+# Subtest: splits a grounded coarse header span when later lines begin independently proven fields
+ok 15 - splits a grounded coarse header span when later lines begin independently proven fields
+  ---
+  duration_ms: 0.769894
+  type: 'test'
+  ...
+# Subtest: splits multiple proven header fields even when they share one physical line
+ok 16 - splits multiple proven header fields even when they share one physical line
+  ---
+  duration_ms: 0.473195
+  type: 'test'
+  ...
+# Subtest: keeps a labelled header field specific when only its value wraps onto another line
+ok 17 - keeps a labelled header field specific when only its value wraps onto another line
+  ---
+  duration_ms: 0.70186
+  type: 'test'
+  ...
+# Subtest: places deterministically reconciled section content in its own honest view bucket
+ok 18 - places deterministically reconciled section content in its own honest view bucket
+  ---
+  duration_ms: 0.265611
+  type: 'test'
+  ...
+# Subtest: omitted source becomes explicit unclassified content
+ok 19 - omitted source becomes explicit unclassified content
+  ---
+  duration_ms: 0.364451
+  type: 'test'
+  ...
+# Subtest: rejects all conflicting overlaps instead of choosing a winner
+ok 20 - rejects all conflicting overlaps instead of choosing a winner
+  ---
+  duration_ms: 0.232952
+  type: 'test'
+  ...
+# Subtest: trims separator boundaries and rejects unknown, reversed and false heading ranges
+ok 21 - trims separator boundaries and rejects unknown, reversed and false heading ranges
+  ---
+  duration_ms: 0.565605
+  type: 'test'
+  ...
+# Subtest: deduplicates identical ownership without duplicating text
+ok 22 - deduplicates identical ownership without duplicating text
+  ---
+  duration_ms: 0.387956
+  type: 'test'
+  ...
+# Subtest: empty annotations preserve arbitrary input for 250 generated cases
+ok 23 - empty annotations preserve arbitrary input for 250 generated cases
+  ---
+  duration_ms: 8.286311
+  type: 'test'
+  ...
+# Subtest: does not split a header label that appears inside an open bracketed value
+ok 24 - does not split a header label that appears inside an open bracketed value
+  ---
+  duration_ms: 0.525884
+  type: 'test'
+  ...
+# Subtest: direct structural ownership never re-splits a grounded span with an English lexicon
+ok 25 - direct structural ownership never re-splits a grounded span with an English lexicon
+  ---
+  duration_ms: 0.197599
+  type: 'test'
+  ...
+# Subtest: inline printed initiative survives strict ownership and suppresses DEX-derived initiative
+ok 26 - inline printed initiative survives strict ownership and suppresses DEX-derived initiative
+  ---
+  duration_ms: 4.113757
+  type: 'test'
+  ...
+# Subtest: direct structural ownership does not broaden grounded splitting across separate physical rows
+ok 27 - direct structural ownership does not broaden grounded splitting across separate physical rows
+  ---
+  duration_ms: 0.216667
+  type: 'test'
+  ...
+# Subtest: direct structural ownership does not expose an opt-in English header re-split escape hatch
+ok 28 - direct structural ownership does not expose an opt-in English header re-split escape hatch
+  ---
+  duration_ms: 0.158269
+  type: 'test'
+  ...
+# Subtest: keeps a label-only Saving Throws first line specific when its value wraps
+ok 29 - keeps a label-only Saving Throws first line specific when its value wraps
+  ---
+  duration_ms: 0.726919
+  type: 'test'
+  ...
+# Subtest: library import cancels only pending autosaves for imported statblock ids
+ok 30 - library import cancels only pending autosaves for imported statblock ids
+  ---
+  duration_ms: 1.301056
+  type: 'test'
+  ...
+# Subtest: library import waits for an already-started autosave of the same statblock
+ok 31 - library import waits for an already-started autosave of the same statblock
+  ---
+  duration_ms: 0.266743
+  type: 'test'
+  ...
+# Subtest: library import does not wait for unrelated autosave writes
+ok 32 - library import does not wait for unrelated autosave writes
+  ---
+  duration_ms: 0.140712
+  type: 'test'
+  ...
+# Subtest: body sanitizer merges a named-rule title misclassified as a section heading with its contiguous prose
+ok 33 - body sanitizer merges a named-rule title misclassified as a section heading with its contiguous prose
+  ---
+  duration_ms: 1.424854
+  type: 'test'
+  ...
+# Subtest: body sanitizer preserves a compact printed heading
+ok 34 - body sanitizer preserves a compact printed heading
+  ---
+  duration_ms: 0.308716
+  type: 'test'
+  ...
+# Subtest: body sanitizer never reads across an explicit remainder-segment end
+ok 35 - body sanitizer never reads across an explicit remainder-segment end
+  ---
+  duration_ms: 0.143367
+  type: 'test'
+  ...
+# Subtest: single-line boundary evidence distinguishes peer titles from nested list sequence
+ok 36 - single-line boundary evidence distinguishes peer titles from nested list sequence
+  ---
+  duration_ms: 12.683697
+  type: 'test'
+  ...
+# Subtest: mixed physical rows stay weak unless independent source shape supports a new block
+ok 37 - mixed physical rows stay weak unless independent source shape supports a new block
+  ---
+  duration_ms: 5.71114
+  type: 'test'
+  ...
+# Subtest: mixed document start remains a hard top-level boundary after physical-line demotion
+ok 38 - mixed document start remains a hard top-level boundary after physical-line demotion
+  ---
+  duration_ms: 1.117669
+  type: 'test'
+  ...
+# Subtest: mixed visual-wrap and compact-label rows are weak while real title-shaped peers stay strong
+ok 39 - mixed visual-wrap and compact-label rows are weak while real title-shaped peers stay strong
+  ---
+  duration_ms: 1.921694
+  type: 'test'
+  ...
+# Subtest: mixed wrapped header continuations do not outrank known header starts
+ok 40 - mixed wrapped header continuations do not outrank known header starts
+  ---
+  duration_ms: 2.05144
+  type: 'test'
+  ...
+# Subtest: mixed feature wraps carry continuation evidence while long parenthetical feature titles remain positive starts
+ok 41 - mixed feature wraps carry continuation evidence while long parenthetical feature titles remain positive starts
+  ---
+  duration_ms: 1.298092
+  type: 'test'
+  ...
+# Subtest: mixed compact Label continuation gets explicit continuation evidence without vocabulary
+ok 42 - mixed compact Label continuation gets explicit continuation evidence without vocabulary
+  ---
+  duration_ms: 0.445543
+  type: 'test'
+  ...
+# Subtest: mixed paragraph geometry is strong rather than hard while trusted multiline remains hard
+ok 43 - mixed paragraph geometry is strong rather than hard while trusted multiline remains hard
+  ---
+  duration_ms: 0.759719
+  type: 'test'
+  ...
+# Subtest: mixed introduced bullet sequences are hard internal hierarchy rather than peer feature starts
+ok 44 - mixed introduced bullet sequences are hard internal hierarchy rather than peer feature starts
+  ---
+  duration_ms: 2.849736
+  type: 'test'
+  ...
+# Subtest: generic mixed boundary evidence preserves localized pre-body metadata without an English profile
+ok 45 - generic mixed boundary evidence preserves localized pre-body metadata without an English profile
+  ---
+  duration_ms: 4.516615
+  type: 'test'
+  ...
+# Subtest: generic metadata fallback does not restore false strong boundaries for bare wrapped words
+ok 46 - generic metadata fallback does not restore false strong boundaries for bare wrapped words
+  ---
+  duration_ms: 0.604454
+  type: 'test'
+  ...
+# Subtest: profile-proven multi-word header labels mark dense inner coordinates as hard internal geometry
+ok 47 - profile-proven multi-word header labels mark dense inner coordinates as hard internal geometry
+  ---
+  duration_ms: 0.627669
+  type: 'test'
+  ...
+# Subtest: hybrid inline-first introduced bullet sequence is internal hierarchy
+ok 48 - hybrid inline-first introduced bullet sequence is internal hierarchy
+  ---
+  duration_ms: 0.571614
+  type: 'test'
+  ...
+# Subtest: mixed introduced ordered lists with wrapped PDF rows are hard internal hierarchy
+ok 49 - mixed introduced ordered lists with wrapped PDF rows are hard internal hierarchy
+  ---
+  duration_ms: 0.763294
+  type: 'test'
+  ...
+# Subtest: mixed introduced dash lists with wrapped rows are hard internal hierarchy
+ok 50 - mixed introduced dash lists with wrapped rows are hard internal hierarchy
+  ---
+  duration_ms: 0.861632
+  type: 'test'
+  ...
+# Subtest: repeated dash rows without an introducing colon are not promoted to internal list hierarchy
+ok 51 - repeated dash rows without an introducing colon are not promoted to internal list hierarchy
+  ---
+  duration_ms: 0.358762
+  type: 'test'
+  ...
+# Subtest: multiple introduced bullet lists are kept as separate structural groups
+ok 52 - multiple introduced bullet lists are kept as separate structural groups
+  ---
+  duration_ms: 0.525364
+  type: 'test'
+  ...
+# Subtest: candidate lattice preparation preserves base candidates and adds boundary evidence
+ok 53 - candidate lattice preparation preserves base candidates and adds boundary evidence
+  ---
+  duration_ms: 9.568409
+  type: 'test'
+  ...
+# Subtest: candidate lattice preparation honors explicit parser mode
+ok 54 - candidate lattice preparation honors explicit parser mode
+  ---
+  duration_ms: 7.229234
+  type: 'test'
+  ...
+# Subtest: header lattice is independent of forced parser mode for the same source
+ok 55 - header lattice is independent of forced parser mode for the same source
+  ---
+  duration_ms: 4.127406
+  type: 'test'
+  ...
+# Subtest: singleline BODY lattice exposes only structural/mixed proposals and keeps source-shaped rule starts
+ok 56 - singleline BODY lattice exposes only structural/mixed proposals and keeps source-shaped rule starts
+  ---
+  duration_ms: 5.67092
+  type: 'test'
+  ...
+# Subtest: verified identity may carve an independently grounded name prefix from classification
+ok 57 - verified identity may carve an independently grounded name prefix from classification
+  ---
+  duration_ms: 1.996076
+  type: 'test'
+  ...
+# Subtest: verified identity rejects identical name and classification spans instead of inventing a split
+ok 58 - verified identity rejects identical name and classification spans instead of inventing a split
+  ---
+  duration_ms: 0.186912
+  type: 'test'
+  ...
+# Subtest: direct candidate transport preserves model gaps as explicit unclassified ownership
+ok 59 - direct candidate transport preserves model gaps as explicit unclassified ownership
+  ---
+  duration_ms: 6.138916
+  type: 'test'
+  ...
+# Subtest: direct verifier evidence cannot turn saving-throw prose into a saving_throws header field
+ok 60 - direct verifier evidence cannot turn saving-throw prose into a saving_throws header field
+  ---
+  duration_ms: 0.984117
+  type: 'test'
+  ...
+# Subtest: direct candidate transport abstains on contradictory classifications for the exact same span
+ok 61 - direct candidate transport abstains on contradictory classifications for the exact same span
+  ---
+  duration_ms: 1.220395
+  type: 'test'
+  ...
+# Subtest: direct verifier can validate a localized printed save row from grounded ability+bonus shape
+ok 62 - direct verifier can validate a localized printed save row from grounded ability+bonus shape
+  ---
+  duration_ms: 1.815643
+  type: 'test'
+  ...
+# Subtest: direct candidate transport honors localized header semantics supplied by the structural model
+ok 63 - direct candidate transport honors localized header semantics supplied by the structural model
+  ---
+  duration_ms: 0.415277
+  type: 'test'
+  ...
+# Subtest: single-line direct transport preserves multilingual model-owned header spans without deterministic English interval repair
+ok 64 - single-line direct transport preserves multilingual model-owned header spans without deterministic English interval repair
+  ---
+  duration_ms: 5.998985
+  type: 'test'
+  ...
+# Subtest: single-line direct transport splits a coarse localized feature at a source-proven peer title
+ok 65 - single-line direct transport splits a coarse localized feature at a source-proven peer title
+  ---
+  duration_ms: 3.213366
+  type: 'test'
+  ...
+# Subtest: generic direct transport splits a coarse feature only at existing safe source-proven sibling starts
+ok 66 - generic direct transport splits a coarse feature only at existing safe source-proven sibling starts
+  ---
+  duration_ms: 5.494322
+  type: 'test'
+  ...
+# Subtest: generic source-proven boundary enforcement does not split a wrapped unfinished continuation
+ok 67 - generic source-proven boundary enforcement does not split a wrapped unfinished continuation
+  ---
+  duration_ms: 2.548181
+  type: 'test'
+  ...
+# Subtest: generic direct transport preserves separate sibling starts in a coarse traits feature
+ok 68 - generic direct transport preserves separate sibling starts in a coarse traits feature
+  ---
+  duration_ms: 3.277423
+  type: 'test'
+  ...
+# Subtest: generic direct transport keeps a weak strong compact-label continuation inside the preceding feature
+ok 69 - generic direct transport keeps a weak strong compact-label continuation inside the preceding feature
+  ---
+  duration_ms: 1.238292
+  type: 'test'
+  ...
+# Subtest: generic direct transport preserves localized title-shaped header ownership without an English subtype
+ok 70 - generic direct transport preserves localized title-shaped header ownership without an English subtype
+  ---
+  duration_ms: 4.077211
+  type: 'test'
+  ...
+# Subtest: generic direct transport closes a weak strong-continuation coordinate into the preceding feature
+ok 71 - generic direct transport closes a weak strong-continuation coordinate into the preceding feature
+  ---
+  duration_ms: 1.583713
+  type: 'test'
+  ...
+# Subtest: generic direct transport closes wrapped header continuations between grounded header anchors
+ok 72 - generic direct transport closes wrapped header continuations between grounded header anchors
+  ---
+  duration_ms: 1.279674
+  type: 'test'
+  ...
+# Subtest: profile-bounded continuation never erases separately model-owned header rows
+ok 73 - profile-bounded continuation never erases separately model-owned header rows
+  ---
+  duration_ms: 0.937166
+  type: 'test'
+  ...
+# Subtest: strong continuation closure never erases an explicit model section heading in an unknown language
+ok 74 - strong continuation closure never erases an explicit model section heading in an unknown language
+  ---
+  duration_ms: 0.854341
+  type: 'test'
+  ...
+# Subtest: Fraz-Urb'luu mixed regression keeps wrapped defenses and labelled attack resolution inside their owners
+ok 75 - Fraz-Urb'luu mixed regression keeps wrapped defenses and labelled attack resolution inside their owners
+  ---
+  duration_ms: 2.233475
+  type: 'test'
+  ...
+# Subtest: generic transport keeps a source-proven introduced bullet sequence inside its parent feature
+ok 76 - generic transport keeps a source-proven introduced bullet sequence inside its parent feature
+  ---
+  duration_ms: 1.446926
+  type: 'test'
+  ...
+# Subtest: direct transport keeps a localized six-row vertical ability table under one header owner
+ok 77 - direct transport keeps a localized six-row vertical ability table under one header owner
+  ---
+  duration_ms: 3.305905
+  type: 'test'
+  ...
+# Subtest: single-line transport does not infer a semantic Initiative field from an English label
+ok 78 - single-line transport does not infer a semantic Initiative field from an English label
+  ---
+  duration_ms: 1.629343
+  type: 'test'
+  ...
+# Subtest: single-line dense coordinates stay internal to printed multi-word header labels and values
+ok 79 - single-line dense coordinates stay internal to printed multi-word header labels and values
+  ---
+  duration_ms: 1.533758
+  type: 'test'
+  ...
+# Subtest: two consecutive unknown named-rule header spans become an implicit traits region without changing a lone custom header
+ok 80 - two consecutive unknown named-rule header spans become an implicit traits region without changing a lone custom header
+  ---
+  duration_ms: 0.729302
+  type: 'test'
+  ...
+# Subtest: a standalone feature title owns its following weak prose row
+ok 81 - a standalone feature title owns its following weak prose row
+  ---
+  duration_ms: 1.008434
+  type: 'test'
+  ...
+# Subtest: a bracket-led physical row remains inside the preceding Speed header even when the model calls it a header
+ok 82 - a bracket-led physical row remains inside the preceding Speed header even when the model calls it a header
+  ---
+  duration_ms: 0.437892
+  type: 'test'
+  ...
+# Subtest: localized printed saving throws can be classified from grounded ability labels without an essential-facts rescue
+ok 83 - localized printed saving throws can be classified from grounded ability labels without an essential-facts rescue
+  ---
+  duration_ms: 0.256578
+  type: 'test'
+  ...
+# Subtest: description heading is transported as its own section block
+ok 84 - description heading is transported as its own section block
+  ---
+  duration_ms: 0.261294
+  type: 'test'
+  ...
+# Subtest: mixed long header keeps same-physical-row model fragments inside a compact Immunities alias
+ok 85 - mixed long header keeps same-physical-row model fragments inside a compact Immunities alias
+  ---
+  duration_ms: 0.620368
+  type: 'test'
+  ...
+# Subtest: hybrid introduced bullet ownership is independent of dense candidate distance
+ok 86 - hybrid introduced bullet ownership is independent of dense candidate distance
+  ---
+  duration_ms: 1.829816
+  type: 'test'
+  ...
+# Subtest: single-line weak model body fragment between grounded header anchors stays in the header interval
+ok 87 - single-line weak model body fragment between grounded header anchors stays in the header interval
+  ---
+  duration_ms: 0.441537
+  type: 'test'
+  ...
+# Subtest: unknown section semantics are never repaired from an English profile or inherited across the boundary
+ok 88 - unknown section semantics are never repaired from an English profile or inherited across the boundary
+  ---
+  duration_ms: 0.769734
+  type: 'test'
+  ...
+# Subtest: multiline transport preserves proven body roles with null section semantics
+ok 89 - multiline transport preserves proven body roles with null section semantics
+  ---
+  duration_ms: 0.255867
+  type: 'test'
+  ...
+# Subtest: text-identical subtitle ownership abstains while duplicate printed source stays unresolved
+ok 90 - text-identical subtitle ownership abstains while duplicate printed source stays unresolved
+  ---
+  duration_ms: 0.377911
+  type: 'test'
+  ...
+# Subtest: candidate transport deterministically carves a trailing creature classification out of an overlapping name span
+ok 91 - candidate transport deterministically carves a trailing creature classification out of an overlapping name span
+  ---
+  duration_ms: 0.293644
+  type: 'test'
+  ...
+# Subtest: introduced ordered list stays inside the parent feature even when PDF wrapping separates list markers
+ok 92 - introduced ordered list stays inside the parent feature even when PDF wrapping separates list markers
+  ---
+  duration_ms: 1.072962
+  type: 'test'
+  ...
+# Subtest: introduced wrapped em-dash list stays inside the parent feature
+ok 93 - introduced wrapped em-dash list stays inside the parent feature
+  ---
+  duration_ms: 0.76744
+  type: 'test'
+  ...
+# Subtest: introduced ordered list absorbs a split final item title after a standalone marker coordinate
+ok 94 - introduced ordered list absorbs a split final item title after a standalone marker coordinate
+  ---
+  duration_ms: 0.632856
+  type: 'test'
+  ...
+# Subtest: introduced ordered list re-closes final same-line item title after source-proven feature splitting
+ok 95 - introduced ordered list re-closes final same-line item title after source-proven feature splitting
+  ---
+  duration_ms: 0.697524
+  type: 'test'
+  ...
+# Subtest: final standalone list marker does not absorb a title on the next physical row
+ok 96 - final standalone list marker does not absorb a title on the next physical row
+  ---
+  duration_ms: 0.512855
+  type: 'test'
+  ...
+# Subtest: configured providers always expose local and Groq benchmark catalog
+ok 97 - configured providers always expose local and Groq benchmark catalog
+  ---
+  duration_ms: 1.48245
+  type: 'test'
+  ...
+# Subtest: configured providers keep the same catalog when a Groq key is supplied
+ok 98 - configured providers keep the same catalog when a Groq key is supplied
+  ---
+  duration_ms: 0.197368
+  type: 'test'
+  ...
+# Subtest: deterministic structural hints do not require English identity vocabulary
+ok 99 - deterministic structural hints do not require English identity vocabulary
+  ---
+  duration_ms: 2.902857
+  type: 'test'
+  ...
+# Subtest: named rule followed by prose emits relationship evidence
+ok 100 - named rule followed by prose emits relationship evidence
+  ---
+  duration_ms: 1.743284
+  type: 'test'
+  ...
+# Subtest: compact labelled row after a named rule emits vocabulary-free continuation evidence
+ok 101 - compact labelled row after a named rule emits vocabulary-free continuation evidence
+  ---
+  duration_ms: 0.473826
+  type: 'test'
+  ...
+# Subtest: compact labelled row across a paragraph break is not continuation evidence
+ok 102 - compact labelled row across a paragraph break is not continuation evidence
+  ---
+  duration_ms: 0.16513
+  type: 'test'
+  ...
+# Subtest: verification does not receive language-specific structural identity hints
+ok 103 - verification does not receive language-specific structural identity hints
+  ---
+  duration_ms: 1.502341
+  type: 'test'
+  ...
+# Subtest: mixed normalization adds ALL-CAPS standalone shape as advisory evidence only
+ok 104 - mixed normalization adds ALL-CAPS standalone shape as advisory evidence only
+  ---
+  duration_ms: 1.441459
+  type: 'test'
+  ...
+# Subtest: mixed normalization adds conservative title-case standalone heading evidence without promoting ordinary prose
+ok 105 - mixed normalization adds conservative title-case standalone heading evidence without promoting ordinary prose
+  ---
+  duration_ms: 0.377651
+  type: 'test'
+  ...
+# Subtest: parseDiceExpression accepts common latin forms
+ok 106 - parseDiceExpression accepts common latin forms
+  ---
+  duration_ms: 2.303971
+  type: 'test'
+  ...
+# Subtest: parseDiceExpression accepts Ukrainian keyboard к notation
+ok 107 - parseDiceExpression accepts Ukrainian keyboard к notation
+  ---
+  duration_ms: 0.268366
+  type: 'test'
+  ...
+# Subtest: parseDiceExpression rejects invalid expressions
+ok 108 - parseDiceExpression rejects invalid expressions
+  ---
+  duration_ms: 0.135234
+  type: 'test'
+  ...
+# Subtest: findDiceExpressions finds multiple rolls without rewriting prose
+ok 109 - findDiceExpressions finds multiple rolls without rewriting prose
+  ---
+  duration_ms: 2.814713
+  type: 'test'
+  ...
+# Subtest: findDiceExpressions ignores dice-looking text embedded in identifiers
+ok 110 - findDiceExpressions ignores dice-looking text embedded in identifiers
+  ---
+  duration_ms: 0.601198
+  type: 'test'
+  ...
+# Subtest: rollDice exposes individual dice and modifier
+ok 111 - rollDice exposes individual dice and modifier
+  ---
+  duration_ms: 0.190848
+  type: 'test'
+  ...
+# Subtest: rollDiceText returns null for invalid text
+ok 112 - rollDiceText returns null for invalid text
+  ---
+  duration_ms: 0.333934
+  type: 'test'
+  ...
+# Subtest: d20WithModifier produces canonical ability/save roll
+ok 113 - d20WithModifier produces canonical ability/save roll
+  ---
+  duration_ms: 0.123407
+  type: 'test'
+  ...
+# Subtest: findD20Modifiers finds signed bonuses but not dice modifiers or numeric ranges
+ok 114 - findD20Modifiers finds signed bonuses but not dice modifiers or numeric ranges
+  ---
+  duration_ms: 1.303129
+  type: 'test'
+  ...
+# Subtest: findD20Modifiers supports negative and spaced modifiers
+ok 115 - findD20Modifiers supports negative and spaced modifiers
+  ---
+  duration_ms: 0.569671
+  type: 'test'
+  ...
+# Subtest: findRechargeExpressions recognizes canonical recharge ranges as d6 rolls
+ok 116 - findRechargeExpressions recognizes canonical recharge ranges as d6 rolls
+  ---
+  duration_ms: 0.428187
+  type: 'test'
+  ...
+# Subtest: findRechargeExpressions accepts configured translated labels
+ok 117 - findRechargeExpressions accepts configured translated labels
+  ---
+  duration_ms: 0.375818
+  type: 'test'
+  ...
+# Subtest: header field contract covers every supported core statblock header category
+ok 118 - header field contract covers every supported core statblock header category
+  ---
+  duration_ms: 1.138541
+  type: 'test'
+  ...
+# Subtest: compileToEditableStatblock produces editor-owned header/body without parser internals
+ok 119 - compileToEditableStatblock produces editor-owned header/body without parser internals
+  ---
+  duration_ms: 10.970918
+  type: 'test'
+  ...
+# Subtest: compiler renders abilities/saves from structured header and full fallback saves
+ok 120 - compiler renders abilities/saves from structured header and full fallback saves
+  ---
+  duration_ms: 2.418856
+  type: 'test'
+  ...
+# Subtest: compiler materializes a derived initiative header row from DEX when no printed row exists
+ok 121 - compiler materializes a derived initiative header row from DEX when no printed row exists
+  ---
+  duration_ms: 1.136448
+  type: 'test'
+  ...
+# Subtest: printed initiative row overrides dex-derived initiative
+ok 122 - printed initiative row overrides dex-derived initiative
+  ---
+  duration_ms: 1.020192
+  type: 'test'
+  ...
+# Subtest: header fragments of the same semantic field are combined before product rendering
+ok 123 - header fragments of the same semantic field are combined before product rendering
+  ---
+  duration_ms: 1.140834
+  type: 'test'
+  ...
+# Subtest: compiler always emits a name slot while subtitle remains optional
+ok 124 - compiler always emits a name slot while subtitle remains optional
+  ---
+  duration_ms: 1.514799
+  type: 'test'
+  ...
+# Subtest: incomplete printed Save-column data stays unresolved instead of silently falling back to the ability modifier
+ok 125 - incomplete printed Save-column data stays unresolved instead of silently falling back to the ability modifier
+  ---
+  duration_ms: 0.776624
+  type: 'test'
+  ...
+# Subtest: compiler keeps labelled AC and HP repair slots when parsing did not resolve them
+ok 126 - compiler keeps labelled AC and HP repair slots when parsing did not resolve them
+  ---
+  duration_ms: 0.789152
+  type: 'test'
+  ...
+# Subtest: compiler localizes synthetic product labels for direct Ukrainian compilation
+ok 127 - compiler localizes synthetic product labels for direct Ukrainian compilation
+  ---
+  duration_ms: 1.417262
+  type: 'test'
+  ...
+# Subtest: body text with a conflicting header-field annotation remains visible and cannot feed product header
+ok 128 - body text with a conflicting header-field annotation remains visible and cannot feed product header
+  ---
+  duration_ms: 0.936595
+  type: 'test'
+  ...
+# Subtest: grounded AC and HP field ownership parses the first printed integer independent of label language
+ok 129 - grounded AC and HP field ownership parses the first printed integer independent of label language
+  ---
+  duration_ms: 1.438384
+  type: 'test'
+  ...
+# Subtest: unknown pre-section header fragments become editable implicit-trait body content
+ok 130 - unknown pre-section header fragments become editable implicit-trait body content
+  ---
+  duration_ms: 1.069496
+  type: 'test'
+  ...
+# Subtest: structured ability promotion cannot hide an adjacent unresolved source fragment
+ok 131 - structured ability promotion cannot hide an adjacent unresolved source fragment
+  ---
+  duration_ms: 1.213644
+  type: 'test'
+  ...
+# Subtest: compiler canonicalizes blank source rows while preserving non-empty multiline feature geometry
+ok 132 - compiler canonicalizes blank source rows while preserving non-empty multiline feature geometry
+  ---
+  duration_ms: 1.964919
+  type: 'test'
+  ...
+# Subtest: multiline compiler enforces one non-empty physical body row per editable object
+ok 133 - multiline compiler enforces one non-empty physical body row per editable object
+  ---
+  duration_ms: 0.952119
+  type: 'test'
+  ...
+# Subtest: printed initiative fact extraction trusts semantic ownership rather than the English label
+ok 134 - printed initiative fact extraction trusts semantic ownership rather than the English label
+  ---
+  duration_ms: 0.541939
+  type: 'test'
+  ...
+# Subtest: compiler never duplicates name-owned source as subtitle identity
+ok 135 - compiler never duplicates name-owned source as subtitle identity
+  ---
+  duration_ms: 0.52927
+  type: 'test'
+  ...
+# Subtest: compiler stores exact ability/save source evidence outside ordinary statblock content
+ok 136 - compiler stores exact ability/save source evidence outside ordinary statblock content
+  ---
+  duration_ms: 0.576632
+  type: 'test'
+  ...
+# Subtest: evidence-owned ability/save source is not duplicated in body even when structural ownership is wrong
+ok 137 - evidence-owned ability/save source is not duplicated in body even when structural ownership is wrong
+  ---
+  duration_ms: 0.539025
+  type: 'test'
+  ...
+# Subtest: verified AC and HP use standardized product labels while exact source rows move to Evidence
+ok 138 - verified AC and HP use standardized product labels while exact source rows move to Evidence
+  ---
+  duration_ms: 1.218791
+  type: 'test'
+  ...
+# Subtest: structured type source is not duplicated in BODY when structural ownership drifts
+ok 139 - structured type source is not duplicated in BODY when structural ownership drifts
+  ---
+  duration_ms: 0.686007
+  type: 'test'
+  ...
+# Subtest: semantic header mistakes cannot remove source prose from the product projection
+ok 140 - semantic header mistakes cannot remove source prose from the product projection
+  ---
+  duration_ms: 1.139372
+  type: 'test'
+  ...
+# Subtest: unproven header semantics stay in the default source stream instead of gaining omission authority
+ok 141 - unproven header semantics stay in the default source stream instead of gaining omission authority
+  ---
+  duration_ms: 0.579556
+  type: 'test'
+  ...
+# Subtest: missing parser ownership cannot make raw source content disappear at the product boundary
+ok 142 - missing parser ownership cannot make raw source content disappear at the product boundary
+  ---
+  duration_ms: 0.550302
+  type: 'test'
+  ...
+# Subtest: copied annotation text is never a product text-authority path
+ok 143 - copied annotation text is never a product text-authority path
+  ---
+  duration_ms: 0.691525
+  type: 'test'
+  ...
+# Subtest: combined CR/PB source row renders one standardized Challenge Rating plus one generated PB
+ok 144 - combined CR/PB source row renders one standardized Challenge Rating plus one generated PB
+  ---
+  duration_ms: 0.828572
+  type: 'test'
+  ...
+# Subtest: exact challenge evidence never widens to a bad semantic annotation that also owns body prose
+ok 145 - exact challenge evidence never widens to a bad semantic annotation that also owns body prose
+  ---
+  duration_ms: 1.147645
+  type: 'test'
+  ...
+# Subtest: editing a header row refreshes derived facts without mutating source
+ok 146 - editing a header row refreshes derived facts without mutating source
+  ---
+  duration_ms: 2.040864
+  type: 'test'
+  ...
+# Subtest: editing DEX updates ability facts and fallback save but not the existing Initiative field
+ok 147 - editing DEX updates ability facts and fallback save but not the existing Initiative field
+  ---
+  duration_ms: 0.913511
+  type: 'test'
+  ...
+# Subtest: editing the Initiative field is authoritative after document creation
+ok 148 - editing the Initiative field is authoritative after document creation
+  ---
+  duration_ms: 0.276628
+  type: 'test'
+  ...
+# Subtest: printed save can be edited independently from ability modifier
+ok 149 - printed save can be edited independently from ability modifier
+  ---
+  duration_ms: 0.249918
+  type: 'test'
+  ...
+# Subtest: body node text editing is editor-owned and does not touch facts
+ok 150 - body node text editing is editor-owned and does not touch facts
+  ---
+  duration_ms: 0.400365
+  type: 'test'
+  ...
+# Subtest: split creates a new editor paragraph with fresh id
+ok 151 - split creates a new editor paragraph with fresh id
+  ---
+  duration_ms: 0.368547
+  type: 'test'
+  ...
+# Subtest: merge removes current node and keeps previous editor-owned node id
+ok 152 - merge removes current node and keeps previous editor-owned node id
+  ---
+  duration_ms: 0.281305
+  type: 'test'
+  ...
+# Subtest: heading toggle changes authoring node type, not parser metadata
+ok 153 - heading toggle changes authoring node type, not parser metadata
+  ---
+  duration_ms: 0.256197
+  type: 'test'
+  ...
+# Subtest: new paragraphs and header rows can be created without parser participation
+ok 154 - new paragraphs and header rows can be created without parser participation
+  ---
+  duration_ms: 0.66179
+  type: 'test'
+  ...
+# Subtest: remove node operates on current authoring document
+ok 155 - remove node operates on current authoring document
+  ---
+  duration_ms: 1.194044
+  type: 'test'
+  ...
+# Subtest: bold/italic authoring markup does not corrupt deterministic header facts
+ok 156 - bold/italic authoring markup does not corrupt deterministic header facts
+  ---
+  duration_ms: 0.259753
+  type: 'test'
+  ...
+# Subtest: Delete-style merge keeps current node id and consumes the following node
+ok 157 - Delete-style merge keeps current node id and consumes the following node
+  ---
+  duration_ms: 0.159771
+  type: 'test'
+  ...
+# Subtest: removing a card-critical AC row clears its value but preserves the labelled repair slot
+ok 158 - removing a card-critical AC row clears its value but preserves the labelled repair slot
+  ---
+  duration_ms: 0.2251
+  type: 'test'
+  ...
+# Subtest: removing the proficiency row clears the fact instead of restoring a stale value
+ok 159 - removing the proficiency row clears the fact instead of restoring a stale value
+  ---
+  duration_ms: 0.144699
+  type: 'test'
+  ...
+# Subtest: clearing the proficiency value does not resurrect the previously imported fact
+ok 160 - clearing the proficiency value does not resurrect the previously imported fact
+  ---
+  duration_ms: 0.148945
+  type: 'test'
+  ...
+# Subtest: merge boundary operations are no-ops when there is no neighbor
+ok 161 - merge boundary operations are no-ops when there is no neighbor
+  ---
+  duration_ms: 0.123858
+  type: 'test'
+  ...
+# Subtest: formatting-safe split accepts independently valid markup fragments
+ok 162 - formatting-safe split accepts independently valid markup fragments
+  ---
+  duration_ms: 0.253844
+  type: 'test'
+  ...
+# Subtest: missing name can be created and then edited through the product editor
+ok 163 - missing name can be created and then edited through the product editor
+  ---
+  duration_ms: 0.224739
+  type: 'test'
+  ...
+# Subtest: missing subtitle can be created without parser participation
+ok 164 - missing subtitle can be created without parser participation
+  ---
+  duration_ms: 0.197399
+  type: 'test'
+  ...
+# Subtest: subtitle is optional, can be explicitly created, and disappears when cleared
+ok 165 - subtitle is optional, can be explicitly created, and disappears when cleared
+  ---
+  duration_ms: 0.41689
+  type: 'test'
+  ...
+# Subtest: Auto Style writes editable authoring markup idempotently
+ok 166 - Auto Style writes editable authoring markup idempotently
+  ---
+  duration_ms: 5.599542
+  type: 'test'
+  ...
+# Subtest: Auto Style uses the exact source-proven header label without normalizing aliases
+ok 167 - Auto Style uses the exact source-proven header label without normalizing aliases
+  ---
+  duration_ms: 0.508468
+  type: 'test'
+  ...
+# Subtest: manual header row can be inserted directly after the focused row
+ok 168 - manual header row can be inserted directly after the focused row
+  ---
+  duration_ms: 0.238811
+  type: 'test'
+  ...
+# Subtest: Auto Style italicizes a short line-leading colon label
+ok 169 - Auto Style italicizes a short line-leading colon label
+  ---
+  duration_ms: 0.75459
+  type: 'test'
+  ...
+# Subtest: Auto Style colon labels do not erase feature-title bold markup
+ok 170 - Auto Style colon labels do not erase feature-title bold markup
+  ---
+  duration_ms: 0.660218
+  type: 'test'
+  ...
+# Subtest: Auto Style keeps compact parenthetical feature metadata bold-italic
+ok 171 - Auto Style keeps compact parenthetical feature metadata bold-italic
+  ---
+  duration_ms: 0.874702
+  type: 'test'
+  ...
+# Subtest: Auto Style preserves physical line geometry inside one paragraph and styles each source line locally
+ok 172 - Auto Style preserves physical line geometry inside one paragraph and styles each source line locally
+  ---
+  duration_ms: 0.300644
+  type: 'test'
+  ...
+# Subtest: Auto Style italicizes a numbered short subeffect title without styling its prose
+ok 173 - Auto Style italicizes a numbered short subeffect title without styling its prose
+  ---
+  duration_ms: 1.043958
+  type: 'test'
+  ...
+# Subtest: Auto Style does not italicize a numbered prose sentence that is not title-shaped
+ok 174 - Auto Style does not italicize a numbered prose sentence that is not title-shaped
+  ---
+  duration_ms: 0.224209
+  type: 'test'
+  ...
+# Subtest: Auto Style treats exclamation and question title terminators like periods
+ok 175 - Auto Style treats exclamation and question title terminators like periods
+  ---
+  duration_ms: 0.285252
+  type: 'test'
+  ...
+# Subtest: Auto Style italicizes bulleted subeffect titles instead of promoting them to peer feature styling
+ok 176 - Auto Style italicizes bulleted subeffect titles instead of promoting them to peer feature styling
+  ---
+  duration_ms: 0.613798
+  type: 'test'
+  ...
+# Subtest: Auto Style does not treat a list marker at the start of a semantic paragraph as proof of a nested subeffect
+ok 177 - Auto Style does not treat a list marker at the start of a semantic paragraph as proof of a nested subeffect
+  ---
+  duration_ms: 0.593768
+  type: 'test'
+  ...
+# Subtest: Auto Style bolds a short section-rules colon lead immediately after a section heading
+ok 178 - Auto Style bolds a short section-rules colon lead immediately after a section heading
+  ---
+  duration_ms: 0.530902
+  type: 'test'
+  ...
+# Subtest: Auto Style keeps an internal compact colon row italic instead of promoting it to section-rules bold
+ok 179 - Auto Style keeps an internal compact colon row italic instead of promoting it to section-rules bold
+  ---
+  duration_ms: 0.276939
+  type: 'test'
+  ...
+# Subtest: Auto Style italicizes a standalone mechanical colon row even when it arrives as its own paragraph
+ok 180 - Auto Style italicizes a standalone mechanical colon row even when it arrives as its own paragraph
+  ---
+  duration_ms: 0.241986
+  type: 'test'
+  ...
+# Subtest: Auto Style recognizes a title-shaped feature when copied text loses the space after its terminator
+ok 181 - Auto Style recognizes a title-shaped feature when copied text loses the space after its terminator
+  ---
+  duration_ms: 0.334676
+  type: 'test'
+  ...
+# Subtest: Auto Style uses structural Label shape rather than a mechanical vocabulary
+ok 182 - Auto Style uses structural Label shape rather than a mechanical vocabulary
+  ---
+  duration_ms: 0.312402
+  type: 'test'
+  ...
+# Subtest: Auto Style classifies compact numeric parenthetical metadata by shape
+ok 183 - Auto Style classifies compact numeric parenthetical metadata by shape
+  ---
+  duration_ms: 0.399794
+  type: 'test'
+  ...
+# Subtest: Auto Style italicizes an inline compact label after completed feature prose without styling the first mechanics clause
+ok 184 - Auto Style italicizes an inline compact label after completed feature prose without styling the first mechanics clause
+  ---
+  duration_ms: 0.56926
+  type: 'test'
+  ...
+# Subtest: Auto Style inline compact-label handling is vocabulary-free
+ok 185 - Auto Style inline compact-label handling is vocabulary-free
+  ---
+  duration_ms: 0.312392
+  type: 'test'
+  ...
+# Subtest: Auto Style supports short sentence-case localized feature titles
+ok 186 - Auto Style supports short sentence-case localized feature titles
+  ---
+  duration_ms: 0.240734
+  type: 'test'
+  ...
+# Subtest: Auto Style bolds localized printed saving-throw labels
+ok 187 - Auto Style bolds localized printed saving-throw labels
+  ---
+  duration_ms: 0.446145
+  type: 'test'
+  ...
+# Subtest: Auto Style recognizes localized description headings
+ok 188 - Auto Style recognizes localized description headings
+  ---
+  duration_ms: 0.406574
+  type: 'test'
+  ...
+# Subtest: Auto Style presentation fallback bolds a known printed header label without changing semantic ownership
+ok 189 - Auto Style presentation fallback bolds a known printed header label without changing semantic ownership
+  ---
+  duration_ms: 0.551363
+  type: 'test'
+  ...
+# Subtest: Auto Style presentation fallback styles a known unresolved preamble label without promoting the paragraph
+ok 190 - Auto Style presentation fallback styles a known unresolved preamble label without promoting the paragraph
+  ---
+  duration_ms: 0.483331
+  type: 'test'
+  ...
+# Subtest: Auto Style presentation fallback does not turn a feature title equal to a header word into a header label
+ok 191 - Auto Style presentation fallback does not turn a feature title equal to a header word into a header label
+  ---
+  duration_ms: 0.367496
+  type: 'test'
+  ...
+# Subtest: Auto Style continues a nested bullet sequence across adjacent semantic paragraphs
+ok 192 - Auto Style continues a nested bullet sequence across adjacent semantic paragraphs
+  ---
+  duration_ms: 0.79344
+  type: 'test'
+  ...
+# Subtest: Auto Style keeps separate leading bullet paragraphs as peer features without a nested-list introducer
+ok 193 - Auto Style keeps separate leading bullet paragraphs as peer features without a nested-list introducer
+  ---
+  duration_ms: 0.328026
+  type: 'test'
+  ...
+# Subtest: Auto Style preserves structurally typed and untyped headings with one shared rule
+ok 194 - Auto Style preserves structurally typed and untyped headings with one shared rule
+  ---
+  duration_ms: 0.545364
+  type: 'test'
+  ...
+# Subtest: Auto Style rescues a standalone heading-shaped paragraph from body context without vocabulary
+ok 195 - Auto Style rescues a standalone heading-shaped paragraph from body context without vocabulary
+  ---
+  duration_ms: 0.458313
+  type: 'test'
+  ...
+# Subtest: Auto Style heading rescue is invariant under section-label vocabulary changes
+ok 196 - Auto Style heading rescue is invariant under section-label vocabulary changes
+  ---
+  duration_ms: 1.243539
+  type: 'test'
+  ...
+# Subtest: Auto Style emphasizes a short feature name with a long parenthesized metadata phrase
+ok 197 - Auto Style emphasizes a short feature name with a long parenthesized metadata phrase
+  ---
+  duration_ms: 0.541508
+  type: 'test'
+  ...
+# Subtest: Auto Style never promotes a paragraph to heading from wording alone
+ok 198 - Auto Style never promotes a paragraph to heading from wording alone
+  ---
+  duration_ms: 0.468348
+  type: 'test'
+  ...
+# Subtest: Auto Style does not promote heading-shaped metadata when following content is not a named rule
+ok 199 - Auto Style does not promote heading-shaped metadata when following content is not a named rule
+  ---
+  duration_ms: 0.49573
+  type: 'test'
+  ...
+# Subtest: Auto Style rescues a standalone heading before one explanatory paragraph and named peer entries
+ok 200 - Auto Style rescues a standalone heading before one explanatory paragraph and named peer entries
+  ---
+  duration_ms: 0.767991
+  type: 'test'
+  ...
+# Subtest: Auto Style does not rescue arbitrary heading-shaped text before two ordinary prose paragraphs
+ok 201 - Auto Style does not rescue arbitrary heading-shaped text before two ordinary prose paragraphs
+  ---
+  duration_ms: 0.492264
+  type: 'test'
+  ...
+# Subtest: Auto Style demotes comma-list rows that were incorrectly typed as headings
+ok 202 - Auto Style demotes comma-list rows that were incorrectly typed as headings
+  ---
+  duration_ms: 0.376299
+  type: 'test'
+  ...
+# Subtest: Auto Style demotes short printed header-value rows that otherwise look heading-shaped
+ok 203 - Auto Style demotes short printed header-value rows that otherwise look heading-shaped
+  ---
+  duration_ms: 0.790895
+  type: 'test'
+  ...
+# Subtest: Auto Style keeps lowercase table/noise labels as paragraphs
+ok 204 - Auto Style keeps lowercase table/noise labels as paragraphs
+  ---
+  duration_ms: 0.321777
+  type: 'test'
+  ...
+# Subtest: toggle heading does not infer semantic kind from wording
+ok 205 - toggle heading does not infer semantic kind from wording
+  ---
+  duration_ms: 0.170257
+  type: 'test'
+  ...
+# Subtest: one saved statblock can create several independent combatant instances
+ok 206 - one saved statblock can create several independent combatant instances
+  ---
+  duration_ms: 1.366075
+  type: 'test'
+  ...
+# Subtest: removeCombatant removes only the selected instance
+ok 207 - removeCombatant removes only the selected instance
+  ---
+  duration_ms: 1.423631
+  type: 'test'
+  ...
+# Subtest: removing the current combatant advances to the next surviving initiative entry
+ok 208 - removing the current combatant advances to the next surviving initiative entry
+  ---
+  duration_ms: 0.475428
+  type: 'test'
+  ...
+# Subtest: removing the last current combatant wraps initiative and advances the round
+ok 209 - removing the last current combatant wraps initiative and advances the round
+  ---
+  duration_ms: 0.388668
+  type: 'test'
+  ...
+# Subtest: removeCombatantsForStatblock removes orphan-prone encounter instances
+ok 210 - removeCombatantsForStatblock removes orphan-prone encounter instances
+  ---
+  duration_ms: 0.473826
+  type: 'test'
+  ...
+# Subtest: removing a statblock family during combat skips all removed entries without replaying earlier turns
+ok 211 - removing a statblock family during combat skips all removed entries without replaying earlier turns
+  ---
+  duration_ms: 0.31765
+  type: 'test'
+  ...
+# Subtest: new combatant captures base HP from the statblock at creation time
+ok 212 - new combatant captures base HP from the statblock at creation time
+  ---
+  duration_ms: 0.260714
+  type: 'test'
+  ...
+# Subtest: updateCombatantHp changes only one combatant
+ok 213 - updateCombatantHp changes only one combatant
+  ---
+  duration_ms: 0.329047
+  type: 'test'
+  ...
+# Subtest: combatant HP state is initialized independently for each encounter instance
+ok 214 - combatant HP state is initialized independently for each encounter instance
+  ---
+  duration_ms: 0.559886
+  type: 'test'
+  ...
+# Subtest: damage consumes temporary HP before current HP
+ok 215 - damage consumes temporary HP before current HP
+  ---
+  duration_ms: 0.872448
+  type: 'test'
+  ...
+# Subtest: healing caps at effective max and temporary HP does not stack
+ok 216 - healing caps at effective max and temporary HP does not stack
+  ---
+  duration_ms: 0.445102
+  type: 'test'
+  ...
+# Subtest: maximum HP modifier clamps current HP and reset restores base state
+ok 217 - maximum HP modifier clamps current HP and reset restores base state
+  ---
+  duration_ms: 0.323779
+  type: 'test'
+  ...
+# Subtest: initiative ordering uses total, modifier, then stable insertion order
+ok 218 - initiative ordering uses total, modifier, then stable insertion order
+  ---
+  duration_ms: 0.338612
+  type: 'test'
+  ...
+# Subtest: rolled combatants sort above unrolled combatants before combat starts
+ok 219 - rolled combatants sort above unrolled combatants before combat starts
+  ---
+  duration_ms: 0.303569
+  type: 'test'
+  ...
+# Subtest: startCombat preserves manual initiative, rolls missing values, and selects the highest
+ok 220 - startCombat preserves manual initiative, rolls missing values, and selects the highest
+  ---
+  duration_ms: 0.303749
+  type: 'test'
+  ...
+# Subtest: advanceCombatTurn walks initiative order and increments round on wrap
+ok 221 - advanceCombatTurn walks initiative order and increments round on wrap
+  ---
+  duration_ms: 0.326463
+  type: 'test'
+  ...
+# Subtest: endCombat clears initiative and turn state and resets HP while keeping combatants
+ok 222 - endCombat clears initiative and turn state and resets HP while keeping combatants
+  ---
+  duration_ms: 0.427316
+  type: 'test'
+  ...
+# Subtest: stub combatant uses the same HP and initiative state machine
+ok 223 - stub combatant uses the same HP and initiative state machine
+  ---
+  duration_ms: 0.479514
+  type: 'test'
+  ...
+# Subtest: removeCombatantsForStatblock never removes stubs
+ok 224 - removeCombatantsForStatblock never removes stubs
+  ---
+  duration_ms: 0.347014
+  type: 'test'
+  ...
+# Subtest: manual initiative setter updates the selected combatant and supports clearing
+ok 225 - manual initiative setter updates the selected combatant and supports clearing
+  ---
+  duration_ms: 0.199792
+  type: 'test'
+  ...
+# Subtest: statblock combatant owns a cloned document snapshot
+ok 226 - statblock combatant owns a cloned document snapshot
+  ---
+  duration_ms: 0.322768
+  type: 'test'
+  ...
+# Subtest: editing one combatant document does not alter sibling snapshots
+ok 227 - editing one combatant document does not alter sibling snapshots
+  ---
+  duration_ms: 0.493596
+  type: 'test'
+  ...
+# Subtest: per-copy name override can be set and cleared
+ok 228 - per-copy name override can be set and cleared
+  ---
+  duration_ms: 0.290299
+  type: 'test'
+  ...
+# Subtest: stub editor patch can change stat fields without replacing combatant id
+ok 229 - stub editor patch can change stat fields without replacing combatant id
+  ---
+  duration_ms: 0.348026
+  type: 'test'
+  ...
+# Subtest: combatant snapshots card configuration independently from source object
+ok 230 - combatant snapshots card configuration independently from source object
+  ---
+  duration_ms: 0.284239
+  type: 'test'
+  ...
+# Subtest: encounter card configuration can diverge from the source and sibling copies
+ok 231 - encounter card configuration can diverge from the source and sibling copies
+  ---
+  duration_ms: 0.368147
+  type: 'test'
+  ...
+# Subtest: statblock card patch stores per-combatant HP, AC, initiative, saves and name overrides
+ok 232 - statblock card patch stores per-combatant HP, AC, initiative, saves and name overrides
+  ---
+  duration_ms: 1.114324
+  type: 'test'
+  ...
+# Subtest: encounter repository persists and returns isolated copies
+ok 233 - encounter repository persists and returns isolated copies
+  ---
+  duration_ms: 1.302118
+  type: 'test'
+  ...
+# Subtest: encounter repository clear returns an empty encounter
+ok 234 - encounter repository clear returns an empty encounter
+  ---
+  duration_ms: 0.228536
+  type: 'test'
+  ...
+# Subtest: deterministic header classifier confirms canonical labelled fields instead of trusting model order
+ok 235 - deterministic header classifier confirms canonical labelled fields instead of trusting model order
+  ---
+  duration_ms: 2.229699
+  type: 'test'
+  ...
+# Subtest: deterministic header classifier recognizes a complete horizontal ability table structurally
+ok 236 - deterministic header classifier recognizes a complete horizontal ability table structurally
+  ---
+  duration_ms: 0.247794
+  type: 'test'
+  ...
+# Subtest: deterministic header classifier does not manufacture semantics for named-rule prose
+ok 237 - deterministic header classifier does not manufacture semantics for named-rule prose
+  ---
+  duration_ms: 0.183708
+  type: 'test'
+  ...
+# Subtest: strong named-feature evidence is conservative and requires title plus substantial prose
+ok 238 - strong named-feature evidence is conservative and requires title plus substantial prose
+  ---
+  duration_ms: 1.483342
+  type: 'test'
+  ...
+# Subtest: deterministic header label returns the exact printed alias rather than a canonical display name
+ok 239 - deterministic header label returns the exact printed alias rather than a canonical display name
+  ---
+  duration_ms: 0.400235
+  type: 'test'
+  ...
+# Subtest: named feature title terminators are structurally equivalent
+ok 240 - named feature title terminators are structurally equivalent
+  ---
+  duration_ms: 1.668822
+  type: 'test'
+  ...
+# Subtest: trusted line-start feature shape tolerates one missing post-terminator space without rewriting text
+ok 241 - trusted line-start feature shape tolerates one missing post-terminator space without rewriting text
+  ---
+  duration_ms: 0.529851
+  type: 'test'
+  ...
+# Subtest: deterministically structures all six ability scores and Save-column values from a grounded table
+ok 242 - deterministically structures all six ability scores and Save-column values from a grounded table
+  ---
+  duration_ms: 51.161634
+  type: 'test'
+  ...
+# Subtest: deterministically structures a canonical horizontal ability table
+ok 243 - deterministically structures a canonical horizontal ability table
+  ---
+  duration_ms: 12.224674
+  type: 'test'
+  ...
+# Subtest: uses grounded model labels only to map localized horizontal abilities while deriving all numbers from source
+ok 244 - uses grounded model labels only to map localized horizontal abilities while deriving all numbers from source
+  ---
+  duration_ms: 18.585666
+  type: 'test'
+  ...
+# Subtest: accepts localized model-read ability labels and save facts only through exact grounded header evidence
+ok 245 - accepts localized model-read ability labels and save facts only through exact grounded header evidence
+  ---
+  duration_ms: 5.563437
+  type: 'test'
+  ...
+# Subtest: incomplete verified ability evidence abstains safely even when the model also proposes an ungrounded label
+ok 246 - incomplete verified ability evidence abstains safely even when the model also proposes an ungrounded label
+  ---
+  duration_ms: 2.211151
+  type: 'test'
+  ...
+# Subtest: refuses a horizontal ability table when a printed modifier contradicts its score
+ok 247 - refuses a horizontal ability table when a printed modifier contradicts its score
+  ---
+  duration_ms: 3.239665
+  type: 'test'
+  ...
+# Subtest: derives the mandatory proficiency bonus from every safely grounded numeric CR
+ok 248 - derives the mandatory proficiency bonus from every safely grounded numeric CR
+  ---
+  duration_ms: 1.854422
+  type: 'test'
+  ...
+# Subtest: preserves an explicitly printed PB and reports a CR mismatch instead of silently rewriting it
+ok 249 - preserves an explicitly printed PB and reports a CR mismatch instead of silently rewriting it
+  ---
+  duration_ms: 6.038406
+  type: 'test'
+  ...
+# Subtest: recovers six vertical canonical abilities from separate generic header spans
+ok 250 - recovers six vertical canonical abilities from separate generic header spans
+  ---
+  duration_ms: 4.014035
+  type: 'test'
+  ...
+# Subtest: recovers interleaved PDF ability labels that trail the previous numeric cell
+ok 251 - recovers interleaved PDF ability labels that trail the previous numeric cell
+  ---
+  duration_ms: 3.548522
+  type: 'test'
+  ...
+# Subtest: recovers score modifier and save columns without depending on their printed column names
+ok 252 - recovers score modifier and save columns without depending on their printed column names
+  ---
+  duration_ms: 13.449776
+  type: 'test'
+  ...
+# Subtest: uses exact model label semantics for localized fragmented abilities while all numeric facts remain deterministic
+ok 253 - uses exact model label semantics for localized fragmented abilities while all numeric facts remain deterministic
+  ---
+  duration_ms: 5.180228
+  type: 'test'
+  ...
+# Subtest: promotes proven fragmented ability mechanics without swallowing repeated column-label noise
+ok 254 - promotes proven fragmented ability mechanics without swallowing repeated column-label noise
+  ---
+  duration_ms: 11.470233
+  type: 'test'
+  ...
+# Subtest: recovers and promotes a one-line alternating ability table through the final CHA value
+ok 255 - recovers and promotes a one-line alternating ability table through the final CHA value
+  ---
+  duration_ms: 5.918875
+  type: 'test'
+  ...
+# Subtest: recovers a canonical vertical ability block directly from header source when model ownership leaves it unclassified
+ok 256 - recovers a canonical vertical ability block directly from header source when model ownership leaves it unclassified
+  ---
+  duration_ms: 4.007445
+  type: 'test'
+  ...
+# Subtest: source-only vertical ability recovery abstains on an inconsistent printed modifier
+ok 257 - source-only vertical ability recovery abstains on an inconsistent printed modifier
+  ---
+  duration_ms: 2.401148
+  type: 'test'
+  ...
+# Subtest: fixed header contract is boundary-independent and carves Tiamat classification out of the verified name
+ok 258 - fixed header contract is boundary-independent and carves Tiamat classification out of the verified name
+  ---
+  duration_ms: 10.517343
+  type: 'test'
+  ...
+# Subtest: fixed header recovers a Rak-Tulkhesh vertical ability/save table across an early body boundary
+ok 259 - fixed header recovers a Rak-Tulkhesh vertical ability/save table across an early body boundary
+  ---
+  duration_ms: 8.429218
+  type: 'test'
+  ...
+# Subtest: rejects an unverified standalone PB semantic proposal that is really a saving-throws row
+ok 260 - rejects an unverified standalone PB semantic proposal that is really a saving-throws row
+  ---
+  duration_ms: 1.471454
+  type: 'test'
+  ...
+# Subtest: rejects a structurally impossible verifier PB claim instead of trusting verifier semantics
+ok 261 - rejects a structurally impossible verifier PB claim instead of trusting verifier semantics
+  ---
+  duration_ms: 1.894333
+  type: 'test'
+  ...
+# Subtest: rejects a verifier PB claim grounded in body mechanics and falls back to CR
+ok 262 - rejects a verifier PB claim grounded in body mechanics and falls back to CR
+  ---
+  duration_ms: 2.718939
+  type: 'test'
+  ...
+# Subtest: preserves a structurally valid printed PB even when it disagrees with CR and the verifier omitted PB
+ok 263 - preserves a structurally valid printed PB even when it disagrees with CR and the verifier omitted PB
+  ---
+  duration_ms: 2.024459
+  type: 'test'
+  ...
+# Subtest: independently verified CR remains authoritative for PB derivation despite a conflicting semantic challenge annotation
+ok 264 - independently verified CR remains authoritative for PB derivation despite a conflicting semantic challenge annotation
+  ---
+  duration_ms: 1.026351
+  type: 'test'
+  ...
+# Subtest: compact evidence boundary completion is generic and preserves genuinely unclosed source unchanged
+ok 265 - compact evidence boundary completion is generic and preserves genuinely unclosed source unchanged
+  ---
+  duration_ms: 2.010959
+  type: 'test'
+  ...
+# Subtest: verified CR evidence deterministically completes a truncated trailing parenthetical before the next essential field
+ok 266 - verified CR evidence deterministically completes a truncated trailing parenthetical before the next essential field
+  ---
+  duration_ms: 1.486055
+  type: 'test'
+  ...
+# Subtest: central English header lexicon preserves canonical and compact source aliases
+ok 267 - central English header lexicon preserves canonical and compact source aliases
+  ---
+  duration_ms: 1.027022
+  type: 'test'
+  ...
+# Subtest: longest printed alias wins at one lexical start
+ok 268 - longest printed alias wins at one lexical start
+  ---
+  duration_ms: 1.772839
+  type: 'test'
+  ...
+# Subtest: expected-field matching returns exact printed source spelling
+ok 269 - expected-field matching returns exact printed source spelling
+  ---
+  duration_ms: 0.162846
+  type: 'test'
+  ...
+# Subtest: header scans do not begin inside another Unicode word
+ok 270 - header scans do not begin inside another Unicode word
+  ---
+  duration_ms: 0.368857
+  type: 'test'
+  ...
+# Subtest: failed open is not cached and the next get retries
+ok 271 - failed open is not cached and the next get retries
+  ---
+  duration_ms: 1.127233
+  type: 'test'
+  ...
+# Subtest: blocked open is abandoned; a late success is closed and the next get retries
+ok 272 - blocked open is abandoned; a late success is closed and the next get retries
+  ---
+  duration_ms: 0.998689
+  type: 'test'
+  ...
+# Subtest: versionchange closes the cached database and the next get reopens it
+ok 273 - versionchange closes the cached database and the next get reopens it
+  ---
+  duration_ms: 0.19157
+  type: 'test'
+  ...
+# Subtest: a stale database versionchange cannot clear a newer cached connection
+ok 274 - a stale database versionchange cannot clear a newer cached connection
+  ---
+  duration_ms: 0.154493
+  type: 'test'
+  ...
+# Subtest: LLM section heading semantics are preserved without an English heading dictionary
+ok 275 - LLM section heading semantics are preserved without an English heading dictionary
+  ---
+  duration_ms: 16.523519
+  type: 'test'
+  ...
+# Subtest: standalone feature name plus following prose is merged instead of being forced into headers
+ok 276 - standalone feature name plus following prose is merged instead of being forced into headers
+  ---
+  duration_ms: 4.535895
+  type: 'test'
+  ...
+# Subtest: safe omitted prose between two features attaches backward, but a named gap does not
+ok 277 - safe omitted prose between two features attaches backward, but a named gap does not
+  ---
+  duration_ms: 1.833661
+  type: 'test'
+  ...
+# Subtest: first coarse legendary feature splits intro rules from an internal named option and merges its prose continuation
+ok 278 - first coarse legendary feature splits intro rules from an internal named option and merges its prose continuation
+  ---
+  duration_ms: 1.480938
+  type: 'test'
+  ...
+# Subtest: internal split ignores a list-like tail immediately followed by a real named feature
+ok 279 - internal split ignores a list-like tail immediately followed by a real named feature
+  ---
+  duration_ms: 1.059321
+  type: 'test'
+  ...
+# Subtest: later feature span splits at a strong internal named option
+ok 280 - later feature span splits at a strong internal named option
+  ---
+  duration_ms: 2.874344
+  type: 'test'
+  ...
+# Subtest: model heading owns its semantic section without deterministic text matching
+ok 281 - model heading owns its semantic section without deterministic text matching
+  ---
+  duration_ms: 9.305142
+  type: 'test'
+  ...
+# Subtest: post-merge refinement still splits a later named feature that became internal
+ok 282 - post-merge refinement still splits a later named feature that became internal
+  ---
+  duration_ms: 1.791437
+  type: 'test'
+  ...
+# Subtest: LLM-provided Regional Effects remains a sibling section after Lair Actions
+ok 283 - LLM-provided Regional Effects remains a sibling section after Lair Actions
+  ---
+  duration_ms: 0.803955
+  type: 'test'
+  ...
+# Subtest: named Multiattack remains a feature while a prose legendary intro becomes section rules
+ok 284 - named Multiattack remains a feature while a prose legendary intro becomes section rules
+  ---
+  duration_ms: 0.941673
+  type: 'test'
+  ...
+# Subtest: a feature name with a wrapped unmatched parenthetical remains the feature start
+ok 285 - a feature name with a wrapped unmatched parenthetical remains the feature start
+  ---
+  duration_ms: 1.619036
+  type: 'test'
+  ...
+# Subtest: trailing generic header material after the last named option becomes supplementary
+ok 286 - trailing generic header material after the last named option becomes supplementary
+  ---
+  duration_ms: 1.091449
+  type: 'test'
+  ...
+# Subtest: lowercase continuation inside a model-proven feature is not promoted to a new feature
+ok 287 - lowercase continuation inside a model-proven feature is not promoted to a new feature
+  ---
+  duration_ms: 0.545364
+  type: 'test'
+  ...
+# Subtest: trailing metadata after coarse final section content becomes supplementary
+ok 288 - trailing metadata after coarse final section content becomes supplementary
+  ---
+  duration_ms: 0.639126
+  type: 'test'
+  ...
+# Subtest: dedicated name verification cannot re-widen a structural Tiamat identity overlap
+ok 289 - dedicated name verification cannot re-widen a structural Tiamat identity overlap
+  ---
+  duration_ms: 1.091189
+  type: 'test'
+  ...
+# Subtest: an essential ability-table claim owns the complete source range instead of leaving trailing save cells loose
+ok 290 - an essential ability-table claim owns the complete source range instead of leaving trailing save cells loose
+  ---
+  duration_ms: 2.061665
+  type: 'test'
+  ...
+# Subtest: conflicting essential and deterministic critical spans stay unresolved instead of choosing a winner
+ok 291 - conflicting essential and deterministic critical spans stay unresolved instead of choosing a winner
+  ---
+  duration_ms: 1.333455
+  type: 'test'
+  ...
+# Subtest: essential verification cannot reshape source already placed in the structural body
+ok 292 - essential verification cannot reshape source already placed in the structural body
+  ---
+  duration_ms: 1.042426
+  type: 'test'
+  ...
+# Subtest: overlapping structural name and classification carve shared trailing identity instead of dropping the name
+ok 293 - overlapping structural name and classification carve shared trailing identity instead of dropping the name
+  ---
+  duration_ms: 1.682763
+  type: 'test'
+  ...
+# Subtest: saving-throw prose inside a structural feature can never become deterministic-only header ownership
+ok 294 - saving-throw prose inside a structural feature can never become deterministic-only header ownership
+  ---
+  duration_ms: 0.552836
+  type: 'test'
+  ...
+# Subtest: generic safety splitter recognizes exclamation-terminated feature titles without requiring a qualifier
+ok 295 - generic safety splitter recognizes exclamation-terminated feature titles without requiring a qualifier
+  ---
+  duration_ms: 1.136077
+  type: 'test'
+  ...
+# Subtest: generic safety splitter recognizes question-terminated feature titles
+ok 296 - generic safety splitter recognizes question-terminated feature titles
+  ---
+  duration_ms: 0.499855
+  type: 'test'
+  ...
+# Subtest: unsupported model header ownership yields to a strong source-grounded feature shape
+ok 297 - unsupported model header ownership yields to a strong source-grounded feature shape
+  ---
+  duration_ms: 0.823444
+  type: 'test'
+  ...
+# Subtest: direct feature-boundary safety does not promote a weak physical line into a sibling feature
+ok 298 - direct feature-boundary safety does not promote a weak physical line into a sibling feature
+  ---
+  duration_ms: 0.398732
+  type: 'test'
+  ...
+# Subtest: library export round-trips v2 saved statblocks
+ok 299 - library export round-trips v2 saved statblocks
+  ---
+  duration_ms: 1.354617
+  type: 'test'
+  ...
+# Subtest: library import migrates legacy v1 statblocks
+ok 300 - library import migrates legacy v1 statblocks
+  ---
+  duration_ms: 1.005059
+  type: 'test'
+  ...
+# Subtest: library import rejects malformed input
+ok 301 - library import rejects malformed input
+  ---
+  duration_ms: 0.397571
+  type: 'test'
+  ...
+# Subtest: preserves monolithic, tabular and Unicode source exactly
+ok 302 - preserves monolithic, tabular and Unicode source exactly
+  ---
+  duration_ms: 1.968745
+  type: 'test'
+  ...
+# Subtest: reconstructs 500 deterministic arbitrary-format strings
+ok 303 - reconstructs 500 deterministic arbitrary-format strings
+  ---
+  duration_ms: 31.129953
+  type: 'test'
+  ...
+# Subtest: rejects changed source text, gaps, overlaps and renamed units
+ok 304 - rejects changed source text, gaps, overlaps and renamed units
+  ---
+  duration_ms: 0.506295
+  type: 'test'
+  ...
+# Subtest: model provider registry resolves multiple profiles and exposes public metadata only
+ok 305 - model provider registry resolves multiple profiles and exposes public metadata only
+  ---
+  duration_ms: 1.31678
+  type: 'test'
+  ...
+# Subtest: model provider registry rejects duplicate and missing default profile ids
+ok 306 - model provider registry rejects duplicate and missing default profile ids
+  ---
+  duration_ms: 0.183347
+  type: 'test'
+  ...
+# Subtest: model provider registry reports health for every profile
+ok 307 - model provider registry reports health for every profile
+  ---
+  duration_ms: 1.17801
+  type: 'test'
+  ...
+# Subtest: model provider registry can upsert a runtime custom profile
+ok 308 - model provider registry can upsert a runtime custom profile
+  ---
+  duration_ms: 0.172721
+  type: 'test'
+  ...
+# Subtest: parses ability labels and saving-throw facts independently from structural quote candidates
+ok 309 - parses ability labels and saving-throw facts independently from structural quote candidates
+  ---
+  duration_ms: 5.177494
+  type: 'test'
+  ...
+# Subtest: rejects legacy numeric ability rows instead of trusting model-provided ability values
+ok 310 - rejects legacy numeric ability rows instead of trusting model-provided ability values
+  ---
+  duration_ms: 0.76764
+  type: 'test'
+  ...
+# Subtest: flattens fixed Plan-A-style section buckets into quote candidates
+ok 311 - flattens fixed Plan-A-style section buckets into quote candidates
+  ---
+  duration_ms: 6.338158
+  type: 'test'
+  ...
+# Subtest: uses an explicit feature name plus one complete quote so continuation paragraphs stay in the same feature
+ok 312 - uses an explicit feature name plus one complete quote so continuation paragraphs stay in the same feature
+  ---
+  duration_ms: 0.585014
+  type: 'test'
+  ...
+# Subtest: rejects a feature object whose claimed name is not an exact prefix of the complete source quote
+ok 313 - rejects a feature object whose claimed name is not an exact prefix of the complete source quote
+  ---
+  duration_ms: 0.54935
+  type: 'test'
+  ...
+# Subtest: rejects a malformed sibling without discarding valid header quotes
+ok 314 - rejects a malformed sibling without discarding valid header quotes
+  ---
+  duration_ms: 0.493516
+  type: 'test'
+  ...
+# Subtest: suppresses repeated cross-bucket ownership while preserving the most specific feature claim
+ok 315 - suppresses repeated cross-bucket ownership while preserving the most specific feature claim
+  ---
+  duration_ms: 0.349859
+  type: 'test'
+  ...
+# Subtest: preserves repeated same-role quotes because they may refer to distinct source occurrences
+ok 316 - preserves repeated same-role quotes because they may refer to distinct source occurrences
+  ---
+  duration_ms: 0.219692
+  type: 'test'
+  ...
+# Subtest: invalid response envelope becomes an explicit empty result
+ok 317 - invalid response envelope becomes an explicit empty result
+  ---
+  duration_ms: 0.665095
+  type: 'test'
+  ...
+# Subtest: candidate parser accepts sparse independent spans without full coverage
+ok 318 - candidate parser accepts sparse independent spans without full coverage
+  ---
+  duration_ms: 1.216217
+  type: 'test'
+  ...
+# Subtest: candidate parser accepts localized header semantics through compact field codes
+ok 319 - candidate parser accepts localized header semantics through compact field codes
+  ---
+  duration_ms: 0.452754
+  type: 'test'
+  ...
+# Subtest: candidate parser rejects only a reversed span
+ok 320 - candidate parser rejects only a reversed span
+  ---
+  duration_ms: 0.245441
+  type: 'test'
+  ...
+# Subtest: candidate parser rejects only an out-of-range span
+ok 321 - candidate parser rejects only an out-of-range span
+  ---
+  duration_ms: 0.132761
+  type: 'test'
+  ...
+# Subtest: candidate parser resolves section subtype locally on sparse sh spans
+ok 322 - candidate parser resolves section subtype locally on sparse sh spans
+  ---
+  duration_ms: 2.456833
+  type: 'test'
+  ...
+# Subtest: candidate parser preserves sh without section subtype as unknown heading evidence instead of discarding heading identity
+ok 323 - candidate parser preserves sh without section subtype as unknown heading evidence instead of discarding heading identity
+  ---
+  duration_ms: 0.235796
+  type: 'test'
+  ...
+# Subtest: candidate parser sorts valid sparse spans into source order
+ok 324 - candidate parser sorts valid sparse spans into source order
+  ---
+  duration_ms: 0.139581
+  type: 'test'
+  ...
+# Subtest: candidate generation schema exposes only sparse candidate IDs
+ok 325 - candidate generation schema exposes only sparse candidate IDs
+  ---
+  duration_ms: 0.292983
+  type: 'test'
+  ...
+# Subtest: candidate schema exposes only compact semantic ability-label hints and no numeric ability facts
+ok 326 - candidate schema exposes only compact semantic ability-label hints and no numeric ability facts
+  ---
+  duration_ms: 0.114003
+  type: 'test'
+  ...
+# Subtest: candidate parser accepts compact exact ability-label hints independently of structural spans
+ok 327 - candidate parser accepts compact exact ability-label hints independently of structural spans
+  ---
+  duration_ms: 0.635771
+  type: 'test'
+  ...
+# Subtest: essential-fact verification uses a separate tiny schema and parser
+ok 328 - essential-fact verification uses a separate tiny schema and parser
+  ---
+  duration_ms: 0.84697
+  type: 'test'
+  ...
+# Subtest: universal header scan keeps only spans before bodyStart
+ok 329 - universal header scan keeps only spans before bodyStart
+  ---
+  duration_ms: 0.616302
+  type: 'test'
+  ...
+# Subtest: body generation schema cannot emit header ownership
+ok 330 - body generation schema cannot emit header ownership
+  ---
+  duration_ms: 0.174163
+  type: 'test'
+  ...
+# Subtest: bounded universal header scan can request a wider excerpt without committing partial ownership
+ok 331 - bounded universal header scan can request a wider excerpt without committing partial ownership
+  ---
+  duration_ms: 0.093932
+  type: 'test'
+  ...
+# Subtest: bounded header schema requires explicit field semantics for every block
+ok 332 - bounded header schema requires explicit field semantics for every block
+  ---
+  duration_ms: 0.219101
+  type: 'test'
+  ...
+# Subtest: singleline transitions deterministically own source until the next transition
+ok 333 - singleline transitions deterministically own source until the next transition
+  ---
+  duration_ms: 0.624103
+  type: 'test'
+  ...
+# Subtest: singleline transition parser sorts points and rejects duplicate starts
+ok 334 - singleline transition parser sorts points and rejects duplicate starts
+  ---
+  duration_ms: 0.135735
+  type: 'test'
+  ...
+# Subtest: singleline boundary-only parser separates starts from later block classification
+ok 335 - singleline boundary-only parser separates starts from later block classification
+  ---
+  duration_ms: 0.872238
+  type: 'test'
+  ...
+# Subtest: missing singleline block classification preserves the fixed boundary span as unclassified
+ok 336 - missing singleline block classification preserves the fixed boundary span as unclassified
+  ---
+  duration_ms: 0.159481
+  type: 'test'
+  ...
+# Subtest: mixed BODY normalization schema exposes only logical-line starts
+ok 337 - mixed BODY normalization schema exposes only logical-line starts
+  ---
+  duration_ms: 0.234855
+  type: 'test'
+  ...
+# Subtest: mixed BODY normalization response is only an ordered deduplicated set of legal starts
+ok 338 - mixed BODY normalization response is only an ordered deduplicated set of legal starts
+  ---
+  duration_ms: 0.387055
+  type: 'test'
+  ...
+# Subtest: multiline body plan keeps header prefix for LLM and builds body deterministically
+ok 339 - multiline body plan keeps header prefix for LLM and builds body deterministically
+  ---
+  duration_ms: 8.13971
+  type: 'test'
+  ...
+# Subtest: multiline body never splits a feature at an inline sentence candidate
+ok 340 - multiline body never splits a feature at an inline sentence candidate
+  ---
+  duration_ms: 0.965729
+  type: 'test'
+  ...
+# Subtest: multiline specialization uses complete physical lines so markup and internal punctuation cannot hide sibling features
+ok 341 - multiline specialization uses complete physical lines so markup and internal punctuation cannot hide sibling features
+  ---
+  duration_ms: 1.556942
+  type: 'test'
+  ...
+# Subtest: multiline body keeps every non-empty physical line as a separate logical run
+ok 342 - multiline body keeps every non-empty physical line as a separate logical run
+  ---
+  duration_ms: 0.632796
+  type: 'test'
+  ...
+# Subtest: multiline feature boundaries depend on the title lead, not terminal punctuation at end of a long row
+ok 343 - multiline feature boundaries depend on the title lead, not terminal punctuation at end of a long row
+  ---
+  duration_ms: 1.240405
+  type: 'test'
+  ...
+# Subtest: multiline planner never merges continuation-looking physical rows with their owning feature
+ok 344 - multiline planner never merges continuation-looking physical rows with their owning feature
+  ---
+  duration_ms: 1.006591
+  type: 'test'
+  ...
+# Subtest: multiline physical-line invariant is language-neutral for unknown section labels
+ok 345 - multiline physical-line invariant is language-neutral for unknown section labels
+  ---
+  duration_ms: 2.609794
+  type: 'test'
+  ...
+# Subtest: multiline deterministic body treats exclamation and question feature titles like period titles
+ok 346 - multiline deterministic body treats exclamation and question feature titles like period titles
+  ---
+  duration_ms: 0.435969
+  type: 'test'
+  ...
+# Subtest: multiline body recognizes sibling feature rows when copied title punctuation loses its following space
+ok 347 - multiline body recognizes sibling feature rows when copied title punctuation loses its following space
+  ---
+  duration_ms: 0.861642
+  type: 'test'
+  ...
+# Subtest: ownership-first multiline plan treats accepted header rows as a set, not a prefix
+ok 348 - ownership-first multiline plan treats accepted header rows as a set, not a prefix
+  ---
+  duration_ms: 3.714153
+  type: 'test'
+  ...
+# Subtest: ownership-first multiline plan expands narrow semantic evidence only to its physical presentation row
+ok 349 - ownership-first multiline plan expands narrow semantic evidence only to its physical presentation row
+  ---
+  duration_ms: 0.379854
+  type: 'test'
+  ...
+# Subtest: mixed normalization supplies only virtual multiline geometry, then uses the same deterministic BODY semantics
+ok 350 - mixed normalization supplies only virtual multiline geometry, then uses the same deterministic BODY semantics
+  ---
+  duration_ms: 11.187166
+  type: 'test'
+  ...
+# Subtest: multiline pipeline uses one whole-source fixed-header locator and deterministic BODY
+ok 351 - multiline pipeline uses one whole-source fixed-header locator and deterministic BODY
+  ---
+  duration_ms: 28.120465
+  type: 'test'
+  ...
+# Subtest: joins arbitrary copied line wrapping without changing any non-whitespace token
+ok 352 - joins arbitrary copied line wrapping without changing any non-whitespace token
+  ---
+  duration_ms: 1.061344
+  type: 'test'
+  ...
+# Subtest: OpenAI-compatible provider sends parser schema and returns provider-neutral metrics
+ok 353 - OpenAI-compatible provider sends parser schema and returns provider-neutral metrics
+  ---
+  duration_ms: 39.799233
+  type: 'test'
+  ...
+# Subtest: OpenAI-compatible health check verifies the configured model id
+ok 354 - OpenAI-compatible health check verifies the configured model id
+  ---
+  duration_ms: 6.959858
+  type: 'test'
+  ...
+# Subtest: OpenAI-compatible provider retries one rate-limit response when Retry-After is bounded
+ok 355 - OpenAI-compatible provider retries one rate-limit response when Retry-After is bounded
+  ---
+  duration_ms: 7.641327
+  type: 'test'
+  ...
+# Subtest: OpenAI-compatible provider omits Authorization for endpoints without a configured API key
+ok 356 - OpenAI-compatible provider omits Authorization for endpoints without a configured API key
+  ---
+  duration_ms: 7.010243
+  type: 'test'
+  ...
+# Subtest: JSON diagnostics store survives a fresh instance
+ok 357 - JSON diagnostics store survives a fresh instance
+  ---
+  duration_ms: 7.465522
+  type: 'test'
+  ...
+# Subtest: queue runs one job at a time and completed result keeps stable statblock id
+ok 358 - queue runs one job at a time and completed result keeps stable statblock id
+  ---
+  duration_ms: 17.792167
+  type: 'test'
+  ...
+# Subtest: initialize requeues processing jobs after backend restart
+ok 359 - initialize requeues processing jobs after backend restart
+  ---
+  duration_ms: 2.803967
+  type: 'test'
+  ...
+# Subtest: failed job retains source and can retry
+ok 360 - failed job retains source and can retry
+  ---
+  duration_ms: 3.166536
+  type: 'test'
+  ...
+# Subtest: diagnostics persistence failure cannot turn a successful parse into a failed job
+ok 361 - diagnostics persistence failure cannot turn a successful parse into a failed job
+  ---
+  duration_ms: 1.865048
+  type: 'test'
+  ...
+# Subtest: completed diagnostics survive queue acknowledgement and retain exact source
+ok 362 - completed diagnostics survive queue acknowledgement and retain exact source
+  ---
+  duration_ms: 2.352475
+  type: 'test'
+  ...
+# Subtest: retry creates a separate diagnostic attempt
+ok 363 - retry creates a separate diagnostic attempt
+  ---
+  duration_ms: 3.919973
+  type: 'test'
+  ...
+# Subtest: job execution resolves the runner from the selected model profile
+ok 364 - job execution resolves the runner from the selected model profile
+  ---
+  duration_ms: 1.382299
+  type: 'test'
+  ...
+# Subtest: parse job API supports submit, polling, result and acknowledge
+ok 365 - parse job API supports submit, polling, result and acknowledge
+  ---
+  duration_ms: 47.339358
+  type: 'test'
+  ...
+# Subtest: auto detects a clean multiline statblock
+ok 366 - auto detects a clean multiline statblock
+  ---
+  duration_ms: 5.208871
+  type: 'test'
+  ...
+# Subtest: auto detects a collapsed single-line statblock
+ok 367 - auto detects a collapsed single-line statblock
+  ---
+  duration_ms: 2.234887
+  type: 'test'
+  ...
+# Subtest: auto detects mixed structure and routes it to unchanged generic parser
+ok 368 - auto detects mixed structure and routes it to unchanged generic parser
+  ---
+  duration_ms: 0.538134
+  type: 'test'
+  ...
+# Subtest: a long normal multiline prose paragraph does not make the source mixed
+ok 369 - a long normal multiline prose paragraph does not make the source mixed
+  ---
+  duration_ms: 0.353023
+  type: 'test'
+  ...
+# Subtest: sentence-like prose is not counted as collapsed feature evidence
+ok 370 - sentence-like prose is not counted as collapsed feature evidence
+  ---
+  duration_ms: 0.399203
+  type: 'test'
+  ...
+# Subtest: short but clean statblock uses anchor density instead of few-line fallback
+ok 371 - short but clean statblock uses anchor density instead of few-line fallback
+  ---
+  duration_ms: 0.16503
+  type: 'test'
+  ...
+# Subtest: four collapsed physical lines are not mistaken for multiline merely because there are four lines
+ok 372 - four collapsed physical lines are not mistaken for multiline merely because there are four lines
+  ---
+  duration_ms: 0.329638
+  type: 'test'
+  ...
+# Subtest: preserved header plus collapsed body is mixed
+ok 373 - preserved header plus collapsed body is mixed
+  ---
+  duration_ms: 0.364961
+  type: 'test'
+  ...
+# Subtest: manual parser mode bypasses automatic detection
+ok 374 - manual parser mode bypasses automatic detection
+  ---
+  duration_ms: 0.267043
+  type: 'test'
+  ...
+# Subtest: confirmed numbered subeffects do not make clean multiline input mixed
+ok 375 - confirmed numbered subeffects do not make clean multiline input mixed
+  ---
+  duration_ms: 0.759057
+  type: 'test'
+  ...
+# Subtest: column-wrapped body routes to mixed because logical structures cross physical rows
+ok 376 - column-wrapped body routes to mixed because logical structures cross physical rows
+  ---
+  duration_ms: 0.909314
+  type: 'test'
+  ...
+# Subtest: body prose that begins with a header-like word cannot hide a soft-wrapped mixed region
+ok 377 - body prose that begins with a header-like word cannot hide a soft-wrapped mixed region
+  ---
+  duration_ms: 0.442438
+  type: 'test'
+  ...
+# Subtest: one named body structure split across physical rows is mixed even without collapsed peers
+ok 378 - one named body structure split across physical rows is mixed even without collapsed peers
+  ---
+  duration_ms: 0.16537
+  type: 'test'
+  ...
+# Subtest: router counts exclamation and question feature titles as the same structural evidence as period titles
+ok 379 - router counts exclamation and question feature titles as the same structural evidence as period titles
+  ---
+  duration_ms: 0.156847
+  type: 'test'
+  ...
+# Subtest: routing keeps compact AC HP CR aliases out of its conservative header evidence
+ok 380 - routing keeps compact AC HP CR aliases out of its conservative header evidence
+  ---
+  duration_ms: 0.156146
+  type: 'test'
+  ...
+# Subtest: routing recognizes compact metadata geometry without any English header alias
+ok 381 - routing recognizes compact metadata geometry without any English header alias
+  ---
+  duration_ms: 2.254286
+  type: 'test'
+  ...
+# Subtest: Russian vertical statblock routes to multiline without English profile anchors
+ok 382 - Russian vertical statblock routes to multiline without English profile anchors
+  ---
+  duration_ms: 0.466205
+  type: 'test'
+  ...
+# Subtest: tiny lowercase table-cell rows do not turn otherwise clean Rak-style geometry into mixed input
+ok 383 - tiny lowercase table-cell rows do not turn otherwise clean Rak-style geometry into mixed input
+  ---
+  duration_ms: 0.779037
+  type: 'test'
+  ...
+# Subtest: routing corpus keeps representative source geometries on their intended parser path
+ok 384 - routing corpus keeps representative source geometries on their intended parser path
+  ---
+  duration_ms: 1.774372
+  type: 'test'
+  ...
+# Subtest: multiline header-locator failure is non-critical and deterministic BODY still preserves exact source
+ok 385 - multiline header-locator failure is non-critical and deterministic BODY still preserves exact source
+  ---
+  duration_ms: 23.219137
+  type: 'test'
+  ...
+# Subtest: normalizes arbitrary line wrapping only in presentation while the document remains byte-exact
+ok 386 - normalizes arbitrary line wrapping only in presentation while the document remains byte-exact
+  ---
+  duration_ms: 8.881692
+  type: 'test'
+  ...
+# Subtest: invalid JSON is preserved for diagnostics while source import succeeds
+ok 387 - invalid JSON is preserved for diagnostics while source import succeeds
+  ---
+  duration_ms: 12.202391
+  type: 'test'
+  ...
+# Subtest: singleline ownership prompts keep source clean and expose coordinates separately
+ok 388 - singleline ownership prompts keep source clean and expose coordinates separately
+  ---
+  duration_ms: 10.673629
+  type: 'test'
+  ...
+# Subtest: singleline Header claims cannot author replacement text and unsafe evidence is rejected
+ok 389 - singleline Header claims cannot author replacement text and unsafe evidence is rejected
+  ---
+  duration_ms: 7.733646
+  type: 'test'
+  ...
+# Subtest: mixed BODY preserves tables and complete continuation paragraphs exactly without promoting incomplete abilities to Header
+ok 390 - mixed BODY preserves tables and complete continuation paragraphs exactly without promoting incomplete abilities to Header
+  ---
+  duration_ms: 4.451357
+  type: 'test'
+  ...
+# Subtest: mixed BODY missing line start coarsens one normalized multiline row without creating gaps or overlaps
+ok 391 - mixed BODY missing line start coarsens one normalized multiline row without creating gaps or overlaps
+  ---
+  duration_ms: 3.051011
+  type: 'test'
+  ...
+# Subtest: mixed source-proven ALL-CAPS row keeps its following physical prose on a separate logical line
+ok 392 - mixed source-proven ALL-CAPS row keeps its following physical prose on a separate logical line
+  ---
+  duration_ms: 3.190281
+  type: 'test'
+  ...
+# Subtest: mixed source-proven title-case standalone row keeps its following physical prose separate when model omits it
+ok 393 - mixed source-proven title-case standalone row keeps its following physical prose separate when model omits it
+  ---
+  duration_ms: 3.313307
+  type: 'test'
+  ...
+# Subtest: singleline missing line start coarsens geometry without losing the omitted source
+ok 394 - singleline missing line start coarsens geometry without losing the omitted source
+  ---
+  duration_ms: 6.084465
+  type: 'test'
+  ...
+# Subtest: empty source skips the model and remains exactly empty
+ok 395 - empty source skips the model and remains exactly empty
+  ---
+  duration_ms: 0.781791
+  type: 'test'
+  ...
+# Subtest: multiline fixed-header locator plus deterministic BODY runs end to end without model-generated source quotes
+ok 396 - multiline fixed-header locator plus deterministic BODY runs end to end without model-generated source quotes
+  ---
+  duration_ms: 18.328292
+  type: 'test'
+  ...
+# Subtest: multiline fixed-header contract leaves non-contract metadata in BODY without losing it
+ok 397 - multiline fixed-header contract leaves non-contract metadata in BODY without losing it
+  ---
+  duration_ms: 3.323683
+  type: 'test'
+  ...
+# Subtest: mixed uses exactly two model tasks: fixed Header locator then ownership-complement BODY parser
+ok 398 - mixed uses exactly two model tasks: fixed Header locator then ownership-complement BODY parser
+  ---
+  duration_ms: 3.129599
+  type: 'test'
+  ...
+# Subtest: failed multiline card-fact locator cannot erase deterministic BODY or source
+ok 399 - failed multiline card-fact locator cannot erase deterministic BODY or source
+  ---
+  duration_ms: 0.727689
+  type: 'test'
+  ...
+# Subtest: multiline and mixed share the ownership-first Header locator while only mixed adds one BODY call
+ok 400 - multiline and mixed share the ownership-first Header locator while only mixed adds one BODY call
+  ---
+  duration_ms: 6.122382
+  type: 'test'
+  ...
+# Subtest: multiline repairs a verifier-truncated localized ability region without consuming the following save row
+ok 401 - multiline repairs a verifier-truncated localized ability region without consuming the following save row
+  ---
+  duration_ms: 14.199308
+  type: 'test'
+  ...
+# Subtest: singleline ownership-first path normalizes BODY to multiline with one starts-only model call
+ok 402 - singleline ownership-first path normalizes BODY to multiline with one starts-only model call
+  ---
+  duration_ms: 4.855658
+  type: 'test'
+  ...
+# Subtest: mixed Header facts may occur after BODY-like remainder without creating a global cutoff
+ok 403 - mixed Header facts may occur after BODY-like remainder without creating a global cutoff
+  ---
+  duration_ms: 1.625556
+  type: 'test'
+  ...
+# Subtest: mixed BODY boundary schema makes crossing accepted Header ownership impossible
+ok 404 - mixed BODY boundary schema makes crossing accepted Header ownership impossible
+  ---
+  duration_ms: 1.269288
+  type: 'test'
+  ...
+# Subtest: multiline recovers localized abilities and adjacent saves from model label mappings even when verifier omits ab and sv
+ok 405 - multiline recovers localized abilities and adjacent saves from model label mappings even when verifier omits ab and sv
+  ---
+  duration_ms: 3.670546
+  type: 'test'
+  ...
+# Subtest: candidate-coordinate ability labels are resolved to exact printed labels without English semantic fallback
+ok 406 - candidate-coordinate ability labels are resolved to exact printed labels without English semantic fallback
+  ---
+  duration_ms: 2.892371
+  type: 'test'
+  ...
+# Subtest: pipeline source contains only the canonical ownership-first active architecture
+ok 407 - pipeline source contains only the canonical ownership-first active architecture
+  ---
+  duration_ms: 1.008765
+  type: 'test'
+  ...
+# Subtest: every resolved parser mode stays on the canonical model-task set
+ok 408 - every resolved parser mode stays on the canonical model-task set
+  ---
+  duration_ms: 32.973068
+  type: 'test'
+  ...
+# Subtest: canonical mode failure paths do not fall back into legacy model tasks
+ok 409 - canonical mode failure paths do not fall back into legacy model tasks
+  ---
+  duration_ms: 5.503697
+  type: 'test'
+  ...
+# Subtest: active parser path has no deterministic English semantic profile
+ok 410 - active parser path has no deterministic English semantic profile
+  ---
+  duration_ms: 0.7876
+  type: 'test'
+  ...
+# Subtest: prepared candidate lattices never gain English-only profile boundaries
+ok 411 - prepared candidate lattices never gain English-only profile boundaries
+  ---
+  duration_ms: 1.734421
+  type: 'test'
+  ...
+# Subtest: body presentation preserves meaningful source line geometry while header normalization stays compact
+ok 412 - body presentation preserves meaningful source line geometry while header normalization stays compact
+  ---
+  duration_ms: 3.986114
+  type: 'test'
+  ...
+# Subtest: blank source rows are canonicalized away in product body presentation without flattening real rows
+ok 413 - blank source rows are canonicalized away in product body presentation without flattening real rows
+  ---
+  duration_ms: 0.452234
+  type: 'test'
+  ...
+# Subtest: body presentation folds visual column wraps while preserving explicit internal rows
+ok 414 - body presentation folds visual column wraps while preserving explicit internal rows
+  ---
+  duration_ms: 0.530522
+  type: 'test'
+  ...
+# Subtest: body presentation does not mistake a wrapped numeric tail for a list item
+ok 415 - body presentation does not mistake a wrapped numeric tail for a list item
+  ---
+  duration_ms: 0.152931
+  type: 'test'
+  ...
+# Subtest: body presentation preserves only confirmed numbered or lettered list sequences
+ok 416 - body presentation preserves only confirmed numbered or lettered list sequences
+  ---
+  duration_ms: 0.367205
+  type: 'test'
+  ...
+# Subtest: mixed body presentation preserves introduced ordered-list rows across wrapped PDF continuations
+ok 417 - mixed body presentation preserves introduced ordered-list rows across wrapped PDF continuations
+  ---
+  duration_ms: 0.798356
+  type: 'test'
+  ...
+# Subtest: mixed body presentation does not preserve unrelated numbered rows without an introduced sequence
+ok 418 - mixed body presentation does not preserve unrelated numbered rows without an introduced sequence
+  ---
+  duration_ms: 0.17205
+  type: 'test'
+  ...
+# Subtest: body presentation exposes confirmed inline numbered lists without changing lone numeric prose
+ok 419 - body presentation exposes confirmed inline numbered lists without changing lone numeric prose
+  ---
+  duration_ms: 0.160393
+  type: 'test'
+  ...
+# Subtest: body presentation exposes a collapsed compact spell-row sequence without spell vocabulary
+ok 420 - body presentation exposes a collapsed compact spell-row sequence without spell vocabulary
+  ---
+  duration_ms: 0.429649
+  type: 'test'
+  ...
+# Subtest: collapsed compact-row proof does not split ordinary Attack and Hit labels
+ok 421 - collapsed compact-row proof does not split ordinary Attack and Hit labels
+  ---
+  duration_ms: 0.334976
+  type: 'test'
+  ...
+# Subtest: body presentation folds a lowercase prose fragment that merely happens to contain a colon
+ok 422 - body presentation folds a lowercase prose fragment that merely happens to contain a colon
+  ---
+  duration_ms: 0.18514
+  type: 'test'
+  ...
+# Subtest: multiline body presentation preserves every non-empty physical row and removes blank rows
+ok 423 - multiline body presentation preserves every non-empty physical row and removes blank rows
+  ---
+  duration_ms: 0.161865
+  type: 'test'
+  ...
+# Subtest: multiline body presentation never invents a split inside one physical row
+ok 424 - multiline body presentation never invents a split inside one physical row
+  ---
+  duration_ms: 0.100061
+  type: 'test'
+  ...
+# Subtest: ordinary body presentation still folds paragraph-separated prose when multiline evidence is not trusted
+ok 425 - ordinary body presentation still folds paragraph-separated prose when multiline evidence is not trusted
+  ---
+  duration_ms: 0.091308
+  type: 'test'
+  ...
+# Subtest: mixed body presentation folds a lone compact continuation label once ownership is already shared
+ok 426 - mixed body presentation folds a lone compact continuation label once ownership is already shared
+  ---
+  duration_ms: 0.086191
+  type: 'test'
+  ...
+# Subtest: mixed body presentation still preserves repeated compact labelled rows
+ok 427 - mixed body presentation still preserves repeated compact labelled rows
+  ---
+  duration_ms: 0.145029
+  type: 'test'
+  ...
+# Subtest: v1 editable document migrates to header/body and preserves body ids
+ok 428 - v1 editable document migrates to header/body and preserves body ids
+  ---
+  duration_ms: 2.159554
+  type: 'test'
+  ...
+# Subtest: v1 SavedStatblock migrates card references to editor-owned content ids
+ok 429 - v1 SavedStatblock migrates card references to editor-owned content ids
+  ---
+  duration_ms: 0.712606
+  type: 'test'
+  ...
+# Subtest: legacy ability-table card reference maps to editor-owned builtin ability content
+ok 430 - legacy ability-table card reference maps to editor-owned builtin ability content
+  ---
+  duration_ms: 0.438673
+  type: 'test'
+  ...
+# Subtest: modern v2 documents keep a permanent name slot but leave subtitle optional
+ok 431 - modern v2 documents keep a permanent name slot but leave subtitle optional
+  ---
+  duration_ms: 0.23856
+  type: 'test'
+  ...
+# Subtest: modern v2 migration materializes authoritative Initiative and PB rows from legacy facts
+ok 432 - modern v2 migration materializes authoritative Initiative and PB rows from legacy facts
+  ---
+  duration_ms: 0.399234
+  type: 'test'
+  ...
+# Subtest: product parse job runner returns only editable product result for empty source
+ok 433 - product parse job runner returns only editable product result for empty source
+  ---
+  duration_ms: 7.891736
+  type: 'test'
+  ...
+# Subtest: parseForProduct exposes only v2 editable product document on empty import
+ok 434 - parseForProduct exposes only v2 editable product document on empty import
+  ---
+  duration_ms: 6.363155
+  type: 'test'
+  ...
+# Subtest: candidate prompt keeps source clean and asks for an ordered total structural partition
+ok 435 - candidate prompt keeps source clean and asks for an ordered total structural partition
+  ---
+  duration_ms: 6.45153
+  type: 'test'
+  ...
+# Subtest: collapsed rich structure prompt describes remainder rather than a pure body
+ok 436 - collapsed rich structure prompt describes remainder rather than a pure body
+  ---
+  duration_ms: 0.38343
+  type: 'test'
+  ...
+# Subtest: singleline boundary prompt keeps whole-source context and asks only for starts
+ok 437 - singleline boundary prompt keeps whole-source context and asks only for starts
+  ---
+  duration_ms: 15.988121
+  type: 'test'
+  ...
+# Subtest: candidate prompt reserves supplementary for descriptive content after the statblock
+ok 438 - candidate prompt reserves supplementary for descriptive content after the statblock
+  ---
+  duration_ms: 0.17869
+  type: 'test'
+  ...
+# Subtest: candidate prompt presents sparse hints after source and candidates as non-authoritative evidence
+ok 439 - candidate prompt presents sparse hints after source and candidates as non-authoritative evidence
+  ---
+  duration_ms: 0.719858
+  type: 'test'
+  ...
+# Subtest: mixed candidate prompt exposes weak physical-line evidence instead of hiding boundary confidence
+ok 440 - mixed candidate prompt exposes weak physical-line evidence instead of hiding boundary confidence
+  ---
+  duration_ms: 3.612249
+  type: 'test'
+  ...
+# Subtest: bounded header scan couples semantic header ownership to the boundary and refuses truncated guesses
+ok 441 - bounded header scan couples semantic header ownership to the boundary and refuses truncated guesses
+  ---
+  duration_ms: 0.278711
+  type: 'test'
+  ...
+# Subtest: rich body-only prompt restores the structural invariants of the stable candidate parser
+ok 442 - rich body-only prompt restores the structural invariants of the stable candidate parser
+  ---
+  duration_ms: 0.355877
+  type: 'test'
+  ...
+# Subtest: collapsed header prompt can separate structural proposals from exact address coordinates
+ok 443 - collapsed header prompt can separate structural proposals from exact address coordinates
+  ---
+  duration_ms: 4.42015
+  type: 'test'
+  ...
+# Subtest: singleline Header verifier gets a dedicated sparse-proposal plus exact-edge view
+ok 444 - singleline Header verifier gets a dedicated sparse-proposal plus exact-edge view
+  ---
+  duration_ms: 3.784909
+  type: 'test'
+  ...
+# Subtest: mixed normalization prompt is few-shot geometry-only and exposes reasons for deterministic evidence
+ok 445 - mixed normalization prompt is few-shot geometry-only and exposes reasons for deterministic evidence
+  ---
+  duration_ms: 1.157699
+  type: 'test'
+  ...
+# Subtest: anchors exact natural quotes to deterministic source-unit spans
+ok 446 - anchors exact natural quotes to deterministic source-unit spans
+  ---
+  duration_ms: 14.332735
+  type: 'test'
+  ...
+# Subtest: rejects a rewritten quote and never introduces model text
+ok 447 - rejects a rewritten quote and never introduces model text
+  ---
+  duration_ms: 0.760319
+  type: 'test'
+  ...
+# Subtest: uses exact source order to anchor repeated complete quotes
+ok 448 - uses exact source order to anchor repeated complete quotes
+  ---
+  duration_ms: 0.969095
+  type: 'test'
+  ...
+# Subtest: rejects model-reordered ownership instead of matching backwards
+ok 449 - rejects model-reordered ownership instead of matching backwards
+  ---
+  duration_ms: 0.461658
+  type: 'test'
+  ...
+# Subtest: anchors fixed section buckets by true heading positions even when heading quotes are reordered
+ok 450 - anchors fixed section buckets by true heading positions even when heading quotes are reordered
+  ---
+  duration_ms: 1.352574
+  type: 'test'
+  ...
+# Subtest: reconciles supplementary quotes inside grounded sections without guessing a narrower subtype
+ok 451 - reconciles supplementary quotes inside grounded sections without guessing a narrower subtype
+  ---
+  duration_ms: 0.768982
+  type: 'test'
+  ...
+# Subtest: anchors every section heading only when the model returns it
+ok 452 - anchors every section heading only when the model returns it
+  ---
+  duration_ms: 0.60202
+  type: 'test'
+  ...
+# Subtest: owns pre-Actions features as implicit traits when the source omits a Traits heading
+ok 453 - owns pre-Actions features as implicit traits when the source omits a Traits heading
+  ---
+  duration_ms: 0.543611
+  type: 'test'
+  ...
+# Subtest: extends a wrapped creature name only up to the grounded classification line
+ok 454 - extends a wrapped creature name only up to the grounded classification line
+  ---
+  duration_ms: 0.793499
+  type: 'test'
+  ...
+# Subtest: prefers exact feature boundaries over a broad conflicting rules quote and reconciles a misplaced heading
+ok 455 - prefers exact feature boundaries over a broad conflicting rules quote and reconciles a misplaced heading
+  ---
+  duration_ms: 1.043166
+  type: 'test'
+  ...
+# Subtest: keeps explicit trailing supplementary content outside the final mechanical section
+ok 456 - keeps explicit trailing supplementary content outside the final mechanical section
+  ---
+  duration_ms: 0.486185
+  type: 'test'
+  ...
+# Subtest: post-statblock boundary prevents final-section gap recovery from reclaiming earlier trailing metadata
+ok 457 - post-statblock boundary prevents final-section gap recovery from reclaiming earlier trailing metadata
+  ---
+  duration_ms: 0.593797
+  type: 'test'
+  ...
+# Subtest: localized section heading is grounded from the LLM semantic bucket without a fixed heading dictionary
+ok 458 - localized section heading is grounded from the LLM semantic bucket without a fixed heading dictionary
+  ---
+  duration_ms: 0.450681
+  type: 'test'
+  ...
+# Subtest: createVersionedDocument starts with independent working and saved snapshots
+ok 459 - createVersionedDocument starts with independent working and saved snapshots
+  ---
+  duration_ms: 0.962544
+  type: 'test'
+  ...
+# Subtest: explicit save maintains saved/backup lifecycle
+ok 460 - explicit save maintains saved/backup lifecycle
+  ---
+  duration_ms: 0.418983
+  type: 'test'
+  ...
+# Subtest: revert and restore keep explicit-save semantics
+ok 461 - revert and restore keep explicit-save semantics
+  ---
+  duration_ms: 0.608249
+  type: 'test'
+  ...
+# Subtest: createSavedStatblock uses v2 product defaults
+ok 462 - createSavedStatblock uses v2 product defaults
+  ---
+  duration_ms: 0.834031
+  type: 'test'
+  ...
+# Subtest: card configuration targets editor-owned content ids
+ok 463 - card configuration targets editor-owned content ids
+  ---
+  duration_ms: 0.447686
+  type: 'test'
+  ...
+# Subtest: settings normalize backend URL and update independently
+ok 464 - settings normalize backend URL and update independently
+  ---
+  duration_ms: 1.225852
+  type: 'test'
+  ...
+# Subtest: MemorySettingsRepository uses copy-in/copy-out semantics
+ok 465 - MemorySettingsRepository uses copy-in/copy-out semantics
+  ---
+  duration_ms: 0.931377
+  type: 'test'
+  ...
+# Subtest: settings persist custom parser model connection without secrets
+ok 466 - settings persist custom parser model connection without secrets
+  ---
+  duration_ms: 1.01955
+  type: 'test'
+  ...
+# Subtest: active source-proven boundaries split peer features without English section injection
+ok 467 - active source-proven boundaries split peer features without English section injection
+  ---
+  duration_ms: 12.325636
+  type: 'test'
+  ...
+# Subtest: singleline candidate audit is observational and preserves the prepared lattice
+ok 468 - singleline candidate audit is observational and preserves the prepared lattice
+  ---
+  duration_ms: 21.949089
+  type: 'test'
+  ...
+# Subtest: singleline candidate audit separates dense addressability from structural starts
+ok 469 - singleline candidate audit separates dense addressability from structural starts
+  ---
+  duration_ms: 5.124945
+  type: 'test'
+  ...
+# Subtest: singleline candidate audit records confirmed numbered markers as internal structure
+ok 470 - singleline candidate audit records confirmed numbered markers as internal structure
+  ---
+  duration_ms: 1.78682
+  type: 'test'
+  ...
+# Subtest: singleline audit promotes compact collapsed rule titles but not numeric metadata
+ok 471 - singleline audit promotes compact collapsed rule titles but not numeric metadata
+  ---
+  duration_ms: 2.160274
+  type: 'test'
+  ...
+# Subtest: singleline enrichment preserves all legacy structural coordinates while allowing additional weak multilingual coordinates
+ok 472 - singleline enrichment preserves all legacy structural coordinates while allowing additional weak multilingual coordinates
+  ---
+  duration_ms: 30.359418
+  type: 'test'
+  ...
+# Subtest: single-line prompt exposes proposal reasons and nested-list guidance without named feature vocabulary
+ok 473 - single-line prompt exposes proposal reasons and nested-list guidance without named feature vocabulary
+  ---
+  duration_ms: 11.358024
+  type: 'test'
+  ...
+# Subtest: single-line prompt separates structural proposals from exact address coordinates without renumbering
+ok 474 - single-line prompt separates structural proposals from exact address coordinates without renumbering
+  ---
+  duration_ms: 8.293713
+  type: 'test'
+  ...
+# Subtest: singleline prompt exposes synthetic top-level and internal geometry without semantic labels
+ok 475 - singleline prompt exposes synthetic top-level and internal geometry without semantic labels
+  ---
+  duration_ms: 3.340017
+  type: 'test'
+  ...
+# Subtest: singleline reconstruction exposes compact collapsed heading-plus-rule leads without assigning semantics
+ok 476 - singleline reconstruction exposes compact collapsed heading-plus-rule leads without assigning semantics
+  ---
+  duration_ms: 14.329765
+  type: 'test'
+  ...
+# Subtest: singleline reconstruction does not promote sentence-shaped prose as a composite structural lead
+ok 477 - singleline reconstruction does not promote sentence-shaped prose as a composite structural lead
+  ---
+  duration_ms: 1.335488
+  type: 'test'
+  ...
+# Subtest: singleline reconstruction marks introduced ordered-list markers as internal hierarchy
+ok 478 - singleline reconstruction marks introduced ordered-list markers as internal hierarchy
+  ---
+  duration_ms: 1.531896
+  type: 'test'
+  ...
+# Subtest: singleline reconstruction marks repeated collapsed colon rows as internal hierarchy
+ok 479 - singleline reconstruction marks repeated collapsed colon rows as internal hierarchy
+  ---
+  duration_ms: 2.259574
+  type: 'test'
+  ...
+# Subtest: singleline reconstruction leaves the complete coordinate lattice unchanged
+ok 480 - singleline reconstruction leaves the complete coordinate lattice unchanged
+  ---
+  duration_ms: 1.638656
+  type: 'test'
+  ...
+# Subtest: singleline reconstruction exposes exact split addresses inside an unpunctuated heading plus section prose
+ok 481 - singleline reconstruction exposes exact split addresses inside an unpunctuated heading plus section prose
+  ---
+  duration_ms: 1.245201
+  type: 'test'
+  ...
+# Subtest: creates language-neutral candidates from document, lines, paragraphs and punctuation
+ok 482 - creates language-neutral candidates from document, lines, paragraphs and punctuation
+  ---
+  duration_ms: 9.530963
+  type: 'test'
+  ...
+# Subtest: adds a candidate after a colon without assigning any semantic meaning
+ok 483 - adds a candidate after a colon without assigning any semantic meaning
+  ---
+  duration_ms: 0.473526
+  type: 'test'
+  ...
+# Subtest: marks compact rows followed by several numeric cells as table-like without knowing labels
+ok 484 - marks compact rows followed by several numeric cells as table-like without knowing labels
+  ---
+  duration_ms: 0.353795
+  type: 'test'
+  ...
+# Subtest: handles LF, CRLF and CR line starts without changing source coordinates
+ok 485 - handles LF, CRLF and CR line starts without changing source coordinates
+  ---
+  duration_ms: 0.818576
+  type: 'test'
+  ...
+# Subtest: keeps candidate count bounded on a long wrapped statblock while covering important starts
+ok 486 - keeps candidate count bounded on a long wrapped statblock while covering important starts
+  ---
+  duration_ms: 3.168869
+  type: 'test'
+  ...
+# Subtest: smart proposals keep wrapped Nabassu traits together
+ok 487 - smart proposals keep wrapped Nabassu traits together
+  ---
+  duration_ms: 0.846449
+  type: 'test'
+  ...
+# Subtest: smart proposals keep saving throw resolution inside one Aboleth action
+ok 488 - smart proposals keep saving throw resolution inside one Aboleth action
+  ---
+  duration_ms: 0.324781
+  type: 'test'
+  ...
+# Subtest: returns no candidates for empty or whitespace-only source
+ok 489 - returns no candidates for empty or whitespace-only source
+  ---
+  duration_ms: 0.139491
+  type: 'test'
+  ...
+# Subtest: candidate previews are smart proposals and keep resolution prose with its title
+ok 490 - candidate previews are smart proposals and keep resolution prose with its title
+  ---
+  duration_ms: 0.481858
+  type: 'test'
+  ...
+# Subtest: singleline specialization gets inline header, identity, section and feature proposals
+ok 491 - singleline specialization gets inline header, identity, section and feature proposals
+  ---
+  duration_ms: 7.14685
+  type: 'test'
+  ...
+# Subtest: short standalone heading keeps following section rules as a separate proposal
+ok 492 - short standalone heading keeps following section rules as a separate proposal
+  ---
+  duration_ms: 0.305512
+  type: 'test'
+  ...
+# Subtest: single-line enrichment adds dense shape-only coordinates without changing base universal lattice
+ok 493 - single-line enrichment adds dense shape-only coordinates without changing base universal lattice
+  ---
+  duration_ms: 4.120417
+  type: 'test'
+  ...
+# Subtest: single-line numbered hierarchy requires an actual sequence even when dense weak coordinates include prose-ending numbers
+ok 494 - single-line numbered hierarchy requires an actual sequence even when dense weak coordinates include prose-ending numbers
+  ---
+  duration_ms: 0.990026
+  type: 'test'
+  ...
+# Subtest: wrapped action references do not become sibling feature candidates
+ok 495 - wrapped action references do not become sibling feature candidates
+  ---
+  duration_ms: 0.220543
+  type: 'test'
+  ...
+# Subtest: mixed/generic enrichment separates canonical header labels collapsed onto one physical row
+ok 496 - mixed/generic enrichment separates canonical header labels collapsed onto one physical row
+  ---
+  duration_ms: 1.367537
+  type: 'test'
+  ...
+# Subtest: mixed/generic enrichment keeps soft-wrapped physical rows as weak-capable coordinates without changing multiline geometry
+ok 497 - mixed/generic enrichment keeps soft-wrapped physical rows as weak-capable coordinates without changing multiline geometry
+  ---
+  duration_ms: 0.5557
+  type: 'test'
+  ...
+# Subtest: treats period, exclamation mark, and question mark as equivalent compact title terminators
+ok 498 - treats period, exclamation mark, and question mark as equivalent compact title terminators
+  ---
+  duration_ms: 0.271871
+  type: 'test'
+  ...
+# Subtest: inline candidate enrichment does not promote an ordinary sentence containing capitalized rule names
+ok 499 - inline candidate enrichment does not promote an ordinary sentence containing capitalized rule names
+  ---
+  duration_ms: 0.220363
+  type: 'test'
+  ...
+# Subtest: inline candidate enrichment still preserves compact multiword rule titles with lowercase connectors
+ok 500 - inline candidate enrichment still preserves compact multiword rule titles with lowercase connectors
+  ---
+  duration_ms: 0.195606
+  type: 'test'
+  ...
+# Subtest: inline candidate enrichment rejects sentence-shaped continuations without weakening later compact titles
+ok 501 - inline candidate enrichment rejects sentence-shaped continuations without weakening later compact titles
+  ---
+  duration_ms: 0.229367
+  type: 'test'
+  ...
+# Subtest: trusted physical-line title proposals allow short sentence-case localized names
+ok 502 - trusted physical-line title proposals allow short sentence-case localized names
+  ---
+  duration_ms: 0.192341
+  type: 'test'
+  ...
+# Subtest: trusted physical-line title proposals tolerate one missing space after the title terminator
+ok 503 - trusted physical-line title proposals tolerate one missing space after the title terminator
+  ---
+  duration_ms: 0.241375
+  type: 'test'
+  ...
+# Subtest: single-line localization keeps exact header and section coordinates with no language profile
+ok 504 - single-line localization keeps exact header and section coordinates with no language profile
+  ---
+  duration_ms: 0.534478
+  type: 'test'
+  ...
+# Subtest: mixed long localized header row exposes weak token coordinates without a language profile
+ok 505 - mixed long localized header row exposes weak token coordinates without a language profile
+  ---
+  duration_ms: 0.307615
+  type: 'test'
+  ...
+# Subtest: multiline header enrichment exposes a later profile field sharing one physical row without densifying ordinary rows
+ok 506 - multiline header enrichment exposes a later profile field sharing one physical row without densifying ordinary rows
+  ---
+  duration_ms: 0.371742
+  type: 'test'
+  ...
+# Subtest: ownership contains accepted header annotations but never body annotations
+ok 507 - ownership contains accepted header annotations but never body annotations
+  ---
+  duration_ms: 9.203858
+  type: 'test'
+  ...
+# Subtest: structured evidence and semantic ownership share one normalized authoritative map
+ok 508 - structured evidence and semantic ownership share one normalized authoritative map
+  ---
+  duration_ms: 1.199783
+  type: 'test'
+  ...
+# Subtest: malformed or stale structured fact coordinates cannot create ownership
+ok 509 - malformed or stale structured fact coordinates cannot create ownership
+  ---
+  duration_ms: 1.130959
+  type: 'test'
+  ...
+# Subtest: ownership invariant rejects overlap and accepts exact implicit-remainder partition
+ok 510 - ownership invariant rejects overlap and accepts exact implicit-remainder partition
+  ---
+  duration_ms: 0.477852
+  type: 'test'
+  ...
+# Subtest: remainder view is the exact complement of accepted ownership
+ok 511 - remainder view is the exact complement of accepted ownership
+  ---
+  duration_ms: 2.54079
+  type: 'test'
+  ...
+# Subtest: owned intervals are hard discontinuities and never create synthetic adjacency
+ok 512 - owned intervals are hard discontinuities and never create synthetic adjacency
+  ---
+  duration_ms: 0.174474
+  type: 'test'
+  ...
+# Subtest: empty ownership leaves one exact remainder segment
+ok 513 - empty ownership leaves one exact remainder segment
+  ---
+  duration_ms: 0.19199
+  type: 'test'
+  ...
+# Subtest: fully owned source leaves no remainder segment
+ok 514 - fully owned source leaves no remainder segment
+  ---
+  duration_ms: 0.21189
+  type: 'test'
+  ...
+# Subtest: remainder validator rejects invented concatenated or mutated source
+ok 515 - remainder validator rejects invented concatenated or mutated source
+  ---
+  duration_ms: 0.665896
+  type: 'test'
+  ...
+# Subtest: remainder validator rejects a missing coordinate interval
+ok 516 - remainder validator rejects a missing coordinate interval
+  ---
+  duration_ms: 0.375458
+  type: 'test'
+  ...
+# Subtest: MemoryStatblockRepository satisfies repository contract
+ok 517 - MemoryStatblockRepository satisfies repository contract
+  ---
+  duration_ms: 27.739699
+  type: 'test'
+  ...
+# Subtest: IndexedDbStatblockRepository fails clearly when IndexedDB is unavailable
+ok 518 - IndexedDbStatblockRepository fails clearly when IndexedDB is unavailable
+  ---
+  duration_ms: 0.557582
+  type: 'test'
+  ...
+# Subtest: library comparator is shared and falls back to saved name when working name is absent
+ok 519 - library comparator is shared and falls back to saved name when working name is absent
+  ---
+  duration_ms: 1.319013
+  type: 'test'
+  ...
+# Subtest: glossary contains all 627 classified rows and uses Base Variant
+ok 520 - glossary contains all 627 classified rows and uses Base Variant
+  ---
+  duration_ms: 0.938868
+  type: 'test'
+  ...
+# Subtest: mechanics protector uses opaque non-numeric tokens and restores exact mechanics
+ok 521 - mechanics protector uses opaque non-numeric tokens and restores exact mechanics
+  ---
+  duration_ms: 3.809717
+  type: 'test'
+  ...
+# Subtest: validator rejects changed dice, bonuses and DC values
+ok 522 - validator rejects changed dice, bonuses and DC values
+  ---
+  duration_ms: 3.529624
+  type: 'test'
+  ...
+# Subtest: safe glossary does not blindly inflect ordinary term lemmas
+ok 523 - safe glossary does not blindly inflect ordinary term lemmas
+  ---
+  duration_ms: 0.338732
+  type: 'test'
+  ...
+# Subtest: rule layer translates common statblock grammar around protected mechanics
+ok 524 - rule layer translates common statblock grammar around protected mechanics
+  ---
+  duration_ms: 118.803992
+  type: 'test'
+  ...
+# Subtest: M14.1-14.2 preparation leaves unresolved prose for future MT but preserves mechanics
+ok 525 - M14.1-14.2 preparation leaves unresolved prose for future MT but preserves mechanics
+  ---
+  duration_ms: 55.527802
+  type: 'test'
+  ...
+# Subtest: frequency payload is protected while the Ukrainian frame is deterministic
+ok 526 - frequency payload is protected while the Ukrainian frame is deterministic
+  ---
+  duration_ms: 0.568328
+  type: 'test'
+  ...
+# Subtest: Recharge range keeps both values and translates only the frame
+ok 527 - Recharge range keeps both values and translates only the frame
+  ---
+  duration_ms: 0.3441
+  type: 'test'
+  ...
+# Subtest: partial deterministic translation does not replace context-sensitive one-word glossary atoms inside prose
+ok 528 - partial deterministic translation does not replace context-sensitive one-word glossary atoms inside prose
+  ---
+  duration_ms: 41.534576
+  type: 'test'
+  ...
+# Subtest: 2024 save and attack labels plus distance frames translate parametrically
+ok 529 - 2024 save and attack labels plus distance frames translate parametrically
+  ---
+  duration_ms: 1.061544
+  type: 'test'
+  ...
+# Subtest: standard attack payload phrases and damage types translate without touching numbers
+ok 530 - standard attack payload phrases and damage types translate without touching numbers
+  ---
+  duration_ms: 0.599586
+  type: 'test'
+  ...
+# Subtest: combined outcome label is translated before individual outcome labels
+ok 531 - combined outcome label is translated before individual outcome labels
+  ---
+  duration_ms: 0.303218
+  type: 'test'
+  ...
+# Subtest: standard feet and area measurements translate around protected numbers
+ok 532 - standard feet and area measurements translate around protected numbers
+  ---
+  duration_ms: 0.381316
+  type: 'test'
+  ...
+# Subtest: standard spellcasting notation and attack alternatives stay deterministic
+ok 533 - standard spellcasting notation and attack alternatives stay deterministic
+  ---
+  duration_ms: 1.027552
+  type: 'test'
+  ...
+# Subtest: standard area shapes translate as closed mechanical vocabulary
+ok 534 - standard area shapes translate as closed mechanical vocabulary
+  ---
+  duration_ms: 0.362248
+  type: 'test'
+  ...
+# Subtest: final deterministic cleanup avoids mixed half-damage prose and preserves full spell-attack phrase
+ok 535 - final deterministic cleanup avoids mixed half-damage prose and preserves full spell-attack phrase
+  ---
+  duration_ms: 0.50325
+  type: 'test'
+  ...
+# Subtest: legendary action cost metadata translates after protected numbers are restored
+ok 536 - legendary action cost metadata translates after protected numbers are restored
+  ---
+  duration_ms: 0.671435
+  type: 'test'
+  ...
+# Subtest: deterministic document translation preserves structure/mechanics and localizes semantic headings
+ok 537 - deterministic document translation preserves structure/mechanics and localizes semantic headings
+  ---
+  duration_ms: 232.881688
+  type: 'test'
+  ...
+# Subtest: structured header ownership localizes known labels without guessing from prose
+ok 538 - structured header ownership localizes known labels without guessing from prose
+  ---
+  duration_ms: 11.076419
+  type: 'test'
+  ...
+# Subtest: structured Ukrainian header translates saves, skills, damage and condition atoms
+ok 539 - structured Ukrainian header translates saves, skills, damage and condition atoms
+  ---
+  duration_ms: 100.391799
+  type: 'test'
+  ...
+# Subtest: type line translates size, creature type, subtype and alignment with basic gender agreement
+ok 540 - type line translates size, creature type, subtype and alignment with basic gender agreement
+  ---
+  duration_ms: 2.77982
+  type: 'test'
+  ...
+# Subtest: structured speed and senses localize movement modes and feet
+ok 541 - structured speed and senses localize movement modes and feet
+  ---
+  duration_ms: 3.17001
+  type: 'test'
+  ...
+# Subtest: known trait titles translate only in the title slot
+ok 542 - known trait titles translate only in the title slot
+  ---
+  duration_ms: 1.363731
+  type: 'test'
+  ...
+# Subtest: literal other_header condition label gets safe fallback localization
+ok 543 - literal other_header condition label gets safe fallback localization
+  ---
+  duration_ms: 6.253631
+  type: 'test'
+  ...
+# Subtest: type-line subtype and structured language names use safe deterministic localization
+ok 544 - type-line subtype and structured language names use safe deterministic localization
+  ---
+  duration_ms: 12.991072
+  type: 'test'
+  ...
+# Subtest: type-line handles non-nine-grid alignment forms without forcing gender agreement
+ok 545 - type-line handles non-nine-grid alignment forms without forcing gender agreement
+  ---
+  duration_ms: 2.588282
+  type: 'test'
+  ...
+# Subtest: trait metadata is localized even when the trait name itself is unresolved
+ok 546 - trait metadata is localized even when the trait name itself is unresolved
+  ---
+  duration_ms: 1.785599
+  type: 'test'
+  ...
+# Subtest: physical damage resistance qualifier is translated as one grammatical header phrase
+ok 547 - physical damage resistance qualifier is translated as one grammatical header phrase
+  ---
+  duration_ms: 2.167055
+  type: 'test'
+  ...
+# Subtest: closed statblock vocabularies cover official senses, languages, habitats and armor descriptors
+ok 548 - closed statblock vocabularies cover official senses, languages, habitats and armor descriptors
+  ---
+  duration_ms: 21.371697
+  type: 'test'
+  ...
+# Subtest: final deterministic physical qualifier handles magic weapons and attacks
+ok 549 - final deterministic physical qualifier handles magic weapons and attacks
+  ---
+  duration_ms: 0.929224
+  type: 'test'
+  ...
+# Subtest: structural header localization handles printed aliases without a translation-owned alias dictionary
+ok 550 - structural header localization handles printed aliases without a translation-owned alias dictionary
+  ---
+  duration_ms: 1.749744
+  type: 'test'
+  ...
+# Subtest: translated known feature titles preserve exclamation and question terminators
+ok 551 - translated known feature titles preserve exclamation and question terminators
+  ---
+  duration_ms: 0.630272
+  type: 'test'
+  ...
+# Subtest: legacy unstyled header aliases use the semantic classifier fallback
+ok 552 - legacy unstyled header aliases use the semantic classifier fallback
+  ---
+  duration_ms: 1.178531
+  type: 'test'
+  ...
+# Subtest: header localization never treats arbitrary full-row bold markup as a label boundary
+ok 553 - header localization never treats arbitrary full-row bold markup as a label boundary
+  ---
+  duration_ms: 0.81412
+  type: 'test'
+  ...
+# Subtest: MT translates unresolved prose while deterministic Ukrainian and mechanics survive
+ok 554 - MT translates unresolved prose while deterministic Ukrainian and mechanics survive
+  ---
+  duration_ms: 238.32324
+  type: 'test'
+  ...
+# Subtest: corrupted deterministic token safely falls back
+ok 555 - corrupted deterministic token safely falls back
+  ---
+  duration_ms: 9.988373
+  type: 'test'
+  ...
+# Subtest: NoopTranslationProvider preserves fragments exactly
+ok 556 - NoopTranslationProvider preserves fragments exactly
+  ---
+  duration_ms: 1.129847
+  type: 'test'
+  ...
+# Subtest: LibreTranslateProvider health check requires EN to UK support
+ok 557 - LibreTranslateProvider health check requires EN to UK support
+  ---
+  duration_ms: 17.552354
+  type: 'test'
+  ...
+# Subtest: LibreTranslateProvider sends each non-empty fragment to translate API
+ok 558 - LibreTranslateProvider sends each non-empty fragment to translate API
+  ---
+  duration_ms: 0.915904
+  type: 'test'
+  ...
+# Subtest: LibreTranslateProvider reports malformed translation responses
+ok 559 - LibreTranslateProvider reports malformed translation responses
+  ---
+  duration_ms: 0.736373
+  type: 'test'
+  ...
+# Subtest: runtime parser version matches package metadata
+ok 560 - runtime parser version matches package metadata
+  ---
+  duration_ms: 0.690073
+  type: 'test'
+  ...
+# Subtest: serves the local UI and runs the existing lossless pipeline through its API
+ok 561 - serves the local UI and runs the existing lossless pipeline through its API
+  ---
+  duration_ms: 65.060437
+  type: 'test'
+  ...
+# Subtest: browser UI labels supplementary ownership as post-statblock description
+ok 562 - browser UI labels supplementary ownership as post-statblock description
+  ---
+  duration_ms: 0.208435
+  type: 'test'
+  ...
+# Subtest: derived proficiency bonus is rendered only after the final block of its source annotation
+ok 563 - derived proficiency bonus is rendered only after the final block of its source annotation
+  ---
+  duration_ms: 0.250358
+  type: 'test'
+  ...
+# Subtest: browser UI renders one explicit description heading before post-statblock supplementary content
+ok 564 - browser UI renders one explicit description heading before post-statblock supplementary content
+  ---
+  duration_ms: 0.179401
+  type: 'test'
+  ...
+# Subtest: web app configures a runtime custom OpenAI-compatible model profile
+ok 565 - web app configures a runtime custom OpenAI-compatible model profile
+  ---
+  duration_ms: 12.997622
+  type: 'test'
+  ...
+# Subtest: web app accepts a runtime model API key without returning the secret
+ok 566 - web app accepts a runtime model API key without returning the secret
+  ---
+  duration_ms: 3.649105
+  type: 'test'
+  ...
+1..566
+# tests 566
+# suites 0
+# pass 566
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2591.52918

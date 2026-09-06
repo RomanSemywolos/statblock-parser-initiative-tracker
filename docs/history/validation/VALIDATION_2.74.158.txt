@@ -1,0 +1,19 @@
+Statblock Parser 2.74.158 validation
+
+Environment note:
+The supplied node_modules contains Windows-native TypeScript/esbuild packages, so the repository's normal npm scripts cannot be executed directly in this Linux container.
+
+Checks performed here:
+1. Strict targeted TypeScript check of the changed production/test surface using the available Linux TypeScript 5.8.3:
+   src/pipeline.ts + src/pipelineArchitecture.test.ts -> PASS
+
+2. Architecture regression tests compiled to temporary JS and run with Node:
+   3/3 PASS
+
+3. Full core test suite compiled with TypeScript --noCheck (runtime-equivalent JS emission) and run directly with Node:
+   561/561 PASS
+
+The temporary compiled test directory was removed before packaging.
+Final authoritative repository verification should still be run in the user's normal Windows dependency-backed environment:
+   npm run typecheck
+   npm test

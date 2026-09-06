@@ -1,0 +1,31 @@
+2.74.195 validation
+
+Base
+- 2.74.194 recovery control
+- replayed only the 2.74.177 task-derived BODY completion budgeting/provider-cap change
+- adapted mixed budgeting to the recovered Cxxx string-address protocol
+
+Checks
+- npm run typecheck: PASS
+- npm run build: PASS
+- compiled full suite (node --test dist/*.test.js): 599/599 PASS
+
+Recovery-baseline invariants
+- src/prompt.ts: byte-identical to 2.74.194
+- src/modelSchema.ts: byte-identical to 2.74.194
+- src/candidateLattice.ts: byte-identical to 2.74.194
+- src/deterministicHints.ts: byte-identical to 2.74.194
+- src/multilineDeterministic.ts: byte-identical to 2.74.194
+- mixed BODY remains one starts-only call with the same full-body prompt, candidate evidence, Cxxx output schema, ownership and deterministic downstream geometry as 2.74.194
+- only request task metadata / numPredict budgeting changes at the parser-model boundary
+
+Budget/provider tests
+- task-derived BODY budget scales with legal addresses and respects a smaller caller limit
+- recovered mixed path budgets against exact legal Cxxx string addresses
+- OpenAI-compatible BODY-only cap does not cap Header requests
+- built-in Groq profiles retain 768 BODY service cap; local Ollama has no provider-specific cap
+
+Archive hygiene
+- node_modules removed
+- dist removed
+- no .git directory

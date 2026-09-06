@@ -1,0 +1,6 @@
+dist
+frontend/dist
+node_modules
+docs/history
+src/translationGlossaryData.ts
+package-lock.json

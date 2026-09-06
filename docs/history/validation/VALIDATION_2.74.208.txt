@@ -1,0 +1,99 @@
+2.74.208 validation
+===================
+
+STATUS
+------
+- Evaluation candidate for the singleline Header path.
+- Accepted mixed baseline remains 2.74.202 and was not intentionally changed.
+- 2.74.207 is superseded by 2.74.208 for singleline Header evaluation.
+- Singleline BODY remains unchanged; a live 2.74.208 qwen3:8b run is still required before promoting this as a singleline baseline.
+
+SCOPE
+-----
+- Remove model-selected outer `ab` from the singleline Header contract.
+- Keep six semantic ability-label coordinate spans as the model-owned information.
+- Deterministically close the complete six-ability region from those labels and printed mechanical cells.
+- Reuse the established language-neutral one-candidate-left numeric-cell repair only when the complete six-ability solver independently proves the region.
+- Permit a source-proven scalar-prefix carve for init/hp only when the overlapping prefix is already accepted Header evidence and the remaining fact independently proves.
+- Add explicit 2024 score/mod/save-column guidance; internal save columns are not a separate `sv` field.
+- Clarify that STA must include the complete printed alignment phrase.
+- No CR/PB/STA fuzzy recovery, language dictionary, bodyStart, or BODY semantic model output was added.
+
+STATIC / BUILD
+--------------
+`npm run typecheck`
+PASS
+
+`npm run build`
+PASS
+
+Frontend strict TypeScript (`tsc --noEmit` from frontend/)
+PASS
+
+CORE TEST SUITE
+---------------
+The archived validation dependency symlink contains a Windows esbuild binary, so direct
+`npm test` / tsx execution is not portable in this Linux container. This is the same
+known dependency-platform issue seen in earlier archive audits and is not a source-code
+failure.
+
+The already-compiled output from the successful clean TypeScript build was therefore
+executed directly:
+
+`node --test dist/*.test.js`
+PASS: 526 / 526 tests, 0 failures
+
+Focused additions include controls for:
+- deriving the complete ability region from six mapped labels without a model `ab` edge;
+- one-candidate-left repair of a numeric ability anchor only under full mechanical proof;
+- 2024 score/mod/save-column ability layout;
+- source-proven overlapping Initiative -> HP prefix carve;
+- rejection of unrelated or unproven semantic repairs.
+
+STORED LIVE-2.74.207 RESPONSE REPLAY THROUGH 2.74.208
+-----------------------------------------------------
+Basis: the exact five live Header responses and exact five BODY-start responses from
+parse-reports(20260906-025254).json were replayed through the 2.74.208 deterministic
+path without editing model content.
+
+PASS - Astral Dreadnought: exact source reconstruction; two model tasks; six correct
+       ability mappings now prove the complete ability region without a separate `ab` edge.
+PASS - Aspect of Tiamat: exact source reconstruction; two model tasks.
+PASS - Baphomet: exact source reconstruction; two model tasks; false PB remains rejected.
+PASS - Demogorgon: exact source reconstruction; two model tasks; six correct ability
+       mappings now prove the complete region without a separate `ab` edge.
+PASS - Tarrasque: exact source reconstruction; two model tasks; CON numeric-cell anchor
+       is repaired only through the one-step + complete-region proof; the HP claim is
+       accepted after carving only the already-owned Initiative `(28)` prefix; the false
+       separate `sv` claim remains rejected.
+
+INTENTIONALLY UNRESOLVED UNDER STORED REPLAY
+--------------------------------------------
+- Astral: truncated STA and omitted printed PB remain model-selection errors.
+- Aspect of Tiamat: truncated STA, CR misaddressed to Skills, and PB value-only selection
+  remain rejected rather than being heuristically repaired.
+- Baphomet: truncated STA and false PB inside XP remain unresolved/rejected.
+- Demogorgon: truncated STA and PB value-only selection remain unresolved/rejected.
+
+This confirms 2.74.208 does not silently broaden deterministic semantic authority merely
+to make qwen3:8b look better.
+
+LOSSLESS / ARCHITECTURE CONTROLS
+--------------------------------
+PASS - BODY remains the exact complement of accepted Header ownership.
+PASS - no global `bodyStart` was introduced.
+PASS - singleline Header model output remains coordinate-only.
+PASS - LLM does not return source quotes or interpreted numeric values.
+PASS - mixed and multiline behavior is outside this patch scope.
+PASS - singleline BODY remains one geometry/starts call followed by the shared deterministic multiline parser.
+
+PACKAGE CLEANUP
+---------------
+Before packaging, validation-only `node_modules` symlinks and generated `dist/` output
+are removed. The final ZIP must contain no `node_modules`, `dist`, `.git`, or symlinks.
+
+ACCEPTANCE RULE
+---------------
+2.74.208 is not yet a live accepted singleline baseline. Run the same five-case corpus
+with qwen3:8b. If Header selections are stable enough under the simplified contract,
+stop Header-specific tuning and proceed to singleline BODY normalization work.

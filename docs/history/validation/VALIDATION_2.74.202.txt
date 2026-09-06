@@ -1,0 +1,52 @@
+Validation for statblock-parser-core 2.74.202
+=============================================
+
+Environment note
+----------------
+The archived dependency tree is Windows-oriented. Validation used the container's
+TypeScript compiler together with temporary dependency symlinks from the existing
+audit tree. Those symlinks are removed before packaging.
+
+Core
+----
+1. tsc --noEmit -p tsconfig.json
+   PASS
+
+2. rm -rf dist && tsc -p tsconfig.json
+   PASS
+
+3. node --test dist/*.test.js
+   PASS: 517 tests, 517 passed, 0 failed
+
+Frontend
+--------
+4. tsc --noEmit -p frontend/tsconfig.json
+   PASS
+
+Behavior isolation
+------------------
+5. src/prompt.ts byte-for-byte equal to 2.74.201
+   PASS
+
+6. src/modelSchema.ts byte-for-byte equal to 2.74.201
+   PASS
+
+7. Replayed all 15 reports from parse-reports(20260905-223639).json using the
+   exact stored Header/BODY model responses.
+   - mixed cases: 9
+   - BODY request diffs vs stored 2.74.201 request: 0
+   - annotation-output diffs: Lolth only
+   - Lolth change: 3 model-returned starts on comma/semicolon-wrapped
+     Condition Immunities continuation rows were vetoed and merged back into the
+     ownership-rooted metadata row
+   - Astral Dreadnought, Beledros, ADRAKNID, DRAKOPTERA, Dreamer, Looming Harvest,
+     Mimiking, Orcus: annotation output unchanged with identical stored responses
+   - all multiline cases unchanged
+
+Scope
+-----
+No model prompt/schema change.
+No deterministic new start is added.
+No Darkfire/Strands parenthetical-title hard start.
+No peer-feature rescue yet.
+No attempt to solve `... Piercing, and` / `Slashing from Nonmagical Attacks` here.

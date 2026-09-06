@@ -1,0 +1,75 @@
+{
+  "name": "statblock-parser-core",
+  "version": "2.74.219",
+  "description": "Lossless statblock parser with async product import and editor-owned header/body document model",
+  "main": "dist/index.js",
+  "scripts": {
+    "app": "tsx src/app.ts",
+    "start": "npm run app",
+    "test": "npm run test:core && npm run test:frontend",
+    "test:core": "node --import tsx --test src/*.test.ts",
+    "test:frontend": "npm run test --workspace statblock-parser-frontend",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "dev:harness": "tsx src/app.ts",
+    "dev:product": "node scripts/devProduct.mjs",
+    "dev:frontend": "npm run dev --workspace statblock-parser-frontend",
+    "build:frontend": "npm run build --workspace statblock-parser-frontend",
+    "lint": "eslint src frontend/src scripts/devProduct.mjs",
+    "format": "prettier --write README.md docs src frontend/src scripts package.json frontend/package.json",
+    "format:check": "prettier --check README.md docs src frontend/src scripts package.json frontend/package.json",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "dnd",
+    "statblock",
+    "lossless-parser"
+  ],
+  "author": "Statblock Parser contributors",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-account/statblock-parser.git"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "!dist/**/*.test.js",
+    "!dist/**/*.test.d.ts"
+  ],
+  "type": "module",
+  "dependencies": {
+    "undici": "^8.10.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^26.2.0",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^16.5.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.69.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./product": {
+      "types": "./dist/product.d.ts",
+      "import": "./dist/product.js"
+    }
+  },
+  "workspaces": [
+    "frontend"
+  ]
+}

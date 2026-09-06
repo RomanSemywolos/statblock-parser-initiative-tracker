@@ -1,0 +1,12 @@
+statblock-parser-core 2.74.164 validation
+
+Scope: reversible Header coordinate overlay infrastructure; production Header transport unchanged.
+
+Validation performed in Linux container using transferred Windows node_modules only for TypeScript type packages. tsx itself could not run because the transferred esbuild binary is Windows-only, so tests were compiled with `tsc` and executed with `node --test`.
+
+- npm run typecheck: PASS
+- npm run build: PASS
+- targeted compiled overlay/metrics tests: 8/8 PASS
+- full compiled core test suite: 576/576 PASS
+
+No node_modules, dist, or temporary build artifacts are included in the release archive.

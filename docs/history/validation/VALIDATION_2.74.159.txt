@@ -1,0 +1,22 @@
+statblock-parser-core 2.74.159 validation
+
+Environment note:
+- transferred repo contains Windows-native tsx/esbuild packages, so npm test is not
+  directly runnable in this Linux container.
+- system TypeScript compiler was used for typecheck/temporary compilation.
+
+Typecheck:
+  tsc --noEmit
+  PASS
+
+Test compilation:
+  tsc --outDir .tmp-test-dist --target ES2022 --module NodeNext --moduleResolution NodeNext --esModuleInterop --skipLibCheck --types node --noCheck src/*.ts
+
+Node test runner:
+  node --test .tmp-test-dist/*.test.js
+  563 tests
+  563 pass
+  0 fail
+  0 skipped
+
+Temporary .tmp-test-dist removed before packaging.

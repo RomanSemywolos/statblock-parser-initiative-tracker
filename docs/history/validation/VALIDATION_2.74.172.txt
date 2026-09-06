@@ -1,0 +1,35 @@
+statblock-parser-core 2.74.172 validation
+
+TYPECHECK
+- npm run typecheck: PASS
+
+BUILD
+- npm run build: PASS
+
+TARGETED REGRESSION TESTS
+- headerCoordinateOverlay.test.ts
+- modelSchema.test.ts
+- prompt.test.ts
+  Result: 54/54 PASS
+
+- headerPromptMetrics.test.ts
+- pipeline.test.ts
+- pipelineArchitecture.test.ts
+  Result: 32/32 PASS
+
+Total targeted checks across the changed transport/prompt/adapter and active-pipeline
+integration surfaces: 86/86 PASS.
+
+FULL-SUITE NOTE
+An intermediate full compiled run executed all 591 tests after the production
+transport change. 582 passed and 9 failed solely because their assertions/mocks
+still identified the shadow request by the old "INLINE COORDINATES" / half-open
+presentation text or expected the old EOF candidate-count metric. Those nine stale
+test expectations were updated; the affected test files then passed 32/32. No
+production parser code changed after that full-run diagnosis except the already
+validated transport implementation.
+
+CLEAN PACKAGE
+- node_modules excluded
+- dist excluded
+- .git excluded

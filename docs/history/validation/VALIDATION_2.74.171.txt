@@ -1,0 +1,18 @@
+statblock-parser-core 2.74.171 validation
+
+Scope: shadow Header prompt/transport instruction only.
+
+Checks:
+- global tsc --noEmit: PASS
+- global tsc build: PASS
+- compiled node --test dist/*.test.js: PASS
+- test count: 591/591 PASS
+
+Guardrails checked by existing regression suite:
+- legacy Header remains authoritative
+- shadow output remains non-authoritative
+- lossless source reconstruction unchanged
+- BODY architecture unchanged
+- deterministic language-neutrality unchanged
+- inline half-open / EOF transport tests remain green
+- explicit split-semantic-fact prompt regression test added/updated

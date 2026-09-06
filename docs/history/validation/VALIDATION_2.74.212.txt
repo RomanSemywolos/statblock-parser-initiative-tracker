@@ -1,0 +1,37 @@
+Validation for statblock-parser-core 2.74.212
+
+Scope
+- DeepL backend translation provider and proxy API.
+- Frontend provider choice: backend DeepL or local LibreTranslate.
+- Ordered KEEP-token safety for deterministic Ukrainian islands.
+- No parser behavior changes.
+
+Core static/build
+- npm run typecheck: PASS
+- npm run build: PASS
+
+Core compiled tests
+- node --test dist/*.test.js: PASS
+- 532 tests / 532 passed / 0 failed
+
+Frontend strict TypeScript
+- npx tsc --noEmit -p frontend/tsconfig.json: PASS
+
+Frontend Vite bundle
+- Not completed in this Linux extraction because the archived node_modules lacks
+  @rollup/rollup-linux-x64-gnu and the archived .bin/vite is not executable.
+- This is an extracted dependency/platform issue, not a frontend TypeScript failure.
+- No node_modules or dist output is included in the release archive.
+
+New regression coverage
+- DeepL auth header and automatic Free/Pro endpoint choice.
+- Batched DeepL fragment translation with empty-slot preservation.
+- Backend translation proxy client.
+- Backend translation health/translate HTTP routes.
+- Unconfigured backend translation state (no browser secret path).
+- Reordered deterministic KEEP tokens cause fragment-local fallback.
+- Translation provider type persists in app settings.
+
+Live external DeepL call
+- NOT RUN: no user API key was available in the validation environment.
+- Next acceptance step is a user-side live EN->UK corpus run after DEEPL_API_KEY is set.

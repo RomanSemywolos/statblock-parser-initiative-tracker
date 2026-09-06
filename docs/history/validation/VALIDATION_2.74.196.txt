@@ -1,0 +1,43 @@
+Statblock Parser 2.74.196 validation
+====================================
+
+Base: 2.74.195 budget-control baseline.
+
+PASS: npm run typecheck
+PASS: npm run build
+PASS: node --test dist/*.test.js
+      601 tests, 601 passed, 0 failed
+PASS: tsc -p frontend/tsconfig.json --noEmit
+
+Focused coverage added/updated:
+- exact rawSource + imported parser mode persistence in SavedStatblock
+- rawSource/parser metadata survives library export/import
+- targeted reparse jobs keep a distinct job ID and existing statblock ID
+- HTTP parse-job submission forwards target statblock ID and replacement intent
+- reparse replacement preserves card identity and built-in config, clears stale custom IDs and stale UK version
+- product parse job result returns exact raw input and requested parser mode
+
+Parser-quality isolation check:
+Byte-identical to 2.74.195:
+  src/prompt.ts
+  src/modelSchema.ts
+  src/candidateLattice.ts
+  src/deterministicHints.ts
+  src/multilineDeterministic.ts
+  src/pipeline.ts
+  src/sourceCandidates.ts
+  src/boundaryEvidence.ts
+  src/bodyCompletionBudget.ts
+
+Frontend bundle note:
+The available dependency tree contains Windows-only Rollup native packages and lacks
+@rollup/rollup-linux-x64-gnu, so a full Vite bundle could not be executed in this
+Linux validation container. Frontend TypeScript compilation passed with the system
+TypeScript compiler. This is an environment/dependency-tree limitation, not a
+reported source-code error.
+
+Final packaging:
+- node_modules excluded
+- dist build artifacts excluded
+- transient *.log files excluded
+- ZIP integrity verified after creation

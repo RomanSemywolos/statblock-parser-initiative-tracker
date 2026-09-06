@@ -1,0 +1,33 @@
+Validation 2.74.194 — mixed BODY recovery control build
+
+Scope:
+- base: 2.74.175
+- mixed BODY system prompt restored byte-for-byte to 2.74.173
+- mixed BODY user-prompt function restored byte-for-byte to 2.74.173
+- mixed production schema/parser restored to direct Cxxx starts
+- 2.74.175 Header stabilization, ability-coordinate repair and mixed failure fallback retained
+- singleline intentionally unchanged from 2.74.175
+
+Static checks:
+- npm run typecheck: PASS
+- npm run build: PASS
+- compiled Node test suite: 597/597 PASS
+
+Environment note:
+The archived node_modules contain Windows esbuild binaries, so direct `npm test`
+through tsx is not executable in the Linux build container. Tests were compiled
+with TypeScript and executed with Node (`node --test dist/*.test.js`), matching the
+established validation method used for earlier parser audit patches.
+
+Control assertions:
+- MIXED_OWNERSHIP_BODY_SYSTEM_PROMPT block equals 2.74.173 byte-for-byte: PASS
+- createMixedOwnershipBodyUserPrompt(...) function equals 2.74.173 byte-for-byte: PASS
+- mixed production BODY schema uses string Cxxx enum coordinates: covered by regression tests
+- singleline still uses the 2.74.175 numeric BODY transport: covered by architecture regression
+- no R/A, batching, weighting, pruning, 177 budgeting or 185–187 cleanup added in this build
+
+Next validation:
+Run the same real mixed corpus used for 2.74.173/175 comparison, especially:
+- Астральный Дредноут
+- Беледрос Визерблум
+and compare raw returned starts, prompt/token metrics, normalized runs and source reconstruction.

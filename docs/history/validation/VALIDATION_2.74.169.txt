@@ -1,0 +1,20 @@
+statblock-parser-core 2.74.169 validation
+
+Scope: diagnostics-only functional Header equivalence + regression fixtures.
+
+PASS npm run typecheck
+PASS npm run build
+PASS compiled full test suite: 589/589
+
+New tests cover:
+- evidence-route/source-span differences ignored by functional comparison
+- printed-vs-derived PB remains functionally significant
+- publication code leaking into name remains a mismatch
+- wrapped STA truncation remains a mismatch
+- publication marker mistaken for STA remains a mismatch
+
+Authoritative legacy Header path unchanged.
+Shadow inline Header remains non-authoritative.
+Candidate generation unchanged.
+BODY parsing/normalization unchanged.
+No language-specific parser semantics added.

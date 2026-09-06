@@ -1,0 +1,74 @@
+2.74.207 validation
+====================
+
+STATUS
+- Evaluation candidate only.
+- Accepted mixed baseline remains 2.74.202.
+- 2.74.206 is rejected as a singleline Header transport/contract experiment after live qwen3:8b evaluation.
+
+SCOPE
+- Singleline Header prompt/transport changed to complete printed fact spans, matching mixed Header semantics.
+- Singleline Header dense address view changed from [Cxxx]TOKEN to atomic Cxxx=TOKEN cards.
+- Singleline Header generation schema no longer repeats the full coordinate enum; lexical Cxxx shape only, with actual range/order validation remaining deterministic.
+- Deterministic singleline Header grounding now verifies complete fact spans.
+- Singleline BODY unchanged.
+- Mixed and multiline active behavior intentionally unchanged.
+
+STATIC / BUILD
+- Core strict TypeScript: PASS
+- Clean core build: PASS
+- Frontend strict TypeScript: PASS using validation-only workspace self-link; link removed afterward
+
+TESTS
+- Full compiled core test suite: 524 / 524 PASS
+  Command: node --test dist/*.test.js
+- Architecture tests confirm singleline Header uses FULL-FACT coordinate mode, fields include ab, Cxxx schema is pattern-based rather than an exhaustive enum, and no retired structural/address dual transport is used.
+
+LIVE-206 ORACLE REPLAY THROUGH 2.74.207
+Input basis: the same five raw singleline sources from parse-reports(20260906-022149).json.
+Header response: correct full-fact Cxxx spans synthesized only to validate the new deterministic contract.
+BODY response: exact stored live 2.74.206 BODY starts response for each source.
+
+Astral Dreadnought
+- calls: 2
+- exact source reconstruction: PASS
+- singleline Header grounding issues: 0
+- Header: name/STA/AC 20/HP 297/6 abilities/2 saves/CR 21/printed PB +7
+
+Aspect of Tiamat
+- calls: 2
+- exact source reconstruction: PASS
+- singleline Header grounding issues: 0
+- Header: name/STA/AC 23/HP 574/6 abilities/4 saves/CR 30/printed PB +9
+
+Baphomet
+- calls: 2
+- exact source reconstruction: PASS
+- singleline Header grounding issues: 0
+- Header: name/STA/AC 22/HP 522/6 abilities/3 saves/CR 23
+- no printed PB ownership was invented; downstream PB may still be derived from CR by existing deterministic product logic
+
+Demogorgon
+- calls: 2
+- exact source reconstruction: PASS
+- singleline Header grounding issues: 0
+- Header: name/STA/AC 22/HP 406/6 abilities/4 saves/CR 26/printed PB +8
+
+Tarrasque
+- calls: 2
+- exact source reconstruction: PASS
+- singleline Header grounding issues: 0
+- Header: name/STA/AC 25/printed Initiative +18 (28)/HP 697/2024 six-ability save-column region/CR 30/nested printed PB +9
+
+PROMPT / SCHEMA SIZE CHECK (characters)
+Source              206 user -> 207 user     206 schema -> 207 schema
+Astral              9505 -> 8812             29981 -> 1174
+Aspect              7847 -> 7203             27923 -> 1174
+Baphomet             9907 -> 9089             35231 -> 1174
+Demogorgon           7132 -> 6563             24773 -> 1174
+Tarrasque             7310 -> 6717             25781 -> 1174
+
+INTERPRETATION
+- Replay proves deterministic contract composition and losslessness only.
+- It does NOT prove qwen3:8b will select the correct full-fact spans.
+- Promotion requires a live 2.74.207 run on the same five-case corpus.

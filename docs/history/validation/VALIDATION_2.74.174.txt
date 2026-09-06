@@ -1,0 +1,20 @@
+2.74.174 validation
+
+Scope: numeric-coordinate Header shadow transport only.
+
+PASS: global TypeScript typecheck (`tsc --noEmit`).
+PASS: global TypeScript build (`tsc`).
+PASS: targeted Header transport / schema / pipeline suites: 68/68.
+PASS: full compiled test suite: 594/594.
+
+Regression coverage added/updated:
+- numeric Header schema uses integer s/e with per-request min/max and no Cxxx enum;
+- numeric response adapts back to the established inclusive candidate contract;
+- reversed/out-of-range numeric spans are rejected independently;
+- shadow user/source/proposal presentation remains byte-for-byte legacy;
+- shadow system prompt changes only the coordinate-output contract;
+- numeric shadow remains non-authoritative and failure-safe;
+- singleline still has exactly one Header shadow plus one starts-only BODY call;
+- existing parser architecture/language-neutrality tests remain green.
+
+Build environment note: the clean worktree does not ship dependencies. For local validation only, temporary symlinks to the existing dependency installation were used. They are removed before packaging, together with dist and other generated artifacts.

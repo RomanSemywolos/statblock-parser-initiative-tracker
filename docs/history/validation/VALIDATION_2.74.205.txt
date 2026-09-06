@@ -1,0 +1,98 @@
+2.74.205 validation
+===================
+
+Scope
+-----
+Singleline Header coordinate clean start only.
+Mixed remains on accepted 2.74.202 behavior; singleline BODY remains unchanged.
+
+Architecture checks
+-------------------
+PASS - singleline Header model output is coordinate-only.
+PASS - model returns no source quotes and no numeric values.
+PASS - singleline Header sees one flat Cxxx address list only.
+PASS - every non-whitespace LosslessSourceMap content unit has one Header address.
+PASS - no model-facing structural classes, boundary evidence, title roles, or ownership hints are attached to the singleline Header address list.
+PASS - no Header/body global bodyStart is introduced.
+PASS - BODY remains exact complement of accepted Header ownership.
+PASS - singleline BODY remains one starts-only normalization call followed by the shared deterministic multiline BODY parser.
+
+Commands/results
+----------------
+`npm run typecheck`
+PASS
+
+`npm run build`
+PASS
+
+`node --test dist/*.test.js`
+PASS: 524 tests, 0 failures
+
+`tsc -p frontend/tsconfig.validation.json --noEmit`
+PASS
+(validation-only tsconfig; removed before packaging)
+
+Focused singleline Header address-space tests
+---------------------------------------------
+PASS - every content-unit start is addressable.
+PASS - no structural semantics/boundary evidence on non-document-start Header addresses.
+PASS - late source labels remain addressable without any header/body boundary guess.
+
+Deterministic grounding replay from live 2.74.204 corpus
+-------------------------------------------------------
+The correct semantic selections from the 2.74.204 live qwen run were transposed to the
+new coordinate-only response format, then grounded through the 2.74.205 deterministic
+Header verifier.
+
+Astral Dreadnought
+  coordinates: 692
+  grounded: name, STA, AC, HP, abilities, saves, CR, PB
+  grounding issues: 0
+
+Aspect of Tiamat
+  coordinates: 643
+  grounded: name, STA, AC, HP, abilities, saves, CR, PB
+  grounding issues: 0
+
+Baphomet
+  coordinates: 817
+  grounded: name, STA, AC, HP, abilities, saves, CR
+  printed PB absent in source, so no PB ownership claim is required
+  grounding issues: 0
+
+Demogorgon
+  coordinates: 568
+  grounded: name, STA, AC, HP, abilities, saves, CR, PB
+  grounding issues: 0
+
+Tarrasque (2024)
+  coordinates: 592
+  grounded: name, STA, AC, printed Initiative, HP, abilities/save-column, CR, nested printed PB
+  grounding issues: 0
+
+Full stored-response pipeline replay
+------------------------------------
+Using the transposed Header coordinate responses plus the stored 2.74.204 BODY starts:
+
+PASS - Astral: 2 calls, Header completed, BODY completed, exact source reconstruction.
+PASS - Aspect of Tiamat: 2 calls, Header completed, BODY completed, exact source reconstruction.
+PASS - Baphomet: 2 calls, Header completed, BODY completed, exact source reconstruction.
+PASS - Demogorgon: 2 calls, Header completed, BODY completed, exact source reconstruction.
+PASS - Tarrasque: 2 calls, Header completed, BODY completed, exact source reconstruction.
+
+Header request-size sanity check
+--------------------------------
+Including system prompt + user prompt + JSON schema:
+Astral Dreadnought: 19,684 chars / 692 addresses
+Aspect of Tiamat:   16,662 chars / 643 addresses
+Baphomet:           19,738 chars / 817 addresses
+Demogorgon:         15,682 chars / 568 addresses
+Tarrasque:          15,894 chars / 592 addresses
+
+These are character counts, not tokenizer counts. No tokenizer-specific context claim is inferred from them.
+
+Acceptance status
+-----------------
+2.74.205 is an evaluation candidate, not yet the accepted singleline live baseline.
+Next step: run the supplied singleline corpus live with qwen3:8b and inspect Header
+coordinate selections before changing singleline BODY behavior.

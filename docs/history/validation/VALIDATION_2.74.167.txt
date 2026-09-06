@@ -1,0 +1,8 @@
+statblock-parser-core 2.74.167 validation
+
+npm run typecheck: PASS
+npm run build: PASS
+node --test dist/*.test.js: PASS
+Tests: 581 passed, 0 failed
+
+Scope: Header inline transport fidelity only. Legacy Header remains authoritative; inline call remains non-authoritative A/B diagnostics. BODY unchanged.

@@ -1,0 +1,72 @@
+2.74.204 validation
+====================
+
+Baseline
+--------
+statblock-parser 2.74.202 mixed-metadata-continuation
+
+Scope
+-----
+Singleline Header clean-start stage 1 only.
+Singleline BODY remains unchanged.
+Mixed/multiline behavior is not intentionally changed.
+
+Core validation
+---------------
+npm run typecheck
+PASS
+
+npm run build
+PASS
+
+node --test dist/*.test.js
+PASS: 521/521
+FAIL: 0
+
+Frontend source validation
+--------------------------
+tsc -p frontend/tsconfig.json --noEmit
+PASS
+
+Note: source package intentionally has no bundled node_modules. For this Linux
+validation, existing dependency/type tooling was referenced externally; generated
+node_modules symlinks and dist are excluded from the final package.
+
+Focused architecture checks
+---------------------------
+PASS: active singleline Header request contains raw SOURCE only.
+PASS: no Cxxx candidate IDs in the singleline Header user prompt.
+PASS: no SINGLELINE HEADER STRUCTURAL PROPOSALS section.
+PASS: no SINGLELINE HEADER EXACT ADDRESS COORDINATES section.
+PASS: singleline Header JSON schema contains identity / fieldLabels / abilityLabels,
+      and no essentialFacts coordinate spans.
+PASS: singleline Header prompt metrics use candidateCount=0.
+PASS: pipeline does not construct the Header candidate lattice for active singleline.
+PASS: BODY remains one starts-only call followed by shared deterministic multiline parsing.
+
+Focused deterministic grounding checks
+--------------------------------------
+PASS: localized RU name / STA / AC / HP / six abilities / saves / CR / PB.
+PASS: 2024 AC / Initiative +18 (28) / HP / six score+mod+save cells.
+PASS: CR 30 (XP 155,000; PB +9) plus nested PB +9.
+PASS: wrong semantic label with incompatible numeric shape is rejected.
+PASS: identity must ground at source prefix and adjacent STA position.
+
+Supplied collapsed-corpus dry check
+-----------------------------------
+Four unique raw texts were extracted from parse-reports(20260905-235016).json:
+- Astral Dreadnought
+- Aspect of Tiamat
+- Demogorgon
+- Tarrasque
+
+With synthetic semantic-anchor responses, deterministic grounding and the full
+singleline pipeline recovered the expected fixed Header values for all four.
+No singleline Header request contained candidate IDs.
+
+This dry check validates the new deterministic contract, not qwen3:8b prompt quality.
+A live 2.74.204 corpus run is the next acceptance step.
+
+Packaging
+---------
+Final package excludes node_modules, dist, .git and temporary validation files.

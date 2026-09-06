@@ -1,0 +1,37 @@
+Statblock Parser 2.74.198 validation
+=================================
+
+Scope
+-----
+Safe mixed-parser fix pass only. No broader metadata-corridor redesign and no deterministic hard starts for parenthetical named features.
+
+Core validation
+---------------
+- strict TypeScript: PASS (`tsc --noEmit`)
+- clean build: PASS (`rm -rf dist && tsc`)
+- compiled Node test suite: PASS, 505/505
+
+Frontend validation
+-------------------
+- strict frontend TypeScript: PASS (`tsc -p frontend/tsconfig.json --noEmit`)
+- viewer/editor source updated so average+dice groups such as `5 (1d10)` use `mechanic-nowrap` while the dice token remains interactive in the viewer.
+
+Focused regression coverage
+---------------------------
+- localized adjacent/standalone save recovery now exposes complete printed physical-row `savingThrowEvidence`.
+- generic/mixed compact metadata continuation after a trailing comma remains weak and carries strong `previous_line_trailing_separator` continuation evidence.
+- compact-label presentation proof can include the first label after exactly one physical newline following an introducing colon.
+- the same proof does not cross a blank paragraph.
+
+Stored-model replay against parse-reports(20260905-202347).json
+-------------------------------------------------------------
+The original 2.74.197 model responses were replayed through 2.74.198 to isolate deterministic downstream changes.
+
+Observed:
+- Dreamer: full `Saving Throws Dex +8, Wis +9, Cha +12` evidence; first `Cantrips (at will)` row is preserved and auto-styled as the first spell-list row.
+- Astral Dreadnought: full `Спасброски Лов +5, Мдр +9` evidence; no residual label-only BODY node from narrow save evidence.
+- ADRAKNID BODY request: `Stealth +19, Survival +11` changes from competing strong compact-metadata evidence to `boundary=unknown/weak`, `continuation=strong`, `continuationEvidence=previous_line_trailing_separator`.
+
+Important limitation
+--------------------
+A stored-response replay cannot prove that qwen3:8b changes its selected BODY starts after the evidence change. A live corpus rerun is intentionally the next gate before the broader ownership-aware metadata geometry patch.

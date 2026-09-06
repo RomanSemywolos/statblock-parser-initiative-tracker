@@ -1,0 +1,80 @@
+Statblock Parser 2.74.197 validation
+====================================
+
+Base: 2.74.196 card-reparse baseline.
+Purpose: behavior-neutral active-path audit / dead-code cleanup.
+
+PASS: npm run typecheck
+      strict core TypeScript with noUnusedLocals + noUnusedParameters
+PASS: npm run build
+PASS: clean compiled Node suite (dist removed before build)
+      501 tests, 501 passed, 0 failed
+PASS: frontend TypeScript
+      node frontend/node_modules/typescript/bin/tsc --noEmit -p frontend/tsconfig.json
+
+Direct npm/tsx source-suite note:
+The supplied node_modules was installed on Windows and contains @esbuild/win32-x64,
+not the Linux esbuild binary required by tsx in this validation container. Direct
+`npm test`/tsx execution therefore cannot run here. The clean TypeScript build plus
+Node execution of the emitted test suite passed 501/501.
+
+Frontend bundle note:
+The supplied dependency tree also lacks @rollup/rollup-linux-x64-gnu, so Vite cannot
+produce a Linux bundle in this container. Frontend TypeScript validation passed.
+This is the same cross-platform cached-node_modules limitation as 2.74.196.
+
+Dead-code / reachability audit:
+- removed unreachable production modules:
+  bodyRunSanitizer
+  englishCandidateEvidence
+  headerCoordinateOverlay
+  headerFunctionalEquivalence
+  legacyCandidateReconciler
+  quoteAnchor
+  sectionStructure
+- removed their dedicated historical tests and the retired singleline semantic-prompt test
+- removed obsolete prompt/schema/helper contracts from live modules
+- removed the unused createMultilineBodyPlan(...bodyStartCandidate) API
+- removed stale bounded-header-scan/bodyStart fixture logic from current integration tests
+- production module inbound-import scan leaves only intended entry points without inbound imports:
+  app.ts, index.ts, product.ts
+- deleted modules are absent from both src and the clean dist build
+
+Architecture guards:
+- active pipeline rejects retired bounded Header / semantic BODY / boundary-classification task markers
+- all resolved modes use the canonical fixed-Header ownership-first path
+- multiline makes no BODY model call
+- mixed and singleline make one starts-only BODY normalization call
+- retired multiline bodyStartCandidate planner is explicitly regression-guarded
+- active parser source has no deterministic English semantic-profile authority
+
+2.74.196 -> 2.74.197 behavior-isolation parity
+------------------------------------------------
+Corpus: parse-reports(20260905-191411).json
+Reports: 16
+Explicit modes per source: multiline, generic, singleline
+Total comparisons: 48
+
+PASS: candidate lattice / Header coordinate parity
+      48/48 identical
+PASS: active model request parity
+      system prompt, user prompt, schema, task, temperature, seed,
+      numCtx, numPredict and timeout: 48/48 identical
+PASS: deterministic parser output parity under identical synthetic model responses
+      document blocks/annotations/structured Header/integrity, candidate debug,
+      routing, deterministic hints and BODY status: 48/48 identical
+
+Documentation cleanup:
+- README current parser description updated
+- CANONICAL_PARSER_ARCHITECTURE.md now records 2.74.194 recovery as the current mixed transport basis
+- ARCHITECTURE_HEADER_OWNERSHIP.md marks pre-2.74.144 singleline migration text as historical
+- historical patch/audit documents retained unchanged as development evidence
+
+Packaging requirements:
+- package/core version: 2.74.197
+- node_modules excluded
+- dist excluded
+- frontend/dist excluded
+- .git excluded
+- transient logs/temp files excluded
+- ZIP integrity must be verified after creation

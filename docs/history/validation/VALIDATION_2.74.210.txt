@@ -1,0 +1,54 @@
+2.74.210 validation
+===================
+
+STATUS
+------
+- 2.74.209 singleline Header prompt experiment rejected.
+- 2.74.208 singleline Header behavior restored exactly and treated as practical Header baseline.
+- Remaining qwen3:8b STA/CR/PB/scalar misses are documented model-quality limitations.
+- Singleline BODY transport is now the evaluation target.
+- Accepted mixed baseline remains 2.74.202 and is intentionally unchanged.
+
+SINGLELINE BODY SCOPE
+---------------------
+- Keep the existing reduced BODY candidate lattice.
+- Remove model-facing class=N indirection.
+- Render candidate evidence locally at each Cxxx candidate.
+- Return direct Cxxx string starts, not numeric suffixes.
+- Enumerate only legal BODY-owned Cxxx IDs in the generation schema.
+- Keep one whole-BODY geometry-only call.
+- Keep deterministic virtual multiline reconstruction and the shared multiline BODY parser.
+
+STATIC / BUILD
+--------------
+`npm run typecheck`
+PASS
+
+`npm run build`
+PASS
+
+CORE TEST SUITE
+---------------
+`node --test dist/*.test.js`
+PASS: 526 / 526 tests, 0 failures
+
+FRONTEND STRICT TYPESCRIPT
+--------------------------
+PASS after temporarily recreating the local workspace dependency links required by the stripped validation archive. The temporary frontend/node_modules links were removed immediately after validation.
+
+ARCHITECTURE CONTROLS
+---------------------
+PASS - singleline Header prompt restored to the exact live 2.74.208 prompt.
+PASS - singleline Header still uses coordinate-only identity/scalar facts plus six ability-label anchors.
+PASS - BODY remains exact complement of accepted Header ownership.
+PASS - singleline BODY output remains starts-only.
+PASS - singleline BODY now uses direct Cxxx string IDs.
+PASS - no BODY structural class legend / class=N indirection is active.
+PASS - every candidate carries local geometry provenance/evidence.
+PASS - no global bodyStart.
+PASS - no BODY semantic taxonomy or second BODY model call.
+PASS - mixed/multiline production behavior is outside this patch scope.
+
+LIVE ACCEPTANCE
+---------------
+A qwen3:8b run of the same singleline corpus is required before accepting 2.74.210 BODY transport as the singleline BODY baseline.

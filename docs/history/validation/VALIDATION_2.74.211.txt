@@ -1,0 +1,24 @@
+STATBLOCK PARSER 2.74.211 VALIDATION
+===================================
+
+Decision:
+- 2.74.210 singleline BODY local-evidence/direct-Cxxx transport: REJECTED after live qwen3:8b corpus.
+- singleline Header: practical 2.74.208 baseline retained.
+- singleline BODY: exact 2.74.208 transport restored.
+- mixed baseline: 2.74.202 unchanged.
+- multiline: unchanged.
+
+Core validation:
+- npm run typecheck: PASS
+- npm run build: PASS
+- node --test dist/*.test.js: PASS 526/526
+
+Frontend validation:
+- frontend source unchanged.
+- strict frontend TypeScript could not be re-run in this Linux extraction because the archived TypeScript native platform package is unavailable and the archived Vite launcher is not executable.
+
+Release hygiene target:
+- exclude node_modules/
+- exclude dist/
+- exclude .git/
+- exclude symlinks

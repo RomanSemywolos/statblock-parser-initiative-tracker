@@ -1,0 +1,19 @@
+statblock-parser-core 2.74.173 validation
+
+Global TypeScript compiler used because the transferred clean worktree does not
+contain a local executable tsx installation. Temporary dependency symlinks were
+created only for validation and are removed before packaging.
+
+Commands/results:
+- tsc --noEmit: PASS
+- tsc: PASS
+- node --test dist/*.test.js: PASS, 591/591 tests
+
+A/B acceptance checks covered by tests:
+- authoritative Header schema still enumerates candidate IDs;
+- compact shadow schema uses fixed Cxxx regex and no candidate enum;
+- compact shadow system prompt equals authoritative legacy system prompt byte-for-byte;
+- compact shadow user prompt equals authoritative legacy user prompt byte-for-byte;
+- singleline shadow preserves the same structural proposal and exact-address channels;
+- shadow semantic divergence/failure remains diagnostics-only;
+- raw-source reconstruction invariants remain green.

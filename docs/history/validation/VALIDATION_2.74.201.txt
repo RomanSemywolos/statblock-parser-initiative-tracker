@@ -1,0 +1,87 @@
+Statblock Parser 2.74.201 validation
+==================================
+
+Scope
+-----
+Isolated mixed-parser deterministic geometry extension for one-word/sentence-case
+standalone physical section rows. No BODY prompt/schema change.
+
+Accepted baseline before this patch
+-----------------------------------
+- 2.74.200 live qwen3:8b corpus reviewed: PASS for its isolation goal.
+- 2.74.200 promoted to accepted live mixed baseline.
+- 2.74.199 remains rejected experiment history.
+
+Core compiler/tests
+-------------------
+- npm run typecheck: PASS
+- clean npm run build: PASS
+- compiled node --test dist/*.test.js: PASS
+- tests: 514 total / 514 pass / 0 fail
+
+Frontend
+--------
+- strict frontend TypeScript (`tsc --noEmit -p frontend/tsconfig.json`): PASS
+- validation used external node_modules/workspace links only; they are excluded from delivery.
+
+Prompt / authority isolation
+----------------------------
+- src/prompt.ts unchanged from 2.74.200: PASS
+- `contextual_standalone_heading_row` absent from model-facing mixedNormalizationHints: PASS
+- new rule is mixed-only deterministic hard geometry: PASS
+- no language/D&D section-name dictionary added: PASS
+- no global bodyStart / semantic BODY taxonomy added: PASS
+- no `Darkfire Abyss (...)` shape-based hard start added: PASS
+
+Safety regressions
+------------------
+- one-word standalone `Actions` before peer rule: PASS
+- sentence-case Cyrillic `Легендарные действия` after `;`: PASS
+- wrapped metadata tail `Slashing from Nonmagical Attacks` rejected by contextual hard proof: PASS
+- adjacent wrapped title `Flying\nSword.` rejected by contextual hard proof: PASS
+- original presentation test still reconstructs `Flying Sword. ...`: PASS
+- exact raw-source reconstruction tests: PASS
+
+Stored-response replay: live 2.74.200 report -> 2.74.201 code
+------------------------------------------------------------
+Input report: parse-reports(20260905-221103).json
+Method: reuse each stored Header response and stored mixed BODY starts response.
+This is not a live qwen rerun; it isolates deterministic behavior.
+
+All 9 mixed BODY model requests (system prompt + user prompt + JSON schema +
+numPredict) remained identical to the 2.74.200 recorded requests: PASS
+
+Targeted product-body deltas under identical model responses:
+- Astral Dreadnought: `Легендарные действия` becomes an independent heading.
+- Beledros: `Легендарные действия` becomes an independent heading after the spell list.
+- Lolth: `Reactions` becomes an independent heading; the following physical
+  `Strands of the Demonweave...` row is preserved as separate section content.
+  `Darkfire Abyss (...)` is still not independently forced.
+- Orcus: omitted `Actions` and `Reactions` become independent headings.
+
+Product-body equivalent controls under identical model responses:
+- ADRAKNID
+- DRAKOPTERA
+- Dreamer
+- Looming Harvest (Trickster form)
+- Mimiking
+
+Replay assertions: PASS
+
+Known remaining mixed issues intentionally not solved here
+----------------------------------------------------------
+- Lolth: model may still omit `Darkfire Abyss (...)`.
+- Lolth/Orcus: qwen may still choose `Slashing from Nonmagical Attacks` as a false start.
+- Astral: first legendary `Клешни` may remain merged with explanatory legendary rules.
+- Other peer-feature omissions (`Cocoon`, `Hide`, etc.) remain a later isolated class.
+- Description/Auto Style presentation defects remain downstream work.
+
+Live-corpus status for 2.74.201
+------------------------------
+- NOT YET RUN with qwen3:8b.
+- 2.74.200 remains the accepted live mixed baseline until the user reruns the same corpus.
+
+Packaging requirements
+----------------------
+Delivery must exclude node_modules, frontend/node_modules, dist, frontend/dist,
+.git and transient validation logs.

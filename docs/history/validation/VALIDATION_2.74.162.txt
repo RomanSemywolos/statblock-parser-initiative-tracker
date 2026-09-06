@@ -1,0 +1,10 @@
+2.74.162 validation
+
+Targeted editableCompiler regression suite:
+29 tests
+29 pass
+0 fail
+
+Compilation used the system TypeScript compiler with --noCheck because the transferred Windows node_modules tree is not executable/complete in this Linux environment. The targeted compiled JS regression suite passes.
+
+A full compiled-suite attempt was also made. Tests that do not require unavailable runtime packages ran, but 11 suites could not load because the transferred node_modules does not provide the Linux-resolvable `undici` package. This is an environment/dependency-tree limitation, not a reported assertion failure in the changed code. The 2.74.162 change is isolated to editableCompiler presentation and its two new regression tests.

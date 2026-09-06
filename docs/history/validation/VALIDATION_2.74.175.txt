@@ -1,0 +1,26 @@
+statblock-parser-core 2.74.175 validation
+=========================================
+
+TypeScript typecheck:
+  PASS — tsc --noEmit
+
+TypeScript build:
+  PASS — tsc
+
+Full compiled test suite:
+  PASS — 597 / 597 tests
+  FAIL — 0
+
+New/updated regression coverage includes:
+- active pipeline performs no shadow Header model request
+- multiline model-call contract is one Header call
+- mixed/singleline use bounded integer BODY-start schemas
+- numeric BODY response parsing enforces range and allowed BODY coordinates
+- BODY prompts use lossless structural-class dictionary compression
+- mixed BODY provider failure uses source-proven physical-row fallback
+- invalid mixed BODY envelope can use the same conservative fallback
+- localized Cradle-like ability-table hints that point at numeric cells recover the immediately preceding printed label only under the model-guided six-label contract
+- existing reconstruction/source-ownership architecture tests remain green
+
+Provider note:
+The 2.74.174 Groq report showed HTTP 413 failures for mixed BODY requests at 9068, 7687, and 8248 requested input tokens against a 7000 ITPM limit. 2.74.175 materially compresses those BODY requests, but no new Groq run was available during package validation. Provider-side success is therefore NOT claimed until the user reruns the corpus.

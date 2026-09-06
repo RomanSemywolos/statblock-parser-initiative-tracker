@@ -1,0 +1,15 @@
+2.74.163 validation
+===================
+
+Scope: diagnostics-only Header prompt baseline instrumentation.
+
+TypeScript strict typecheck: PASS (`npm run typecheck`).
+
+Full core test suite: PASS, 570/570.
+Execution method in this Linux validation container:
+  tsc --outDir .tmp-test-dist --declaration false --declarationMap false
+  node --test .tmp-test-dist/*.test.js
+
+Note: the uploaded node_modules contains Windows esbuild binaries, so direct `npm test`/tsx cannot execute in this Linux container. This is an environment mismatch, not a test failure; the complete compiled Node test suite passed.
+
+No parser prompt, schema, candidate generation, ownership, BODY logic, model-call count, or product behavior changed in this patch.

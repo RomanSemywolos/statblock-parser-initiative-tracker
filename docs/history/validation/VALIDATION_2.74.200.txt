@@ -1,0 +1,35 @@
+Statblock Parser 2.74.200 validation
+====================================
+
+Scope
+-----
+Prompt-isolation follow-up after the 2.74.199 live qwen3:8b corpus.
+2.74.199 is not accepted as the new mixed-parser baseline.
+
+Static / build validation
+-------------------------
+- Core strict TypeScript: PASS
+- Clean core build: PASS
+- Compiled Node regression suite: 509/509 PASS
+- Frontend strict TypeScript: PASS
+  (validated with a temporary workspace path mapping to the freshly built core product declarations; temporary validation config/symlinks removed afterward)
+
+Isolation checks
+----------------
+- src/prompt.ts byte-identical to 2.74.198: PASS
+- `previous_interleaved_row_open` absent from active source/frontend: PASS
+- ownership-aware `header_interleaved_compact_row` candidate evidence retained: PASS
+- short-open lexical shape retained only as internal promotion veto: PASS
+- no deterministic mixed logical starts added: PASS
+
+Live-corpus status
+------------------
+- 2.74.199 live corpus was reviewed and showed both metadata gains and unrelated BODY-start regressions.
+- Post-package live qwen3:8b corpus: PASS for isolation goal.
+- Dreamer/Beledros metadata gains retained; Astral/DRAKOPTERA/Looming regressions from 2.74.199 removed.
+- Orcus false metadata-tail headings `Attacks made` / `Poisoned` also improved.
+- 2.74.200 is promoted to the accepted live mixed baseline.
+
+Packaging
+---------
+The delivery archive excludes node_modules, dist, .git and transient validation files.

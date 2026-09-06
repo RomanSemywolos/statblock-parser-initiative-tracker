@@ -1,0 +1,51 @@
+2.74.209 validation
+===================
+
+STATUS
+------
+- Evaluation candidate for final singleline Header prompt cleanup.
+- Accepted mixed baseline remains 2.74.202 and is unchanged.
+- Deterministic singleline Header architecture remains the 2.74.208 architecture.
+- Singleline BODY remains unchanged.
+- A live qwen3:8b repeated five-case corpus is still required before promotion.
+
+SCOPE
+-----
+- Remove hard-coded numeric-coordinate few-shot examples from the singleline Header prompt.
+- Preserve their layout information as coordinate-free shape notes.
+- Add a compact final span self-check for exact current-source coordinates, complete scalar facts, full STA, explicit-only Initiative, and printed ability labels.
+- No deterministic CR/PB/STA recovery or other semantic broadening.
+
+STATIC / BUILD
+--------------
+`npm run typecheck`
+PASS
+
+`npm run build`
+PASS
+
+Frontend strict TypeScript (`tsc -p frontend/tsconfig.json --noEmit`, with a temporary local workspace link for the archived dependency layout)
+PASS
+
+CORE TEST SUITE
+---------------
+Direct compiled execution:
+`node --test dist/*.test.js`
+PASS: 526 / 526 tests, 0 failures
+
+NOTE: direct `npm test` is not portable in this Linux container because the archived `node_modules/.bin/tsx` is not executable. The clean TypeScript build and compiled Node test suite are used instead, matching the established archive-validation workaround.
+
+ARCHITECTURE CONTROLS
+---------------------
+PASS - no deterministic Header authority changed.
+PASS - no global bodyStart introduced.
+PASS - singleline Header remains coordinate-only.
+PASS - model-selected outer ab remains absent.
+PASS - ability identity remains model semantic evidence; mechanics/ranges remain deterministic.
+PASS - exact BODY remains complement of accepted Header ownership.
+PASS - mixed/multiline and singleline BODY are outside patch scope.
+
+LIVE ACCEPTANCE
+---------------
+Run the repeated five-case singleline qwen3:8b corpus.
+If remaining Header misses are not materially improved, stop Header tuning and record them as a current small-model limitation rather than adding fuzzy deterministic semantic repair.

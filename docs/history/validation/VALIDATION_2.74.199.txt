@@ -1,0 +1,64 @@
+Statblock Parser 2.74.199 validation
+====================================
+
+Scope
+-----
+Ownership-aware mixed BODY compact-row geometry evidence only. No deterministic mixed logical starts were added. Darkfire/Strands and section-heading rescue remain outside this patch.
+
+Core validation
+---------------
+- strict TypeScript (`tsc --noEmit`): PASS
+- clean TypeScript build (`rm -rf dist && tsc`): PASS
+- compiled Node test suite: PASS — 510/510, 0 failures
+
+Frontend validation
+-------------------
+Frontend source was not changed by 2.74.199.
+
+Direct `tsc -p frontend/tsconfig.json --noEmit` in this Linux audit container cannot resolve the workspace self-import `statblock-parser-core/product`, because the supplied dependency tree is not an npm-installed Linux workspace. This is the same environment-resolution limitation seen in earlier audit work, not a source regression.
+
+To validate the actual frontend source, a temporary validation-only tsconfig mapped `statblock-parser-core/product` to the freshly built `../dist/product.d.ts`; strict frontend TypeScript then passed. The temporary config was removed and is not part of the artifact.
+
+2.74.198 live-corpus checkpoint
+------------------------------
+The user-provided qwen3:8b QA run confirmed the targeted 2.74.198 safe fixes:
+- residual Saving Throws / Спасброски BODY label fragments were gone;
+- ADRAKNID's comma-wrapped Skills row was reconstructed as one row;
+- Dreamer's Cantrips row became the first formatted spell-list row.
+The broader metadata geometry defect remained in Dreamer/Lolth/Orcus and is the target of 2.74.199.
+
+Stored-response isolation replay
+--------------------------------
+Input: parse-reports(20260905-212102).json (15 reports; 9 selected mixed/generic)
+Method: replay each report through 2.74.199 using its exact stored Header and BODY model responses.
+
+Results:
+- mixed reports replayed: 9
+- mixed Header + annotation/source-span mismatches: 0
+- Header request changes across all reports: 0
+- mixed BODY JSON-schema/legal-address changes: 0
+
+Therefore the new layer changes advisory mixed BODY prompt evidence only when the model is allowed to choose again. With identical stored starts, downstream output is unchanged.
+
+Target evidence checks
+----------------------
+- Dreamer: one-value and compact metadata-like physical rows between accepted Header islands now receive `header_interleaved_compact_row`; comma-wrapped `and slashing ...` remains continuation.
+- ADRAKNID: Condition Immunities and Languages rows now receive strong row evidence; Skills comma continuation remains strong continuation.
+- Lolth/Orcus: uppercase `Slashing from Nonmagical Attacks` after list-like rows ending in a short open token receives `previous_interleaved_row_open` strong continuation instead of row promotion.
+- Orcus: `Attacks made` inside the same physical row receives only `same_physical_interleaved_row` soft continuation evidence; no deterministic split is forced.
+- Beledros: a short ordinary value ending `..., яд` is regression-tested not to trigger the short-open-token rule.
+
+Architecture invariants checked
+-------------------------------
+- overlay runs only in mixed path after accepted Header ownership;
+- no Header/bodyStart prefix heuristic introduced;
+- no candidate coordinates added or removed;
+- no legal Cxxx addresses changed;
+- no BODY semantic role emitted by the model contract;
+- no deterministic mixed start added by the new overlay;
+- no English/Russian parser vocabulary added to the deterministic evidence code;
+- exact-source reconstruction preserved under stored-response replay.
+
+Live-model requirement
+----------------------
+A fresh qwen3:8b corpus run is still required to evaluate whether the changed advisory evidence improves start selection without regressions. Stored-response replay proves isolation, not model-quality improvement.
