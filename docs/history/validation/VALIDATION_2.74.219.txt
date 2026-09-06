@@ -2,17 +2,18 @@ Validation 2.74.219
 
 PASS: npm run typecheck
 PASS: npm test
-  - core: 547 passed
+  - core: 548 passed
   - frontend: 12 passed
 PASS: npm run build:frontend
   - Vite advisory: main JavaScript chunk is 585.54 kB (124.87 kB gzip), above the default 500 kB warning threshold
 PASS: npm run lint (0 errors, 0 warnings)
 PASS: npm run format:check
 PASS: clean-state frontend test (no root/frontend dist; pretest rebuilt core; 12 tests passed)
+PASS: parseJobStore ordering regression repeated 50 times (50/50 passed)
 PASS: npm pack --dry-run
   - package: statblock-parser-core@2.74.219
   - files: 191
-  - unpacked size: 1,277,853 bytes
+  - unpacked size: 1,278,318 bytes
 PASS: npm audit --omit=dev --audit-level=high (0 vulnerabilities)
 PASS: dependency-tree, current Markdown-link, secret-pattern, and package-content checks
 PASS: runtime smoke (frontend, backend root, and model-profile API returned HTTP 200)

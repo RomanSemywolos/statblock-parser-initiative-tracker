@@ -29,7 +29,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-account/statblock-parser.git"
+    "url": "git+https://github.com/RomanSemywolos/statblock-parser.git"
   },
   "engines": {
     "node": ">=22",

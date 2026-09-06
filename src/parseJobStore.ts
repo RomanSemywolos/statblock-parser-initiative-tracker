@@ -37,13 +37,13 @@ type PersistedFile = {
 
 export class JsonFileParseJobStore implements ParseJobStore {
   private loaded = false;
+  private loadPromise: Promise<void> | null = null;
   private records = new Map<string, ParseJobRecord>();
   private mutationChain: Promise<void> = Promise.resolve();
 
   constructor(private readonly filePath: string) {}
 
-  private async ensureLoaded(): Promise<void> {
-    if (this.loaded) return;
+  private async loadRecords(): Promise<void> {
     try {
       const text = await readFile(this.filePath, "utf8");
       const raw = JSON.parse(text) as unknown;
@@ -63,12 +63,36 @@ export class JsonFileParseJobStore implements ParseJobStore {
     }
   }
 
+  private async ensureLoaded(): Promise<void> {
+    if (this.loaded) return;
+    this.loadPromise ??= this.loadRecords();
+    try {
+      await this.loadPromise;
+    } finally {
+      if (!this.loaded) this.loadPromise = null;
+    }
+  }
+
   private async persistRecords(records: Map<string, ParseJobRecord>): Promise<void> {
     const snapshot: PersistedFile = {
       formatVersion: "parse-jobs-v1",
       jobs: [...records.values()].map(cloneRecord),
     };
     await writeUtf8FileAtomically(this.filePath, `${JSON.stringify(snapshot, null, 2)}\n`);
+  }
+
+  private enqueueMutation(mutate: (records: Map<string, ParseJobRecord>) => void): Promise<void> {
+    const operation = this.mutationChain.then(async () => {
+      await this.ensureLoaded();
+      const next = new Map(this.records);
+      mutate(next);
+      await this.persistRecords(next);
+      this.records = next;
+    });
+    // A failed write is reported to its caller, but must not permanently poison
+    // the queue and prevent later independent mutations from running.
+    this.mutationChain = operation.catch(() => undefined);
+    return operation;
   }
 
   async list(): Promise<ParseJobRecord[]> {
@@ -78,24 +102,14 @@ export class JsonFileParseJobStore implements ParseJobStore {
   }
 
   async put(record: ParseJobRecord): Promise<void> {
-    await this.ensureLoaded();
-    this.mutationChain = this.mutationChain.then(async () => {
-      const next = new Map(this.records);
+    await this.enqueueMutation((next) => {
       next.set(record.id, cloneRecord(record));
-      await this.persistRecords(next);
-      this.records = next;
     });
-    await this.mutationChain;
   }
 
   async delete(id: string): Promise<void> {
-    await this.ensureLoaded();
-    this.mutationChain = this.mutationChain.then(async () => {
-      const next = new Map(this.records);
+    await this.enqueueMutation((next) => {
       next.delete(id);
-      await this.persistRecords(next);
-      this.records = next;
     });
-    await this.mutationChain;
   }
 }

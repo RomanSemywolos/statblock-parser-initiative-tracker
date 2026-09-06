@@ -47,6 +47,20 @@ test("JSON parse-job store persists serialized mutations and returns isolated re
   );
 });
 
+test("same parse-job store preserves mutation invocation order during initial loading", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "statblock-job-store-order-"));
+  const path = join(directory, "nested", "jobs.json");
+  const store = new JsonFileParseJobStore(path);
+  const ids = Array.from({ length: 20 }, (_, index) => `job-${index.toString().padStart(2, "0")}`);
+
+  await Promise.all(ids.map((id) => store.put(record(id))));
+
+  assert.deepEqual(
+    (await new JsonFileParseJobStore(path).list()).map((entry) => entry.id),
+    ids,
+  );
+});
+
 test("JSON parse-job store rejects a malformed modern record", async () => {
   const directory = await mkdtemp(join(tmpdir(), "statblock-job-store-invalid-"));
   const path = join(directory, "jobs.json");
