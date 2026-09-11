@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { Tooltip } from "../Tooltip";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   addEditableHeaderRow,
   applyEditableAutoStyle,
@@ -23,9 +25,13 @@ import { HeaderEvidencePanel } from "./StatblockView";
 export function StatblockEditor({
   document: editableDocument,
   onChange,
+  toolbarActions,
+  toolbarHost,
 }: {
   document: EditableStatblockDocument;
   onChange: (document: EditableStatblockDocument) => void;
+  toolbarActions?: ReactNode;
+  toolbarHost?: HTMLElement | null;
 }) {
   const doc = editableDocument;
   const statblockAbilityLabels = doc.language === "uk" ? abilityLabelsUk : abilityLabels;
@@ -170,52 +176,51 @@ export function StatblockEditor({
   const nameText = doc.header.name?.text ?? "";
   const subtitleText = doc.header.subtitle?.text ?? "";
 
+  const toolbar = (
+    <div className="text-format-toolbar" aria-label="Форматування">
+      <button
+        type="button"
+        className="format-button bold-button"
+        onMouseDown={(event) => event.preventDefault()}
+        onClick={() => applyInlineFormat("bold")}
+        title="Жирний"
+      >
+        B
+      </button>
+      <button
+        type="button"
+        className="format-button italic-button"
+        onMouseDown={(event) => event.preventDefault()}
+        onClick={() => applyInlineFormat("italic")}
+        title="Курсив"
+      >
+        I
+      </button>
+      <button
+        type="button"
+        className="format-button heading-button"
+        onMouseDown={(event) => event.preventDefault()}
+        onClick={toggleHeading}
+        disabled={activeId !== BODY_EDITOR_ID}
+        title="Заголовок"
+      >
+        H
+      </button>
+      <Tooltip text="Одноразово застосувати стандартне форматування. Подальші зміни форматування виконуються вручну.">
+        <button type="button" className="format-button auto-style-button" onClick={applyAutoStyle}>
+          Автостиль
+        </button>
+      </Tooltip>
+      {toolbarActions !== undefined && <div className="text-format-toolbar-actions">{toolbarActions}</div>}
+    </div>
+  );
+
   return (
     <article
       className="statblock-sheet statblock-editor seamless-editor"
       aria-label={`Редагування ${doc.facts.name ?? "statblock"}`}
     >
-      <div className="text-format-toolbar" aria-label="Форматування">
-        <button
-          type="button"
-          className="format-button bold-button"
-          onMouseDown={(event) => event.preventDefault()}
-          onClick={() => applyInlineFormat("bold")}
-          title="Жирний"
-        >
-          B
-        </button>
-        <button
-          type="button"
-          className="format-button italic-button"
-          onMouseDown={(event) => event.preventDefault()}
-          onClick={() => applyInlineFormat("italic")}
-          title="Курсив"
-        >
-          I
-        </button>
-        <button
-          type="button"
-          className="format-button heading-button"
-          onMouseDown={(event) => event.preventDefault()}
-          onClick={toggleHeading}
-          disabled={activeId !== BODY_EDITOR_ID}
-          title="Заголовок"
-        >
-          H
-        </button>
-        <button
-          type="button"
-          className="format-button auto-style-button"
-          onClick={applyAutoStyle}
-          title="Одноразово застосувати стандартне форматування"
-        >
-          Автостиль
-        </button>
-        <span>
-          Автостиль застосовується лише за кнопкою. Після цього форматування повністю належить ручному редагуванню.
-        </span>
-      </div>
+      {toolbarHost ? createPortal(toolbar, toolbarHost) : toolbarHost === undefined ? toolbar : null}
 
       <RichEditableText
         id="editor-name"
@@ -317,15 +322,7 @@ export function StatblockEditor({
                     onChange={(event) => {
                       const score = event.target.value === "" ? null : Number(event.target.value);
                       const current = doc.header.abilities[ability];
-                      onChange(
-                        editEditableAbility(
-                          doc,
-                          ability,
-                          score === null
-                            ? null
-                            : { score, modifier: current?.modifier ?? Math.floor((score - 10) / 2) },
-                        ),
-                      );
+                      onChange(editEditableAbility(doc, ability, { score, modifier: current?.modifier ?? null }));
                     }}
                   />
                   <span>(</span>
@@ -337,13 +334,7 @@ export function StatblockEditor({
                     onChange={(event) => {
                       const modifier = event.target.value === "" ? null : Number(event.target.value);
                       const current = doc.header.abilities[ability];
-                      onChange(
-                        editEditableAbility(
-                          doc,
-                          ability,
-                          modifier === null ? null : { score: current?.score ?? 10, modifier },
-                        ),
-                      );
+                      onChange(editEditableAbility(doc, ability, { score: current?.score ?? null, modifier }));
                     }}
                   />
                   <span>)</span>

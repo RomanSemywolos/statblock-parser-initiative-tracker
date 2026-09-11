@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 import { resolve } from "node:path";
 
 import { createStatblockAppServer } from "./webApp.js";
-import { createConfiguredModelProviders, createGroqProvider } from "./configuredModelProviders.js";
+import { GROQ_PROFILE_SPECS, createConfiguredModelProviders, createGroqProvider } from "./configuredModelProviders.js";
 import { CUSTOM_MODEL_PROFILE_ID } from "./modelProvider.js";
 import { OpenAICompatibleModelProvider } from "./openAICompatibleProvider.js";
 import { ModelProviderRegistry } from "./modelProviderRegistry.js";
@@ -30,7 +30,6 @@ const ALLOWED_ORIGINS = (process.env.STATBLOCK_ALLOWED_ORIGINS ?? "")
 const configuredModels = createConfiguredModelProviders();
 const modelRegistry = new ModelProviderRegistry(configuredModels.providers, configuredModels.defaultProfileId);
 const defaultProvider = modelRegistry.resolve(modelRegistry.defaultProfileId);
-const runtimeApiKeys = new Map<string, string>();
 const customRuntimeCredentials = new RuntimeCredentialStore();
 const deepLApiKey = process.env.DEEPL_API_KEY?.trim();
 const deepLBaseUrl = process.env.DEEPL_API_BASE_URL?.trim();
@@ -141,15 +140,16 @@ const server = createStatblockAppServer({
       );
     }
     const normalizedApiKey = apiKey.trim();
-    runtimeApiKeys.set(profileId, normalizedApiKey);
-    const provider = createGroqProvider(
-      profileId,
-      normalizedApiKey,
-      existing.serviceUrl ?? "https://api.groq.com/openai/v1",
-    );
+    const baseUrl = existing.serviceUrl ?? "https://api.groq.com/openai/v1";
+    let provider = null;
+    for (const spec of GROQ_PROFILE_SPECS) {
+      const configured = createGroqProvider(spec.id, normalizedApiKey, baseUrl);
+      if (configured === null) continue;
+      modelRegistry.upsert(configured);
+      runners.set(configured.id, createProductParseJobRunner({ provider: configured, parserVersion: PACKAGE_VERSION }));
+      if (spec.id === profileId) provider = configured;
+    }
     if (provider === null) throw new Error(`Unknown Groq model profile: ${profileId}`);
-    modelRegistry.upsert(provider);
-    runners.set(provider.id, createProductParseJobRunner({ provider, parserVersion: PACKAGE_VERSION }));
     return {
       id: provider.id,
       displayName: provider.displayName,

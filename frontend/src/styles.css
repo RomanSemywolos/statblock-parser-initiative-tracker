@@ -140,6 +140,9 @@ button {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
 }
 .workspace-header {
   padding: 18px 24px;
@@ -150,8 +153,11 @@ button {
   gap: 8px;
 }
 .workspace-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 30px;
   overflow: auto;
+  overscroll-behavior: contain;
 }
 .workspace-empty,
 .empty-state,
@@ -189,7 +195,7 @@ button {
   font-family: Georgia, serif;
   font-size: 30px;
   font-weight: 400;
-  margin-bottom: 2px;
+  margin: 0 0 2px;
 }
 .statblock-subtitle {
   font-style: normal;
@@ -1075,6 +1081,14 @@ button {
   white-space: nowrap;
 }
 
+.natural-d20-success {
+  color: #19733a;
+}
+
+.natural-d20-failure {
+  color: #b3261e;
+}
+
 /* Seamless product editor: block structure remains internal, not part of the UI. */
 .seamless-editor {
   display: block;
@@ -1083,9 +1097,10 @@ button {
 .text-format-toolbar {
   position: sticky;
   top: 0;
-  z-index: 3;
+  z-index: 12;
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 6px;
   margin: -10px -8px 14px;
   padding: 8px;
@@ -1094,6 +1109,22 @@ button {
   backdrop-filter: blur(5px);
   font-size: 12px;
   color: #6a675f;
+}
+
+.text-format-toolbar-actions {
+  display: flex;
+  min-width: 0;
+  margin-left: auto;
+}
+
+.text-format-toolbar .card-controls-anchor {
+  position: relative;
+  top: auto;
+  z-index: auto;
+  flex: 0 0 auto;
+  width: auto;
+  height: 30px;
+  margin: 0;
 }
 
 .text-format-toolbar .format-button {
@@ -1599,7 +1630,7 @@ select:disabled {
 }
 
 .workspace-scroll {
-  padding-top: 18px;
+  padding-top: 0;
 }
 
 @media (max-width: 1450px) {
@@ -2109,9 +2140,8 @@ select:disabled {
 }
 
 .statblock-editor .text-format-toolbar {
-  position: sticky;
   top: 0;
-  z-index: 2;
+  padding-right: 8px;
 }
 
 @media (max-width: 1450px) {
@@ -2770,19 +2800,28 @@ select:disabled {
 }
 
 .card-controls-anchor {
-  position: absolute;
+  position: sticky;
   top: 10px;
-  right: 10px;
   z-index: 12;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  width: max-content;
+  height: 30px;
+  margin-bottom: -30px;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .card-controls-toggle,
+.copy-statblock-button,
 .card-controls-panel button,
 .card-controls-panel select {
   font: inherit;
 }
 
-.card-controls-toggle {
+.card-controls-toggle,
+.copy-statblock-button {
   width: 34px;
   height: 30px;
   border: 1px solid #bda98c;
@@ -2795,7 +2834,15 @@ select:disabled {
   box-shadow: 0 2px 8px rgba(65, 47, 31, 0.08);
 }
 
+.copy-statblock-button {
+  width: auto;
+  padding: 0 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
 .card-controls-toggle:hover,
+.copy-statblock-button:hover,
 .card-controls-toggle.active-mode {
   background: #e8d8bb;
 }
@@ -3207,7 +3254,10 @@ button:disabled {
   }
 
   .workspace-scroll {
-    padding: 20px 12px;
+    padding: 0 12px 20px;
+  }
+  .statblock-card-stage {
+    margin-top: 20px;
   }
   .editor-toolbar {
     padding-inline: 12px;
@@ -3404,4 +3454,235 @@ html::-webkit-scrollbar-thumb:hover,
 body::-webkit-scrollbar-thumb:hover {
   background: #827666;
   background-clip: padding-box;
+}
+
+/* Compact workspace chrome and one card-owned sticky header. */
+.statblock-card-stage {
+  container-type: inline-size;
+  margin-top: 18px;
+}
+.workspace > .unified-workspace-header {
+  grid-template-columns: auto minmax(150px, 260px) minmax(180px, 1fr) !important;
+  grid-template-rows: auto !important;
+  min-height: 78px !important;
+  max-height: none !important;
+  padding: 8px 14px !important;
+  gap: 12px !important;
+  flex-shrink: 0;
+}
+.unified-workspace-header .workspace-header-tools {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+.unified-workspace-header .header-dice-zone {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+.header-dice-zone .dice-expression-control {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.header-dice-zone input {
+  min-width: 0;
+}
+.unified-workspace-header .header-roll-zone {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  height: 60px !important;
+}
+.header-roll-zone .compact-roll-history {
+  height: 60px !important;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  flex: 1;
+  min-width: 0;
+}
+.compact-roll-history .roll-history-entry {
+  white-space: nowrap;
+}
+.roll-history-toggle {
+  border: 1px solid #bcb5a7;
+  border-radius: 6px;
+  background: #fffdf7;
+  height: 30px;
+  cursor: pointer;
+}
+.roll-history-dialog {
+  width: min(620px, calc(100vw - 32px));
+  height: min(680px, 85dvh);
+  max-height: 85dvh;
+  padding: 0;
+  border: 1px solid #bda98c;
+  border-radius: 12px;
+  background: #fffaf0;
+  color: #292722;
+  box-shadow: 0 16px 48px #30251844;
+}
+.roll-history-dialog::backdrop {
+  background: #211b1666;
+}
+.roll-history-dialog-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.roll-history-dialog header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #d7cbb8;
+}
+.roll-history-dialog h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.roll-history-dialog header button {
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  cursor: pointer;
+}
+.roll-history-dialog .expanded-roll-history {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  max-height: none;
+  padding: 12px 18px;
+  margin: 0;
+}
+.expanded-roll-history .roll-history-entry {
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 8px;
+  padding: 8px;
+  white-space: normal;
+}
+.expanded-roll-history .roll-history-label {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.expanded-roll-history .roll-history-entry > span:last-child {
+  grid-column: 1 / -1;
+  overflow-wrap: anywhere;
+}
+.statblock-card-stage {
+  border: 1px solid #c9c0af;
+  border-radius: 12px;
+  padding-top: 12px;
+  background: #f3ead8;
+}
+.statblock-card-stage > .statblock-sheet,
+.statblock-card-stage > .stub-statblock-sheet {
+  border: 0;
+  border-radius: 0 0 12px 12px;
+  box-shadow: none;
+}
+.statblock-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  min-height: 46px;
+  background: #f3eee5;
+  border-bottom: 1px solid #d7cbb8;
+  border-radius: 0;
+}
+.statblock-format-host {
+  min-width: 0;
+}
+.statblock-format-host:empty {
+  display: none;
+}
+.statblock-format-host .text-format-toolbar {
+  position: static;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  white-space: nowrap;
+}
+.statblock-sticky-header .card-controls-anchor {
+  position: relative;
+  top: auto;
+  margin: 0 0 0 auto;
+  flex-shrink: 0;
+  z-index: auto;
+}
+.statblock-save-actions {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+  align-items: center;
+}
+.statblock-save-actions button {
+  height: 30px;
+  border: 1px solid #bcb5a7;
+  border-radius: 6px;
+  padding: 3px 7px;
+  background: #fffdf7;
+  font-size: 11px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.statblock-save-actions .primary-button {
+  background: #eadcc5;
+}
+.statblock-save-actions + .card-controls-anchor {
+  margin-left: 0;
+}
+.tooltip-anchor {
+  display: inline-flex;
+  align-items: center;
+}
+.app-tooltip {
+  position: fixed;
+  z-index: 2000;
+  width: max-content;
+  max-width: min(300px, calc(100vw - 16px));
+  padding: 8px 11px;
+  border: 1px solid #76634c;
+  border-radius: 7px;
+  background: #3b3229;
+  color: #fffaf0;
+  box-shadow: 0 4px 14px #211b1633;
+  font:
+    12px/1.45 Inter,
+    sans-serif;
+  white-space: normal;
+  pointer-events: none;
+}
+@container (max-width: 660px) {
+  .statblock-sticky-header {
+    flex-wrap: wrap;
+  }
+  .statblock-save-actions {
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+}
+@media (max-width: 760px) {
+  .statblock-card-stage {
+    margin-top: 20px;
+  }
+  .workspace > .unified-workspace-header {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+  .unified-workspace-header .header-roll-zone {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+  }
+  .statblock-sticky-header {
+    flex-wrap: wrap;
+  }
+  .statblock-save-actions {
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
 }

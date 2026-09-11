@@ -18,6 +18,8 @@ function parserModeLabel(mode: ParserMode | null): string {
 export function StatblockCardControls({
   open,
   onToggle,
+  canCopy,
+  onCopy,
   language,
   hasUkrainian,
   onLanguageChange,
@@ -35,6 +37,8 @@ export function StatblockCardControls({
 }: {
   open: boolean;
   onToggle: () => void;
+  canCopy: boolean;
+  onCopy: () => void;
   language: "en" | "uk" | null;
   hasUkrainian: boolean;
   onLanguageChange: (language: "en" | "uk") => void;
@@ -66,6 +70,16 @@ export function StatblockCardControls({
 
   return (
     <div ref={anchorRef} className="card-controls-anchor">
+      {canCopy && (
+        <button
+          type="button"
+          className="copy-statblock-button"
+          onClick={onCopy}
+          title="Копіювати форматований статблок"
+        >
+          Копіювати статблок
+        </button>
+      )}
       <button
         type="button"
         className={`card-controls-toggle ${open ? "active-mode" : ""}`}

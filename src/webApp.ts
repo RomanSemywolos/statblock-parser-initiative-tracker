@@ -104,20 +104,20 @@ function requestUrl(request: IncomingMessage): URL {
 export function createStatblockAppServer(options: StatblockAppOptions): Server {
   return createServer(async (request, response) => {
     const url = requestUrl(request);
-    const isApiRequest = url.pathname.startsWith("/api/");
+    const isBrowserApiRequest = url.pathname === "/health" || url.pathname.startsWith("/api/");
 
-    if (isApiRequest && !isAllowedApiOrigin(request, options.security)) {
+    if (isBrowserApiRequest && !isAllowedApiOrigin(request, options.security)) {
       writeJson(response, 403, { error: "This browser origin is not allowed to access the local API." });
       return;
     }
 
-    if (isApiRequest) {
+    if (isBrowserApiRequest) {
       for (const [name, value] of Object.entries(apiCorsHeaders(request, options.security))) {
         response.setHeader(name, value);
       }
     }
 
-    if (request.method === "OPTIONS" && isApiRequest) {
+    if (request.method === "OPTIONS" && isBrowserApiRequest) {
       response.writeHead(204, {
         ...apiCorsHeaders(request, options.security),
       });
@@ -125,7 +125,7 @@ export function createStatblockAppServer(options: StatblockAppOptions): Server {
       return;
     }
 
-    if (isApiRequest && !hasTrustedMutationHeader(request)) {
+    if (isBrowserApiRequest && !hasTrustedMutationHeader(request)) {
       writeJson(response, 403, { error: "The local API requires a trusted client header for changes." });
       return;
     }

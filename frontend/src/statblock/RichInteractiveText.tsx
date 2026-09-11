@@ -10,6 +10,7 @@ import {
   type EditableStatblockNode,
 } from "statblock-parser-core/product";
 import { formatBonus } from "../statblockUi";
+import { naturalD20Class } from "../hooks/useDiceRoller";
 import { splitKnownHeaderRow } from "./statblockPresentation";
 
 export type InlineRollMap = Record<string, DiceRollResult>;
@@ -23,7 +24,7 @@ function ukrainianDiceNotation(expression: DiceExpression): string {
 
 export function InlineRollResult({ result }: { result: DiceRollResult | undefined }) {
   if (result === undefined) return null;
-  return <strong className="inline-roll-result"> = {result.total}</strong>;
+  return <strong className={`inline-roll-result ${naturalD20Class(result)}`.trim()}> = {result.total}</strong>;
 }
 
 function InteractivePlainText({

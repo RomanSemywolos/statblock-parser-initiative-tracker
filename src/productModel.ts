@@ -60,8 +60,8 @@ export type EditableHeaderEvidence = {
 };
 
 export type EditableAbilityFact = {
-  score: number;
-  modifier: number;
+  score: number | null;
+  modifier: number | null;
 };
 
 export type EditableInitiativeFact = {

@@ -527,8 +527,26 @@ test("local API rejects foreign browser origins and requires the mutation header
   });
   try {
     const address = server.address() as AddressInfo;
-    const endpoint = `http://127.0.0.1:${address.port}/api/model-profiles/custom`;
+    const baseUrl = `http://127.0.0.1:${address.port}`;
+    const endpoint = `${baseUrl}/api/model-profiles/custom`;
     const body = JSON.stringify({ baseUrl: "https://attacker.example/v1", model: "capture" });
+
+    const foreignHealth = await fetch(`${baseUrl}/health`, {
+      headers: { Origin: "https://attacker.example" },
+    });
+    assert.equal(foreignHealth.status, 403);
+    assert.equal(foreignHealth.headers.get("access-control-allow-origin"), null);
+
+    const trustedHealth = await fetch(`${baseUrl}/health`, {
+      headers: { Origin: "http://trusted.frontend.test" },
+    });
+    assert.equal(trustedHealth.status, 200);
+    assert.equal(trustedHealth.headers.get("access-control-allow-origin"), "http://trusted.frontend.test");
+    assert.deepEqual(await trustedHealth.json(), {
+      ok: true,
+      model: "local-model",
+      activeProfileId: "default",
+    });
 
     const foreign = await fetch(endpoint, {
       method: "POST",

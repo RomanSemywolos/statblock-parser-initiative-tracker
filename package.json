@@ -1,6 +1,6 @@
 {
   "name": "statblock-parser-core",
-  "version": "2.74.219",
+  "version": "2.74.225",
   "description": "Lossless statblock parser with async product import and editor-owned header/body document model",
   "main": "dist/index.js",
   "scripts": {

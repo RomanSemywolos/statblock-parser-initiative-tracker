@@ -2,7 +2,7 @@
 
 A local-first D&D statblock parser, editor, library, translator, and encounter tracker. It preserves the original source, delegates bounded structural decisions to a language model, and verifies source ownership deterministically before producing editable cards.
 
-> Current release: **2.74.219**. Historical patch notes and validation logs are archived under [`docs/history`](docs/history/README.md); they are evidence, not current documentation.
+> Current release: **2.74.225**. Historical patch notes and validation logs are archived under [`docs/history`](docs/history/README.md); they are evidence, not current documentation.
 
 ## Highlights
 

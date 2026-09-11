@@ -154,9 +154,11 @@ export function useSettingsController(repository: SettingsRepository, reportErro
       setConnectionMessage(
         selected === undefined
           ? "Система розбору працює. Оберіть лінгвістичну модель."
-          : selected.health.ok
-            ? `Лінгвістична модель доступна: ${selected.displayName}`
-            : `Система розбору працює, але вибрана модель недоступна: ${selected.displayName}`,
+          : selected.health.code === "catalog_unconfirmed"
+            ? `Сервіс моделі підключено: ${selected.displayName}. Каталог не підтвердив ID; остаточна перевірка відбудеться під час першого розбору.`
+            : selected.health.ok
+              ? `Лінгвістична модель доступна: ${selected.displayName}`
+              : `Система розбору працює, але вибрана модель недоступна: ${selected.displayName}`,
       );
       return { health, profiles, statuses };
     } catch (caught) {
@@ -193,11 +195,18 @@ export function useSettingsController(repository: SettingsRepository, reportErro
   async function saveSettings(): Promise<boolean> {
     try {
       const connection = await checkBackendConnection(settingsBackendUrl);
+      if (connection === null) return false;
       const requested = settingsModelProfileId;
-      const profileId =
-        requested !== null && connection?.profiles.some((profile) => profile.id === requested)
-          ? requested
-          : (connection?.health.activeProfileId ?? requested);
+      if (requested !== null) {
+        const selectedStatus = connection.statuses.find((profile) => profile.id === requested);
+        if (selectedStatus === undefined) {
+          throw new Error("Вибрана лінгвістична модель відсутня у списку backend-а.");
+        }
+        if (!selectedStatus.health.ok) {
+          throw new Error(`Вибрана лінгвістична модель недоступна: ${selectedStatus.displayName}.`);
+        }
+      }
+      const profileId = requested ?? connection.health.activeProfileId;
       const next = updateAppSettings(settings, {
         backendUrl: settingsBackendUrl,
         activeParserModelProfileId: profileId,

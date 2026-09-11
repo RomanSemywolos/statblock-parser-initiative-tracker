@@ -200,7 +200,8 @@ export function editEditableAbility(
   value: EditableAbilityFact | null,
 ): EditableStatblockDocument {
   const next = cloneDocument(document);
-  next.header.abilities[ability] = value === null ? null : { ...value };
+  next.header.abilities[ability] =
+    value === null || (value.score === null && value.modifier === null) ? null : { ...value };
   const previousSave = next.header.savingThrows[ability];
   const previousModifier = document.header.abilities[ability]?.modifier ?? null;
   if (previousSave === previousModifier || previousSave === null) {

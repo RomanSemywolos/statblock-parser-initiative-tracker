@@ -9,8 +9,10 @@ import {
 } from "statblock-parser-core/product";
 
 import { LibrarySidebar } from "./AppPanels";
-import { CardConfigEditor, RichInteractiveText } from "./StatblockViews";
+import { CardConfigEditor, RichInteractiveText, StatblockEditor } from "./StatblockViews";
 import { downloadLibraryExport, readLibraryImport } from "./fileTransfers";
+import { naturalD20Class } from "./hooks/useDiceRoller";
+import { serializeStatblockForClipboard } from "./statblock/statblockClipboard";
 import { fixtureSavedStatblock } from "./testFixtures";
 
 describe("critical frontend flows", () => {
@@ -58,6 +60,92 @@ describe("critical frontend flows", () => {
     expect(screen.getByText("Probing Telepathy.").closest("strong")?.querySelector("em")).not.toBeNull();
     await userEvent.click(screen.getByRole("button", { name: "Зменшити (3/Day)" }));
     expect(onChange).toHaveBeenCalledWith(expect.any(String), 3, 2);
+  });
+
+  it("keeps translated recharge text interactive inside authoring markup", async () => {
+    const onRoll = vi.fn();
+    render(
+      <RichInteractiveText
+        text="***(Перезарядка 5–6)***"
+        keyPrefix="recharge"
+        label="Дихання"
+        onRoll={onRoll}
+        results={{}}
+      />,
+    );
+    await userEvent.click(screen.getByRole("button", { name: "(Перезарядка 5–6)" }));
+    expect(onRoll).toHaveBeenCalledWith(expect.any(String), { count: 1, sides: 6, modifier: 0 }, expect.any(String));
+  });
+
+  it("colors only natural single-d20 extremes", () => {
+    const result = (roll: number, modifier = 7) => ({
+      expression: { count: 1, sides: 20, modifier },
+      normalized: `1d20+${modifier}`,
+      rolls: [roll],
+      modifier,
+      total: roll + modifier,
+    });
+    expect(naturalD20Class(result(20))).toBe("natural-d20-success");
+    expect(naturalD20Class(result(1))).toBe("natural-d20-failure");
+    expect(naturalD20Class(result(19))).toBe("");
+  });
+
+  it("does not invent an ability modifier while entering a score", async () => {
+    const document = fixtureSavedStatblock().versions.en.working;
+    document.header.abilities.str = null;
+    document.facts.abilities.str = null;
+    const onChange = vi.fn();
+    render(<StatblockEditor document={document} onChange={onChange} />);
+    const scoreInputs = screen.getAllByPlaceholderText("—") as HTMLInputElement[];
+    await userEvent.type(scoreInputs[0]!, "1");
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        header: expect.objectContaining({
+          abilities: expect.objectContaining({ str: { score: 1, modifier: null } }),
+        }),
+      }),
+    );
+  });
+
+  it("renders card actions inside the editor's single formatting header", () => {
+    const document = fixtureSavedStatblock().versions.en.working;
+    render(
+      <StatblockEditor
+        document={document}
+        onChange={() => {}}
+        toolbarActions={<button type="button">Копіювати статблок</button>}
+      />,
+    );
+    const copy = screen.getByRole("button", { name: "Копіювати статблок" });
+    expect(copy.closest(".text-format-toolbar")).not.toBeNull();
+  });
+
+  it("serializes a rich clipboard statblock without evidence or tab-separated abilities", () => {
+    const document = fixtureSavedStatblock().versions.en.working;
+    document.header.evidence = [{ id: "source", fields: ["ability_scores"], text: "secret evidence" }];
+    document.body = [{ id: "trait", type: "paragraph", text: "***Probing Telepathy.*** Text." }];
+    const copied = serializeStatblockForClipboard(document);
+    expect(copied.html).toContain("<strong><em>Probing Telepathy.</em></strong>");
+    expect(copied.html).toContain("<table");
+    const clipboardDocument = new DOMParser().parseFromString(copied.html, "text/html");
+    const abilityRows = clipboardDocument.querySelectorAll("table tr");
+    expect(abilityRows).toHaveLength(2);
+    expect(Array.from(abilityRows[0]!.querySelectorAll("td"), (cell) => cell.textContent)).toEqual([
+      "STR",
+      "DEX",
+      "CON",
+      "INT",
+      "WIS",
+      "CHA",
+    ]);
+    expect(abilityRows[1]!.querySelectorAll("td")).toHaveLength(6);
+    expect(clipboardDocument.querySelectorAll("table th")).toHaveLength(0);
+    expect(copied.html).not.toContain("secret evidence");
+    expect(copied.plainText).not.toContain("\t");
+    expect(copied.plainText).not.toContain("***");
+    expect(copied.plainText.split("\n")).toContain(
+      "STR 10 (+0) · DEX 10 (+0) · CON 10 (+0) · INT 10 (+0) · WIS 10 (+0) · CHA 10 (+0)",
+    );
   });
 
   it("persists isolated records through the real IndexedDB repository", async () => {

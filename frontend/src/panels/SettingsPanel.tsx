@@ -95,7 +95,14 @@ export function SettingsPanel({
                 .filter((profile) => profile.id !== CUSTOM_MODEL_PROFILE_ID)
                 .map((profile) => {
                   const status = modelProfileStatuses.find((entry) => entry.id === profile.id);
-                  const suffix = status === undefined ? "" : status.health.ok ? " — доступна" : " — недоступна";
+                  const suffix =
+                    status === undefined
+                      ? ""
+                      : status.health.code === "catalog_unconfirmed"
+                        ? " — підключена, ID не підтверджено каталогом"
+                        : status.health.ok
+                          ? " — доступна"
+                          : " — недоступна";
                   return (
                     <option key={profile.id} value={profile.id}>
                       {profile.displayName}

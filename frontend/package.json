@@ -1,7 +1,7 @@
 {
   "name": "statblock-parser-frontend",
   "private": true,
-  "version": "0.22.29",
+  "version": "0.22.34",
   "type": "module",
   "scripts": {
     "predev": "npm --prefix .. run build",

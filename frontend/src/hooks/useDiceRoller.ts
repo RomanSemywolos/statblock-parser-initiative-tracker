@@ -19,6 +19,13 @@ export function formatRollDetails(result: DiceRollResult): string {
   return `${dice} ${result.modifier > 0 ? "+" : "−"} ${Math.abs(result.modifier)} = ${result.total}`;
 }
 
+export function naturalD20Class(result: DiceRollResult): string {
+  if (result.expression.count !== 1 || result.expression.sides !== 20 || result.rolls.length !== 1) return "";
+  if (result.rolls[0] === 20) return "natural-d20-success";
+  if (result.rolls[0] === 1) return "natural-d20-failure";
+  return "";
+}
+
 export function useDiceRoller() {
   const [rollInput, setRollInput] = useState("1к20");
   const [rollError, setRollError] = useState<string | null>(null);
@@ -29,7 +36,7 @@ export function useDiceRoller() {
     const result = rollDice(expression);
     setRollError(null);
     setRollSequence((current) => current + 1);
-    setRollHistory((current) => [{ id: createRollId(), label, result }, ...current].slice(0, 10));
+    setRollHistory((current) => [{ id: createRollId(), label, result }, ...current].slice(0, 100));
     return result;
   }
 

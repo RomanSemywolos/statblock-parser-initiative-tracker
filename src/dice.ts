@@ -111,7 +111,7 @@ export function findDiceExpressions(source: string): DiceExpressionMatch[] {
 
 export function findRechargeExpressions(
   source: string,
-  labels: readonly string[] = ["Recharge"],
+  labels: readonly string[] = ["Recharge", "Перезарядка"],
 ): RechargeExpressionMatch[] {
   const matches: RechargeExpressionMatch[] = [];
   for (const label of labels) {

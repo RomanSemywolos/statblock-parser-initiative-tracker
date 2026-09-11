@@ -114,3 +114,10 @@ test("findRechargeExpressions accepts configured translated labels", () => {
   assert.equal(matches.length, 1);
   assert.equal(matches[0]?.minimum, 5);
 });
+
+test("findRechargeExpressions recognizes Ukrainian recharge labels by default", () => {
+  const matches = findRechargeExpressions("(Перезарядка 5–6)");
+  assert.equal(matches.length, 1);
+  assert.equal(matches[0]?.minimum, 5);
+  assert.equal(matches[0]?.maximum, 6);
+});

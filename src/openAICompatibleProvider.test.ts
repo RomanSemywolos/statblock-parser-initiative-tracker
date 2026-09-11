@@ -101,7 +101,7 @@ test("OpenAI-compatible provider sends parser schema and returns provider-neutra
   }
 });
 
-test("OpenAI-compatible health check verifies the configured model id", async () => {
+test("OpenAI-compatible health check does not reject a working provider when its catalog omits the model id", async () => {
   const server = createServer((_request, response) => {
     response.writeHead(200, { "Content-Type": "application/json" });
     response.end(JSON.stringify({ data: [{ id: "other/model" }] }));
@@ -119,9 +119,59 @@ test("OpenAI-compatible health check verifies the configured model id", async ()
       baseUrl: `http://127.0.0.1:${address.port}`,
     });
     const health = await provider.healthCheck();
-    assert.equal(health.ok, false);
-    assert.equal(health.code, "model_unavailable");
+    assert.equal(health.ok, true);
+    assert.equal(health.code, "catalog_unconfirmed");
     assert.match(health.detail ?? "", /wanted\/model/u);
+  } finally {
+    server.close();
+  }
+});
+
+test("OpenAI-compatible health check treats a forbidden model catalog as inconclusive", async () => {
+  const server = createServer((_request, response) => {
+    response.writeHead(403, { "Content-Type": "application/json" });
+    response.end(JSON.stringify({ error: { message: "model listing is not allowed" } }));
+  });
+  await new Promise<void>((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", () => resolve());
+  });
+  try {
+    const address = server.address() as AddressInfo;
+    const provider = new OpenAICompatibleModelProvider({
+      id: "remote",
+      model: "wanted/model",
+      apiKey: "test-key",
+      baseUrl: `http://127.0.0.1:${address.port}`,
+    });
+    const health = await provider.healthCheck();
+    assert.equal(health.ok, true);
+    assert.equal(health.code, "catalog_unconfirmed");
+  } finally {
+    server.close();
+  }
+});
+
+test("OpenAI-compatible health check treats an unsupported model catalog shape as inconclusive", async () => {
+  const server = createServer((_request, response) => {
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.end(JSON.stringify({ models: ["wanted/model"] }));
+  });
+  await new Promise<void>((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", () => resolve());
+  });
+  try {
+    const address = server.address() as AddressInfo;
+    const provider = new OpenAICompatibleModelProvider({
+      id: "remote",
+      model: "wanted/model",
+      apiKey: "test-key",
+      baseUrl: `http://127.0.0.1:${address.port}`,
+    });
+    const health = await provider.healthCheck();
+    assert.equal(health.ok, true);
+    assert.equal(health.code, "catalog_unconfirmed");
   } finally {
     server.close();
   }

@@ -259,11 +259,11 @@ export class OpenAICompatibleModelProvider implements ModelProvider {
       if (!response.ok) {
         const retryAfter = retryAfterSeconds(response);
         const detail = safeResponseDetail(await response.text());
-        if (response.status === 401 || response.status === 403) {
+        if (response.status === 401) {
           return {
             ok: false,
             code: "unauthorized",
-            detail: `API key rejected (HTTP ${response.status})${detail ? `: ${detail}` : ""}`,
+            detail: `API key rejected (HTTP 401)${detail ? `: ${detail}` : ""}`,
           };
         }
         if (response.status === 429) {
@@ -274,15 +274,31 @@ export class OpenAICompatibleModelProvider implements ModelProvider {
             detail: `Rate limit reached (HTTP 429)${detail ? `: ${detail}` : ""}`,
           };
         }
+        if (response.status >= 400 && response.status < 500) {
+          return {
+            ok: true,
+            code: "catalog_unconfirmed",
+            detail: `Provider did not expose a usable /models catalog (HTTP ${response.status}). ${this.model} will be verified by the first parsing request.`,
+          };
+        }
         return { ok: false, code: "http_error", detail: `HTTP ${response.status}${detail ? `: ${detail}` : ""}` };
       }
 
-      const models = ModelsResponseSchema.parse(await response.json());
+      let models;
+      try {
+        models = ModelsResponseSchema.parse(await response.json());
+      } catch {
+        return {
+          ok: true,
+          code: "catalog_unconfirmed",
+          detail: `Provider connection succeeded, but /models returned an unsupported catalog format. ${this.model} will be verified by the first parsing request.`,
+        };
+      }
       if (!models.data.some((entry) => entry.id === this.model)) {
         return {
-          ok: false,
-          code: "model_unavailable",
-          detail: `Configured model ${this.model} is not present in the provider /models response.`,
+          ok: true,
+          code: "catalog_unconfirmed",
+          detail: `Provider connection succeeded, but ${this.model} was not listed by /models. Availability will be verified by the first request.`,
         };
       }
       return { ok: true, detail: `Model ${this.model} is available.` };

@@ -74,8 +74,8 @@ function abilityMap(value: unknown, path: string, factValues: boolean): void {
       continue;
     }
     const fact = record(current, `${path}.${key}`);
-    finiteNumber(fact.score, `${path}.${key}.score`);
-    finiteNumber(fact.modifier, `${path}.${key}.modifier`);
+    nullableFiniteNumber(fact.score, `${path}.${key}.score`);
+    nullableFiniteNumber(fact.modifier, `${path}.${key}.modifier`);
   }
 }
 

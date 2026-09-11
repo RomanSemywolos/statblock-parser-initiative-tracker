@@ -1,3 +1,5 @@
+import { RollHistoryPanel } from "./panels/RollHistoryPanel";
+import { Tooltip } from "./Tooltip";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   IndexedDbEncounterRepository,
@@ -41,11 +43,12 @@ import { downloadLibraryExport, downloadParserDiagnostics, readLibraryImport } f
 import { EncounterSidebar, ImportWorkspace, LibrarySidebar, SettingsPanel, StatblockCardControls } from "./AppPanels";
 import { translationServiceName, userFacingTranslationError } from "./userMessages";
 import { hydrateEncounterState } from "./encounterHydration";
-import { formatRollDetails, useDiceRoller } from "./hooks/useDiceRoller";
+import { useDiceRoller } from "./hooks/useDiceRoller";
 import { useEncounterController } from "./hooks/useEncounterController";
 import { useSettingsController } from "./hooks/useSettingsController";
 import { useParseJobsController } from "./hooks/useParseJobsController";
 import { defaultTranslationProviderUrl, getOrCreateClientId } from "./appDefaults";
+import { copyStatblock } from "./statblock/statblockClipboard";
 
 const statblockRepository: StatblockRepository = new IndexedDbStatblockRepository();
 const encounterRepository: EncounterRepository = new IndexedDbEncounterRepository();
@@ -500,6 +503,62 @@ export function App() {
     event.dataTransfer.setData("text/plain", statblockId);
   }
 
+  const [formatToolbarHost, setFormatToolbarHost] = useState<HTMLDivElement | null>(null);
+
+  const cardControls = (
+    <StatblockCardControls
+      open={cardControlsOpen}
+      onToggle={() => setCardControlsOpen((value) => !value)}
+      canCopy={openedDocument !== null && !editing && !configuringCard}
+      onCopy={() => {
+        if (openedDocument === null) return;
+        void copyStatblock(openedDocument).catch(() => {
+          setError("Не вдалося скопіювати статблок. Перевірте дозвіл браузера на доступ до буфера обміну.");
+        });
+      }}
+      language={opened?.kind === "library" ? libraryLanguage : null}
+      hasUkrainian={opened?.kind === "library" && openedStatblock?.versions.uk !== undefined}
+      onLanguageChange={(language) =>
+        requestOutsideSettingsAction(() => {
+          setLibraryLanguage(language);
+          setEditing(false);
+          setConfiguringCard(false);
+        })
+      }
+      onTranslate={() =>
+        requestOutsideSettingsAction(() => {
+          void createUkrainianVersion();
+        })
+      }
+      editing={editing}
+      configuringCard={configuringCard}
+      canConfigureCard={openedCardConfig !== null}
+      onToggleEditing={() =>
+        requestOutsideSettingsAction(() => {
+          setCardControlsOpen(false);
+          setConfiguringCard(false);
+          setEditing((value) => !value);
+        })
+      }
+      onToggleConfiguringCard={() =>
+        requestOutsideSettingsAction(() => {
+          setCardControlsOpen(false);
+          setEditing(false);
+          setConfiguringCard((value) => !value);
+        })
+      }
+      savedStatblock={opened?.kind === "library" ? openedStatblock : null}
+      reparseMode={reparseParserMode}
+      onReparseModeChange={setReparseParserMode}
+      reparseBusy={reparseBusy}
+      onReparse={() =>
+        requestOutsideSettingsAction(() => {
+          void submitReparse();
+        })
+      }
+    />
+  );
+
   return (
     <div className="app-shell">
       {(leftSidebarOpen || rightSidebarOpen) && (
@@ -620,23 +679,7 @@ export function App() {
             {rollError !== null && <div className="dice-error compact-dice-error">{rollError}</div>}
           </div>
 
-          <div className="header-roll-zone" aria-label="Журнал кидків">
-            <div className="roll-history compact-roll-history" aria-live="polite">
-              {rollHistory.length === 0 ? (
-                <span className="roll-history-empty">Кидків ще немає.</span>
-              ) : (
-                rollHistory.map((entry) => (
-                  <div key={entry.id} className="roll-history-entry">
-                    <span className="roll-history-label">{entry.label}</span>
-                    <strong>
-                      {entry.result.normalized} → {entry.result.total}
-                    </strong>
-                    <span>{formatRollDetails(entry.result)}</span>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
+          <RollHistoryPanel entries={rollHistory} />
         </header>
 
         {showSettings && (
@@ -707,48 +750,6 @@ export function App() {
           />
         )}
 
-        {opened?.kind === "library" && openedStatblock !== null && editing && (
-          <div className="editor-toolbar">
-            <button
-              type="button"
-              className="primary-button"
-              onClick={() =>
-                requestOutsideSettingsAction(() => {
-                  void explicitSave();
-                })
-              }
-            >
-              Зберегти
-            </button>
-            <button
-              type="button"
-              disabled={!workingDiffersFromSaved}
-              onClick={() =>
-                requestOutsideSettingsAction(() => {
-                  void revertToSaved();
-                })
-              }
-            >
-              Повернутися до збереженої
-            </button>
-            <button
-              type="button"
-              disabled={activeLibraryVersion?.backup === null || activeLibraryVersion?.backup === undefined}
-              onClick={() =>
-                requestOutsideSettingsAction(() => {
-                  void restoreBackup();
-                })
-              }
-            >
-              Завантажити резервну
-            </button>
-            <span className="toolbar-note">
-              {libraryLanguage.toUpperCase()} working автозберігається окремо. «Зберегти» оновлює ручний checkpoint;
-              резерв залишається початковим результатом розбору або перекладу.
-            </span>
-          </div>
-        )}
-
         {opened?.kind === "library" && translationMessage !== null && (
           <div className="translation-status" role="status">
             {translationMessage}
@@ -767,10 +768,6 @@ export function App() {
               setShowImportForm(false);
               setImportText("");
             }}
-            onOpenBackendSettings={() => {
-              resetSettingsDraft();
-              setShowSettings(true);
-            }}
             onSubmit={() => {
               void submitImport();
             }}
@@ -782,48 +779,55 @@ export function App() {
             <div className="workspace-empty">Обери statblock зліва або бойову картку справа.</div>
           ) : (
             <div className="statblock-card-stage">
-              <StatblockCardControls
-                open={cardControlsOpen}
-                onToggle={() => setCardControlsOpen((value) => !value)}
-                language={opened?.kind === "library" ? libraryLanguage : null}
-                hasUkrainian={opened?.kind === "library" && openedStatblock?.versions.uk !== undefined}
-                onLanguageChange={(language) =>
-                  requestOutsideSettingsAction(() => {
-                    setLibraryLanguage(language);
-                    setEditing(false);
-                    setConfiguringCard(false);
-                  })
-                }
-                onTranslate={() =>
-                  requestOutsideSettingsAction(() => {
-                    void createUkrainianVersion();
-                  })
-                }
-                editing={editing}
-                configuringCard={configuringCard}
-                canConfigureCard={openedCardConfig !== null}
-                onToggleEditing={() =>
-                  requestOutsideSettingsAction(() => {
-                    setConfiguringCard(false);
-                    setEditing((value) => !value);
-                  })
-                }
-                onToggleConfiguringCard={() =>
-                  requestOutsideSettingsAction(() => {
-                    setEditing(false);
-                    setConfiguringCard((value) => !value);
-                  })
-                }
-                savedStatblock={opened?.kind === "library" ? openedStatblock : null}
-                reparseMode={reparseParserMode}
-                onReparseModeChange={setReparseParserMode}
-                reparseBusy={reparseBusy}
-                onReparse={() =>
-                  requestOutsideSettingsAction(() => {
-                    void submitReparse();
-                  })
-                }
-              />
+              <div className="statblock-sticky-header">
+                <div ref={setFormatToolbarHost} className="statblock-format-host" />
+                {opened?.kind === "library" && openedStatblock !== null && editing && (
+                  <div className="statblock-save-actions">
+                    <Tooltip
+                      text={`${libraryLanguage.toUpperCase()}: зміни автозберігаються окремо. «Зберегти» оновлює збережену вручну версію, не змінюючи резервну копію.`}
+                    >
+                      <button
+                        type="button"
+                        className="primary-button"
+                        onClick={() =>
+                          requestOutsideSettingsAction(() => {
+                            void explicitSave();
+                          })
+                        }
+                      >
+                        Зберегти
+                      </button>
+                    </Tooltip>
+                    <Tooltip text="Замінити поточні правки останньою збереженою вручну версією.">
+                      <button
+                        type="button"
+                        disabled={!workingDiffersFromSaved}
+                        onClick={() =>
+                          requestOutsideSettingsAction(() => {
+                            void revertToSaved();
+                          })
+                        }
+                      >
+                        Завантажити збережену
+                      </button>
+                    </Tooltip>
+                    <Tooltip text="Відновити початковий результат розбору або перекладу. Резерв не змінюється під час ручного збереження.">
+                      <button
+                        type="button"
+                        disabled={activeLibraryVersion?.backup === null || activeLibraryVersion?.backup === undefined}
+                        onClick={() =>
+                          requestOutsideSettingsAction(() => {
+                            void restoreBackup();
+                          })
+                        }
+                      >
+                        Завантажити резервну
+                      </button>
+                    </Tooltip>
+                  </div>
+                )}
+                {cardControls}
+              </div>
 
               {opened?.kind === "combatant" && openedCombatant?.kind === "stub" ? (
                 editing ? (
@@ -849,7 +853,11 @@ export function App() {
                   }}
                 />
               ) : editing ? (
-                <StatblockEditor document={openedDocument} onChange={changeWorkingDocument} />
+                <StatblockEditor
+                  document={openedDocument}
+                  onChange={changeWorkingDocument}
+                  toolbarHost={formatToolbarHost}
+                />
               ) : (
                 <>
                   {opened?.kind === "combatant" &&

@@ -9,7 +9,6 @@ export function ImportWorkspace({
   onTextChange,
   onParserModeChange,
   onClose,
-  onOpenBackendSettings,
   onSubmit,
 }: {
   text: string;
@@ -19,7 +18,6 @@ export function ImportWorkspace({
   onTextChange: (value: string) => void;
   onParserModeChange: (value: ParserMode) => void;
   onClose: () => void;
-  onOpenBackendSettings: () => void;
   onSubmit: () => void;
 }) {
   return (
@@ -59,9 +57,6 @@ export function ImportWorkspace({
             {backendStatus === "unknown" && <>Система розбору: перевірка з’єднання</>}
           </div>
           <div className="settings-actions">
-            <button type="button" onClick={onOpenBackendSettings}>
-              Налаштування моделей
-            </button>
             <button type="button" className="primary-button" disabled={text.trim().length === 0} onClick={onSubmit}>
               Розібрати й додати в бібліотеку
             </button>

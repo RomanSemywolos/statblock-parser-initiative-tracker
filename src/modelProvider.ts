@@ -48,7 +48,7 @@ export type StructureModelCaller = (request: StructuredModelRequest) => Promise<
 export type ModelHealth = {
   ok: boolean;
   detail?: string;
-  code?: "unauthorized" | "rate_limited" | "model_unavailable" | "http_error" | "network_error";
+  code?: "unauthorized" | "rate_limited" | "model_unavailable" | "catalog_unconfirmed" | "http_error" | "network_error";
   retryAfterSeconds?: number;
 };
 
